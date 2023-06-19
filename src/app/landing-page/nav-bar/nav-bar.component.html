@@ -1,0 +1,15 @@
+<nav class="px-8 w-full border-[#2F2F2F] border-b-[1px]">
+  <ul class="py-3 flex items-center justify-between">
+    <li>
+      <a routerLink="/">
+        <img src={{logoUrl}} width="180" alt="Logo de Origins">
+      </a>
+    </li>
+    <li (click)="updateLogo()">
+      <app-toggle-theme-button></app-toggle-theme-button>
+    </li>
+    <li>
+      <button class="font-medium rounded-md px-4 py-2">Iniciar Sesión</button>
+    </li>
+  </ul>
+</nav>
