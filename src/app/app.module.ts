@@ -11,6 +11,7 @@ import { InfoItemComponent } from './landing-page/info-item/info-item.component'
 import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from "@angular/common/http";
 import { MainComponent } from './landing-page/main/main.component';
+import { ModalLoginComponent } from './modal-login/modal-login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MainComponent } from './landing-page/main/main.component';
     ToggleThemeButtonComponent,
     InfoItemComponent,
     MainComponent,
+    ModalLoginComponent,
   ],
   imports: [
     BrowserModule,
