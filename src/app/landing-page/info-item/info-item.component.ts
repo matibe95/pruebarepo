@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { InfoItem } from '../../models/info-item.model';
 import { IconService } from '../../services/Icon.service';
+import { InfoItemsIcons } from "../../constants/icons";
 
 @Component({
   selector: 'app-info-item',
@@ -11,6 +12,6 @@ export class InfoItemComponent {
   @Input() item!: InfoItem
 
   constructor(private iconService: IconService){
-    this.iconService.registerIcons()
+    this.iconService.registerIcons(InfoItemsIcons, 'landing_icons')
   }
 }
