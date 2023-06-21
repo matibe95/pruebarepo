@@ -1,10 +1,16 @@
 <app-nav-bar/>
-<section class="px-8 py-20 gap-6 flex flex-col justify-center items-center">
-  <hr class="w-full border-[#2F2F2F]">
-  <section class="flex gap-6">
-    <app-info-item [item]="item" *ngFor="let item of infoItems"></app-info-item>
-  </section>
-  <hr class="w-full border-[#2F2F2F]">
-  <h2 class="text-5xl font-bold text-center px-20"><span class="text-6xl text-skin-inverted tracking-tighter">Conoce </span>personas de todo el <span class="text-6xl text-skin-inverted"> globo</span></h2>
-</section>
+<main class="px-8 py-20 flex flex-col justify-center items-center">
+  <app-main/>
+  <hr class="w-[100%] border-[#2F2F2F]">
+  <div class="flex flex-col gap-6 pt-6">
+    <section class="info_item-container flex flex-col sm:flex-row sm:gap-6 gap-12">
+      <app-info-item [item]="item" *ngFor="let item of infoItems"></app-info-item>
+    </section>
+    <hr class="w-full border-[#2F2F2F]">
+    <section class="flex flex-col items-center">
+      <img src="assets/landing_icons/purple_planet.png" alt="Planeta Purpura" width="300">
+      <h2 class="tracking-tight font-extrabold px-14 mobile-m:leading-tight mobile-l:leading-normal text-4xl text-center"><span class="text-5xl text-skin-inverted tracking-tighter">Conoce </span>personas de todo el <span class="text-5xl text-skin-inverted"> globo</span></h2> 
+    </section>
+    </div>
+  </main>
 <app-footer/>
