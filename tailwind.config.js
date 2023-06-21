@@ -10,7 +10,6 @@ module.exports = {
     extend: {
       textColor: {
         skin: {
-          base: 'var(--color-text-base)',
           muted: 'var(--color-text-muted)',
           inverted: 'var(--color-text-inverted)'
         }
@@ -23,7 +22,15 @@ module.exports = {
           'button-muted': 'var(--color-button-muted)'
         }
       },
-      // colors: {
+      screens: {
+        'mobile-m': '320px',
+        'mobile-s': '375px',
+        'mobile-l': '425px'
+      },
+      colors: {
+        base: 'var(--color-text-base)',
+        'base-inverted': 'var(--color-button-alternative)'
+      },
 
       // 'primary-button': '#2F2E2E',
       // 'primary-background': '#1A1A1A',
