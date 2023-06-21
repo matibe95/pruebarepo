@@ -2,7 +2,7 @@
 import { Injectable } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
-import { Icons } from "../constants/icon";
+import { InfoItemsIcons } from "../constants/icons";
 
 
 @Injectable({
@@ -14,11 +14,11 @@ export class IconService {
     private sanitizer: DomSanitizer
   ){}
 
-  registerIcons(): void {
-    this.load(Icons, 'assets/landing_icons')
+  registerIcons(iconsArray: any, subfolder: string ): void {
+    this.load(iconsArray, `assets/${subfolder}`)
   }
   
-  private load (iconos: typeof Icons, url: string): void {
+  private load (iconos: typeof InfoItemsIcons, url: string): void {
     Object.keys(iconos).forEach((icon) => {
       this.matIconRegistry.addSvgIcon(
         icon,
