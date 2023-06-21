@@ -1,15 +1,19 @@
-<nav class="px-8 w-full border-[#2F2F2F] border-b-[1px]">
-  <ul class="py-3 flex items-center justify-between">
-    <li>
+<nav class="px-8 w-full border-base-inverted border-b-[1px]">
+  <ul class="navbar_container flex py-3 items-center justify-between">
+    <li class="first">
       <a routerLink="/">
-        <img src={{logoUrl}} width="180" alt="Logo de Origins">
+        <img src={{logoUrl}} width="100" title="Logo de Origins" alt="Logo de Origins">
       </a>
     </li>
-    <li (click)="updateLogo()">
+    <li (click)="updateLogo()" class="second flex justify-center items-center">
       <app-toggle-theme-button></app-toggle-theme-button>
     </li>
-    <li>
-      <button class="font-medium rounded-md px-4 py-2">Iniciar Sesión</button>
+    <li (click)="openModal()" class="mobile-s:block hidden">
+      <button class="w-full font-medium rounded-md px-4 py-2 bg-base-inverted">Iniciar Sesión</button>
     </li>
   </ul>
 </nav>
+
+<div *ngIf="modalSwitch === true">
+  <modal-login></modal-login>
+</div>
