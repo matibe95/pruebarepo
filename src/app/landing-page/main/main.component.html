@@ -1,7 +1,9 @@
 <section class="flex flex-col text-center items-center gap-7">
   <h1 class="tracking-tight font-extrabold mobile-m:text-5xl mobile-m:leading-tight mobile-l:leading-normal text-4xl">{{title}} <span class="text-skin-inverted">{{coloredTitle}}</span>.</h1>
   <p class="mobile-s:w-[80%] w-[70%] text-skin-muted">{{description}}</p>
-  <button class="bg-skin-fill rounded-full text-lg py-3 px-12">{{buttonContent}}</button>
+  <button class="bg-skin-fill rounded-full text-lg py-3 px-12"
+    (click)="openModal()"
+  >{{buttonContent}}</button>
   <picture class="pt-6 w-full flex justify-center">
       <img src="/assets/landing_icons/mobile_landing.png" alt="Foto de Celular">
   </picture>
