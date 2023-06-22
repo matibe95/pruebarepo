@@ -11,30 +11,31 @@
   font-family: "Inter";
 }
 
-.dark-mode {
-  background-color: #2e2e2e;
-  transition: all 1s;
-}
-
-.light-mode {
-  background-color: #eef2ff;
-  transition: all 1s;
-}
-
 @layer base {
-  :root {
+  .dark-mode {
+    --color-primary: #04a1e4;
+    --color-secondary: #e81cff;
+    --color-background-fill: #1a1a1a;
     --color-text-base: #ffffff;
     --color-text-muted: #8c8c8c;
-    --color-text-inverted: #05a0e5;
-    --color-fill: #51b4ff;
-    --color-gradient-end: #e81cff;
-    --color-button-accent: #ffffff;
-    --color-button-accent-hover: #eef2ff;
-    --color-button-muted: #3882ea;
-    --color-button-alternative: #2f2e2e;
+    --color-dark-button: #ffffff;
+    --color-button-fill: #2f2e2e;
+    --color-border: #2f2e2e;
+    --color-button-hover-primary: #51b4ff;
+    --color-button-hover-alternative: #494747;
   }
-  /* .theme-dark {
-  } */
+  .light-mode {
+    --color-primary: #04a1e4;
+    --color-secondary: #e81cff;
+    --color-background-fill: #ffffff;
+    --color-text-base: #213547;
+    --color-text-muted: #8f99a2;
+    --color-dark-button: #ffffff;
+    --color-button-fill: #213547;
+    --color-border: #d5d5d5;
+    --color-button-hover-primary: #51b4ff;
+    --color-button-hover-alternative: #494747;
+  }
 }
 
 /* html,
