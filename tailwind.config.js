@@ -32,6 +32,7 @@ module.exports = {
         'mobile-l': '425px'
       },
       colors: {
+        'modal-button': 'var(--color-modal-button)',
         'border-fill': 'var(--color-border)',
         'button-fill': 'var(--color-button-fill)',
         primary: 'var(--color-primary)',
