@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener, Renderer2 } from '@angular/core';
 import { Modal_Account_Icons } from '../constants/icons';
 import { Modal_Account } from '../models/modal.model';
 import { IconService } from '../services/Icon.service';
@@ -10,10 +10,20 @@ import { ModalService } from '../services/modal.service';
   styleUrls: ['./modal-login.component.css']
 })
 export class ModalLoginComponent {
-
   @Input() modal!: Modal_Account
+  
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if (event.key === "Escape") {
+      this.closeModal()
+    }
+  }
 
-  constructor(private modalSS: ModalService, private iconService: IconService){
+  constructor(private modalSS: ModalService, private iconService: IconService, private renderer: Renderer2){
+    this.renderer.listen('window', 'click', (e: any) => {
+      if (e.target.id === 'modal_container'){
+        this.closeModal()
+      }
+    });
     this.iconService.registerIcons(Modal_Account_Icons, 'landing_icons')
   }
   
