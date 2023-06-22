@@ -12,3 +12,9 @@ export enum Landing_Icons {
 export enum Modal_Account_Icons{
   cross
 }
+
+export enum Footer_Icons {
+  instagram_logo,
+  twitter_icon,
+  github_icon,
+} 
