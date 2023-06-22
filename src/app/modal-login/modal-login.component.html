@@ -1,17 +1,17 @@
-<article class="bg-base-inverted rounded-3xl gap-2 py-8 w-[360px] text-center px-8 flex flex-col items-center justify-between">
+<article id="modal_account" class="text-skin-base bg-skin-fill rounded-3xl gap-1 py-7 w-[360px] text-center px-8 flex flex-col items-center justify-between">
   <button (click)="closeModal()" class="self-start">
-    <mat-icon svgIcon="cross"></mat-icon>
+      <mat-icon svgIcon="cross"></mat-icon>
   </button>
   <section class="flex flex-col gap-6">
     <h1 class="text-3xl font-extrabold">
-      {{modal.title}}<span class="text-skin-inverted">{{modal.coloredWord}}</span>{{modal.lastCharacter}}
+      {{modal.title}}<span class="text-primary">{{modal.coloredWord}}</span>{{modal.lastCharacter}}
     </h1>
-    <section class="flex flex-col gap-4 w-full font-semibold">
-      <button class="flex justify-center py-3 w-full bg-base transition-all hover:bg-skin-button-accent-hover rounded-lg text-base-inverted">
+    <section class="flex flex-col gap-4 w-full font-medium">
+      <button class="bg-modal-button flex justify-center py-3 w-full bg-base transition-all hover:bg-skin-button-hover-alternative rounded-lg">
         <mat-icon>G</mat-icon>
         Continuar con Google
       </button>
-      <button class="py-3 w-full bg-skin-button-muted rounded-lg">Continuar con Email</button>
+      <button class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary">Continuar con Email</button>
     </section>
     <p>Si no tienes una cuenta, <span class="cursor-pointer font-bold">registrate.</span></p>
   </section>
