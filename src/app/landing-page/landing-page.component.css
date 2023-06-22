@@ -1,0 +1,39 @@
+@media (max-width: 460px) {
+  .landing_page_lastText,
+  .landing_page_lastText > span {
+    width: 70%;
+  }
+}
+
+@media (min-width: 460px) and (max-width: 630px) {
+  .landing_page_lastText,
+  .landing_page_lastText > span {
+    width: 80%;
+  }
+}
+
+@media (min-width: 845px) {
+  .landing_page_lastText,
+  .landing_page_lastText > span {
+    width: 72%;
+  }
+}
+
+@media (min-width: 1110px) {
+  .landing_page_lastText,
+  .landing_page_lastText > span {
+    width: 62%;
+  }
+}
+@media (min-width: 1400px) {
+  .landing_page_lastText,
+  .landing_page_lastText > span {
+    width: 42%;
+  }
+}
+@media (min-width: 1530px) {
+  .landing_page_lastText,
+  .landing_page_lastText > span {
+    width: 38%;
+  }
+}
