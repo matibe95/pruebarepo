@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FOOTER_LINKS } from '../constants/footerLinks';
+import { LinkAndIcon } from '../models/footerLinks';
 
 @Component({
   selector: 'app-footer',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   year = new Date().getFullYear()
+  links: LinkAndIcon[] = FOOTER_LINKS
 }
