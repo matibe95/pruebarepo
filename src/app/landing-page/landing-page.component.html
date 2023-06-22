@@ -1,3 +1,9 @@
+<div *ngIf="modalState"
+  class="h-[100vh] bg-black bg-opacity-70 w-full flex justify-center pt-44 fixed"
+>
+  <modal-login [modal]="modalProps"></modal-login>
+</div>
+
 <app-nav-bar/>
 <main class="px-8 py-20 flex flex-col justify-center items-center">
   <app-main/>
