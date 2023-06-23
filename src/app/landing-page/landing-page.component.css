@@ -37,3 +37,23 @@
     width: 38%;
   }
 }
+
+.first_span {
+  background: -webkit-linear-gradient(
+    var(--color-secondary) 10%,
+    var(--color-primary) 150%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.second_span {
+  background: -webkit-linear-gradient(
+    var(--color-secondary) -60%,
+    var(--color-primary) 60%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

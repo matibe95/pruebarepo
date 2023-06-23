@@ -1,7 +1,7 @@
 <section class="flex flex-col text-center items-center gap-7">
-  <h1 class="tracking-tight font-extrabold mobile-m:text-5xl mobile-m:leading-tight mobile-l:leading-normal text-4xl text-skin-base">{{title}} <span class="text-primary">{{coloredTitle}}</span>.</h1>
-  <p class="mobile-s:w-[80%] w-[70%] text-skin-muted">{{description}}</p>
-  <button class="bg-primary text-skin-dark-button font-medium rounded-full text-lg py-3 px-12"
+  <h1 class="tracking-tight font-extrabold mobile-m:text-6xl mobile-m:leading-tight mobile-l:leading-normal text-4xl text-skin-base">{{title}} <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">{{coloredTitle}}</span>.</h1>
+  <p class="text-lg mobile-s:w-[80%] w-[70%] text-skin-muted">{{description}}</p>
+  <button class="bg-primary bg-gradient-to-r from-secondary to-primary text-skin-dark-button font-medium rounded-full text-xl py-3 px-8"
     (click)="openModal()"
   >{{buttonContent}}</button>
   <picture class="pt-6 w-full flex justify-center">
