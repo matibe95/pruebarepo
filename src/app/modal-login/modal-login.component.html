@@ -1,18 +1,30 @@
-<article id="modal_account" class="text-skin-base bg-skin-fill rounded-3xl gap-1 py-7 w-[360px] text-center px-8 flex flex-col items-center justify-between">
-  <button (click)="closeModal()" class="self-start">
+<article id="modal_account" class="transition-all text-skin-base bg-skin-fill rounded-3xl gap-1 py-7 w-[360px]
+h-[338px] text-center px-8 flex flex-col items-center">
+  <button (click)="closeModal()" class="self-end scale-75">
       <mat-icon svgIcon="cross"></mat-icon>
   </button>
   <section class="flex flex-col gap-6">
-    <h1 class="text-3xl font-extrabold">
-      {{modal.title}}<span class="text-primary">{{modal.coloredWord}}</span>{{modal.lastCharacter}}
+    <h1 class="text-4xl font-black tracking-tighter">
+      {{modal.title}}<span class="text-transparent font-black bg-clip-text bg-gradient-to-r from-primary to-secondary">{{modal.coloredWord}}</span>{{modal.lastCharacter}}
     </h1>
-    <section class="flex flex-col gap-4 w-full font-medium">
-      <button class="bg-modal-button flex justify-center py-3 w-full bg-base transition-all hover:bg-skin-button-hover-alternative rounded-lg">
+    <section *ngIf="step === 0" class="flex flex-col gap-4 w-full font-medium">
+      <button class="bg-modal-button flex justify-center py-3 w-full transition-all hover:bg-skin-button-hover-alternative rounded-lg">
         <mat-icon>G</mat-icon>
         Continuar con Google
       </button>
-      <button class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary">Continuar con Email</button>
+      <button (click)="nextStep()" class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary">Continuar con Email</button>
+      <p>Si no tienes una cuenta, <span class="cursor-pointer font-bold">registrate.</span></p>
     </section>
-    <p>Si no tienes una cuenta, <span class="cursor-pointer font-bold">registrate.</span></p>
+    <section *ngIf="step === 1" class="flex flex-col gap-4 w-full font-medium">
+      <input type="text" class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base" placeholder="Ingrese su Nombre Completo" />
+      <button (click)="nextStep()" class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary">Continuar -&gt;</button>
+    </section>
+    <section *ngIf="step > 0" class="flex items-center justify-center">
+      <button (click)="prevStep()" class="text-2xl">&lt;-</button>
+      <span class="w-[15px] bg-primary h-[15px] rounded-full"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </section>
   </section>
 </article>

@@ -9,7 +9,7 @@ import { ModalService } from '../services/modal.service';
   templateUrl: './modal-login.component.html',
   styleUrls: ['./modal-login.component.css']
 })
-export class ModalLoginComponent {
+export class ModalLoginComponent {  
   @Input() modal!: Modal_Account
   
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
@@ -18,6 +18,8 @@ export class ModalLoginComponent {
     }
   }
 
+  step: number = 0
+  
   constructor(private modalSS: ModalService, private iconService: IconService, private renderer: Renderer2){
     this.renderer.listen('window', 'click', (e: any) => {
       if (e.target.id === 'modal_container'){
@@ -38,5 +40,12 @@ export class ModalLoginComponent {
     this.modalSS.$modal.emit({
       state: false
     })
-  }  
+  }
+
+  nextStep(){
+    this.step += 1
+  }
+  prevStep(){
+    this.step -= 1
+  }
 }
