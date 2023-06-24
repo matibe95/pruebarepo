@@ -1,30 +1,132 @@
-<article id="modal_account" class="transition-all text-skin-base bg-skin-fill rounded-3xl gap-1 py-7 w-[360px]
-h-[338px] text-center px-8 flex flex-col items-center">
+<article
+  id="modal_account"
+  class="transition-all text-skin-base bg-skin-fill rounded-3xl gap-1 py-7 w-[360px] h-[350px] text-center px-8 flex flex-col items-center"
+>
   <button (click)="closeModal()" class="self-end scale-75">
-      <mat-icon svgIcon="cross"></mat-icon>
+    <mat-icon svgIcon="cross"></mat-icon>
   </button>
-  <section class="flex flex-col gap-6">
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="checkoutForm"
+    class="flex flex-col gap-6"
+  >
     <h1 class="text-4xl font-black tracking-tighter">
-      {{modal.title}}<span class="text-transparent font-black bg-clip-text bg-gradient-to-r from-primary to-secondary">{{modal.coloredWord}}</span>{{modal.lastCharacter}}
+      {{ modal.title
+      }}<span
+        class="text-transparent font-black bg-clip-text bg-gradient-to-r from-primary to-secondary"
+        >{{ modal.coloredWord }}</span
+      >{{ modal.lastCharacter }}
     </h1>
     <section *ngIf="step === 0" class="flex flex-col gap-4 w-full font-medium">
-      <button class="bg-modal-button flex justify-center py-3 w-full transition-all hover:bg-skin-button-hover-alternative rounded-lg">
-        <mat-icon>G</mat-icon>
-        Continuar con Google
+      <button
+        type="button"
+        class="bg-modal-button flex justify-center py-3 w-full transition-all hover:bg-skin-button-hover-alternative rounded-lg"
+      >
+        <mat-icon></mat-icon>
+        <!-- Google <span class="italic">(Proximamente)</span> -->
       </button>
-      <button (click)="nextStep()" class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary">Continuar con Email</button>
-      <p>Si no tienes una cuenta, <span class="cursor-pointer font-bold">registrate.</span></p>
+      <button
+        (click)="nextStep()"
+        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
+      >
+        Continuar con Email
+      </button>
+      <p>
+        Si no tienes una cuenta,
+        <span class="cursor-pointer font-bold">registrate.</span>
+      </p>
     </section>
     <section *ngIf="step === 1" class="flex flex-col gap-4 w-full font-medium">
-      <input type="text" class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base" placeholder="Ingrese su Nombre Completo" />
-      <button (click)="nextStep()" class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary">Continuar -&gt;</button>
+      <input
+        autofocus
+        formControlName="name"
+        type="text"
+        class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
+        placeholder="Ingrese su Nombre Completo"
+      />
+      <button
+        (click)="nextStep()"
+        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
+      >
+        Continuar
+      </button>
     </section>
-    <section *ngIf="step > 0" class="flex items-center justify-center">
-      <button (click)="prevStep()" class="text-2xl">&lt;-</button>
-      <span class="w-[15px] bg-primary h-[15px] rounded-full"></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <section *ngIf="step === 2" class="flex flex-col gap-4 w-full font-medium">
+      <input
+        autofocus
+        type="email"
+        formControlName="email"
+        class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
+        placeholder="Ingrese su Email"
+      />
+      <button
+        (click)="nextStep()"
+        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
+      >
+        Continuar
+      </button>
     </section>
-  </section>
+    <section *ngIf="step === 3" class="flex flex-col gap-4 w-full font-medium">
+      <input
+        autofocus
+        type="password"
+        formControlName="password"
+        class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
+        placeholder="Ingrese su Contraseña"
+      />
+      <button
+        (click)="nextStep()"
+        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
+      >
+        Continuar
+      </button>
+    </section>
+    <section *ngIf="step === 4" class="flex flex-col gap-4 w-full font-medium">
+      <input
+        autofocus
+        type="password"
+        formControlName="password_confirmed"
+        class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
+        placeholder="Repita su Contraseña"
+      />
+      <button
+        type="submit"
+        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
+      >
+        Finalizar
+      </button>
+    </section>
+    <section *ngIf="step > 0" class="flex items-center justify-between">
+      <button type="button" (click)="prevStep()" class="text-2xl self-start">
+        &lt;-
+      </button>
+      <div class="flex justify-center items-center gap-2">
+        <span
+          [ngClass]="{
+            colored_bulletpoint: step === 1,
+          }"
+          class="w-[12px] bg-modal-button h-[12px] rounded-full"
+        ></span>
+        <span
+          [ngClass]="{
+          colored_bulletpoint: step === 2,
+        }"
+          class="w-[12px] bg-modal-button h-[12px] rounded-full"
+        ></span>
+        <span
+          [ngClass]="{
+          colored_bulletpoint: step === 3,
+        }"
+          class="w-[12px] bg-modal-button h-[12px] rounded-full"
+        ></span>
+        <span
+          [ngClass]="{
+          colored_bulletpoint: step === 4,
+        }"
+          class="w-[12px] bg-modal-button h-[12px] rounded-full"
+        ></span>
+      </div>
+      <span class="w-[22px]"></span>
+    </section>
+  </form>
 </article>
