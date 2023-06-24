@@ -12,8 +12,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from "@angular/common/http";
 import { MainComponent } from './landing-page/main/main.component';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
-import { OutsideclickDirective } from './directives/outsideclick.directive';
 import { LinkAndIconComponent } from './link-and-icon/link-and-icon.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,14 +26,15 @@ import { LinkAndIconComponent } from './link-and-icon/link-and-icon.component';
     InfoItemComponent,
     MainComponent,
     ModalLoginComponent,
-    OutsideclickDirective,
     LinkAndIconComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
