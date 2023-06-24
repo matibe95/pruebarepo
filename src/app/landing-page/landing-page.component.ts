@@ -14,6 +14,11 @@ export class LandingPageComponent {
   infoItems: InfoItem[] = INFO_ITEMS_LIST 
   modalState: boolean = false
   modalProps!: Modal_Account
+  data = {
+    title: 'matibe',
+    body: 'palito',
+    userId: 95
+  }
 
   constructor(private modalSS: ModalService){}
 
@@ -22,5 +27,9 @@ export class LandingPageComponent {
       this.modalState = modal.state
       this.modalProps = modal
     })
+  }
+
+  ngOnDestroy(){
+    this.modalSS.$modal.unsubscribe()
   }
 }
