@@ -1,5 +1,10 @@
-<footer class="py-4 px-24 border-t-[1px] border-border-fill flex gap-10 justify-between font-medium">
-  <p class="text-skin-base">© <span id="spanYear">{{year}}</span> Origins. Todos los derechos reservados.</p>
+<footer
+  class="py-4 mx-24 border-t-[1px] border-border-fill flex gap-10 justify-between font-medium"
+>
+  <p class="text-skin-base">
+    © <span id="spanYear">{{ year }}</span> Origins. Todos los derechos
+    reservados.
+  </p>
   <section class="flex gap-4 items-center">
     <link-and-icon [link]="link" *ngFor="let link of links"></link-and-icon>
   </section>
