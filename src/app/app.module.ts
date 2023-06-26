@@ -15,6 +15,7 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { LinkAndIconComponent } from './link-and-icon/link-and-icon.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalStepComponent } from './modal-login/modal-step/modal-step.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MainComponent,
     ModalLoginComponent,
     LinkAndIconComponent,
+    ModalStepComponent,
   ],
   imports: [
     BrowserModule,
