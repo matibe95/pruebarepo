@@ -17,13 +17,46 @@
         >{{ modal.coloredWord }}</span
       >{{ modal.lastCharacter }}
     </h1>
+    <modal-step
+      (changeStepEvent)="updateStep($event)"
+      [currentStep]="step"
+      [content]="content"
+    ></modal-step>
+    <!-- 
+        <div [ngSwitch]="step">
+      <modal-step
+        (changeStepEvent)="updateStep($event)"
+        *ngSwitchCase="2"
+        [currentStep]="step"
+        [content]="content"
+      ></modal-step>
+      <modal-step
+        (changeStepEvent)="updateStep($event)"
+        *ngSwitchCase="3"
+        [currentStep]="step"
+        [content]="content"
+      ></modal-step>
+      <modal-step
+        (changeStepEvent)="updateStep($event)"
+        *ngSwitchCase="4"
+        [currentStep]="step"
+        [content]="content"
+      ></modal-step>
+      <modal-step
+        *ngSwitchDefault
+        (changeStepEvent)="updateStep($event)"
+        [currentStep]="step"
+        [content]="content"
+      ></modal-step> 
+    </div>
+  -->
+    <!--
     <section *ngIf="step === 0" class="flex flex-col gap-4 w-full font-medium">
       <button
         type="button"
         class="bg-modal-button flex justify-center py-3 w-full transition-all hover:bg-skin-button-hover-alternative rounded-lg"
       >
         <mat-icon></mat-icon>
-        <!-- Google <span class="italic">(Proximamente)</span> -->
       </button>
       <button
         (click)="nextStep()"
@@ -96,8 +129,13 @@
         Finalizar
       </button>
     </section>
+        -->
     <section *ngIf="step > 0" class="flex items-center justify-between">
-      <button type="button" (click)="prevStep()" class="text-2xl self-start">
+      <button
+        type="button"
+        (click)="updateStep(false)"
+        class="text-2xl self-start"
+      >
         &lt;-
       </button>
       <div class="flex justify-center items-center gap-2">

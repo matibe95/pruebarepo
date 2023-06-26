@@ -17,12 +17,12 @@ export class ModalLoginComponent {
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
     if (event.key === "Escape") this.closeModal()
     if (event.key === "ArrowRight"){
-      if (this.step > 0) this.nextStep()
+      if (this.step > 0) this.updateStep(true)
     }
-    if (event.key === "ArrowLeft") this.prevStep()
+    if (event.key === "ArrowLeft") this.updateStep(false)
     if (event.key === "Enter"){
       event.preventDefault()
-      if (this.step > 0) this.nextStep()
+      if (this.step > 0) this.updateStep(true)
     }
   }
 
@@ -41,7 +41,47 @@ export class ModalLoginComponent {
       this.iconService.registerIcons(Modal_Account_Icons, 'landing_icons')
   }
 
+  MODAL_STEPS = [
+    {
+      step: 0,
+      buttonType: 'button',
+      buttonText: 'Continuar',
+      inputType: '',
+      placeholder: '',
+    },
+    {
+      step: 1,
+      buttonText: 'Continuar',
+      buttonType: 'button',
+      inputType: 'text',
+      placeholder: 'Ingrese su nombre completo'
+    },
+    {
+      step: 2,
+      buttonText: 'Continuar',
+      buttonType: 'button',
+      type: 'email',
+      placeholder: 'Ingrese su email'
+    },
+    {
+      step: 3,
+      buttonText: 'Continuar',
+      buttonType: 'button',
+      inputType: 'password',
+      placeholder: 'Ingrese su contraseña'
+    },
+    {
+      step: 4,
+      buttonText: 'Finalizar',
+      buttonType: 'submit',
+      inputType: 'password',
+      placeholder: 'Repita su contraseña'
+    },
+  ]
+
   step: number = 0
+  content: any = this.MODAL_STEPS[this.step]
+
   checkoutForm = this.formBuilder.group({
     name: '',
     email: '',
@@ -57,21 +97,30 @@ export class ModalLoginComponent {
   }
   
   ngOnInit(){
-    this.fillModal()
+    this.fillModalWithInfo()
   }
 
-  fillModal(){
+  fillModalWithInfo(){
     this.modal.lastCharacter = this.modal.originalTitle?.substring(this.modal.originalTitle.length - 1)
     const coloredWord = this.modal.coloredWord!
     const lastCharacter = this.modal.lastCharacter!
     this.modal.title = this.modal.originalTitle?.replace(coloredWord + lastCharacter, '')
-    
   }
   
   closeModal(){
     this.modalSS.$modal.emit({
       state: false
     })
+  }
+
+  updateStep(newStep: any){
+    if (newStep) {
+      this.nextStep()
+      this.content = this.MODAL_STEPS[this.step]
+      return;
+    }
+    this.prevStep()
+    this.content = this.MODAL_STEPS[this.step]
   }
 
   nextStep(){
