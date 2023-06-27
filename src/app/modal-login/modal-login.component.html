@@ -5,9 +5,7 @@
   <button (click)="closeModal()" class="self-end scale-75">
     <mat-icon svgIcon="cross"></mat-icon>
   </button>
-  <form
-    (ngSubmit)="onSubmit()"
-    [formGroup]="checkoutForm"
+  <section
     class="flex flex-col gap-6"
   >
     <h1 class="text-4xl font-black tracking-tighter">
@@ -17,13 +15,16 @@
         >{{ modal.coloredWord }}</span
       >{{ modal.lastCharacter }}
     </h1>
-    <modal-step
+    <!-- <modal-step
       (changeStepEvent)="updateStep($event)"
       [currentStep]="step"
       [content]="content"
-    ></modal-step>
-    <!-- 
-        <div [ngSwitch]="step">
+    ></modal-step> --> 
+    <!-- <article class="absolute bg-red-400 h-[50px] w-[50px] top-0"></article> -->
+    <form 
+    (ngSubmit)="onSubmit()"
+    [formGroup]="checkoutForm"
+    [ngSwitch]="step">
       <modal-step
         (changeStepEvent)="updateStep($event)"
         *ngSwitchCase="2"
@@ -48,88 +49,7 @@
         [currentStep]="step"
         [content]="content"
       ></modal-step> 
-    </div>
-  -->
-    <!--
-    <section *ngIf="step === 0" class="flex flex-col gap-4 w-full font-medium">
-      <button
-        type="button"
-        class="bg-modal-button flex justify-center py-3 w-full transition-all hover:bg-skin-button-hover-alternative rounded-lg"
-      >
-        <mat-icon></mat-icon>
-      </button>
-      <button
-        (click)="nextStep()"
-        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
-      >
-        Continuar con Email
-      </button>
-      <p>
-        Si no tienes una cuenta,
-        <span class="cursor-pointer font-bold">registrate.</span>
-      </p>
-    </section>
-    <section *ngIf="step === 1" class="flex flex-col gap-4 w-full font-medium">
-      <input
-        autofocus
-        formControlName="name"
-        type="text"
-        class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
-        placeholder="Ingrese su Nombre Completo"
-      />
-      <button
-        (click)="nextStep()"
-        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
-      >
-        Continuar
-      </button>
-    </section>
-    <section *ngIf="step === 2" class="flex flex-col gap-4 w-full font-medium">
-      <input
-        autofocus
-        type="email"
-        formControlName="email"
-        class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
-        placeholder="Ingrese su Email"
-      />
-      <button
-        (click)="nextStep()"
-        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
-      >
-        Continuar
-      </button>
-    </section>
-    <section *ngIf="step === 3" class="flex flex-col gap-4 w-full font-medium">
-      <input
-        autofocus
-        type="password"
-        formControlName="password"
-        class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
-        placeholder="Ingrese su Contraseña"
-      />
-      <button
-        (click)="nextStep()"
-        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
-      >
-        Continuar
-      </button>
-    </section>
-    <section *ngIf="step === 4" class="flex flex-col gap-4 w-full font-medium">
-      <input
-        autofocus
-        type="password"
-        formControlName="password_confirmed"
-        class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
-        placeholder="Repita su Contraseña"
-      />
-      <button
-        type="submit"
-        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
-      >
-        Finalizar
-      </button>
-    </section>
-        -->
+    </form>
     <section *ngIf="step > 0" class="flex items-center justify-between">
       <button
         type="button"
@@ -166,5 +86,5 @@
       </div>
       <span class="w-[22px]"></span>
     </section>
-  </form>
+  </section>
 </article>
