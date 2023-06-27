@@ -13,6 +13,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MainComponent } from './landing-page/main/main.component';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { LinkAndIconComponent } from './link-and-icon/link-and-icon.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalStepComponent } from './modal-login/modal-step/modal-step.component';
@@ -36,7 +37,8 @@ import { ModalStepComponent } from './modal-login/modal-step/modal-step.componen
     MatIconModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
