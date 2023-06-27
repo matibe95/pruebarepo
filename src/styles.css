@@ -13,7 +13,7 @@
 
 @layer base {
   .dark-mode {
-    --color-primary: #51b4ff;
+    --color-primary: #3882ea;
     --color-secondary: #e81cff;
     --color-background-fill: #1a1a1a;
     --color-text-base: #eaeaea;
@@ -22,11 +22,11 @@
     --color-modal-button: #2f2e2e;
     --color-button-fill: #2f2e2e;
     --color-border: #2f2e2e;
-    --color-button-hover-primary: #04a1e4;
+    --color-button-hover-primary: #478ef2;
     --color-button-hover-alternative: #494747;
   }
   .light-mode {
-    --color-primary: #51b4ff;
+    --color-primary: #3882ea;
     --color-secondary: #e81cff;
     --color-background-fill: #ffffff;
     --color-text-base: #213547;
