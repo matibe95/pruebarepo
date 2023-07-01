@@ -1,10 +1,8 @@
-import { Component, Input, HostListener, Renderer2 } from '@angular/core';
+import { Component, HostListener, Renderer2 } from '@angular/core';
 import { Modal_Account_Icons } from '../constants/icons';
 import { FormBuilder } from '@angular/forms';
-import { LOGIN_STEPS, ModalSteps, REGISTER_STEPS } from '../constants/modal_steps';
-import { Modal_Account } from '../models/modal.model';
+import { LOGIN_STEPS, ModalSteps } from '../constants/modal_steps';
 import { IconService } from '../services/Icon.service';
-import { ModalService } from '../services/modal.service';
 import { UsuarioService } from '../services/usuario.service';
 import { Router } from '@angular/router';
 
