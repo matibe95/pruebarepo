@@ -1,0 +1,39 @@
+<div class="post_container">
+  <article class="rounded-tl-2xl rounded-tr-lg rounded-bl-2xl rounded-br-lg bg-skin-fill w-full px-6 py-6 flex flex-col gap-4">
+  <header class="flex flex-row flex-wrap gap-4 bg-skin-fill px-2 items-center">
+    <div class="w-[57px] h-[57px] rounded-full bg-primary">
+      <img src="" alt="">
+    </div>
+    <section class="flex flex-col justify-between gap-1 text-primary">
+      <h1 class="font-semibold text-2xl">{{ post.profileFrom }}</h1>
+      <div class="flex gap-1">
+        <mat-icon svgIcon="location"></mat-icon>
+        <p>{{post.location}}</p>
+      </div>
+    </section>
+  </header>
+  <section class="flex justify-center">
+    <img (click)="onToggleOptions()" class="w-full h-[279px] object-cover rounded-2xl" src="https://via.placeholder.com/267x279" alt="">
+  </section>
+  <section class="flex gap-3 flex-col tracking-tighter">
+    <p class="text-skin-muted"><span class="text-primary font-semibold text-lg">{{post.profileFrom}}:</span> {{post.description}}</p>
+    <a class="font-semibold text-skin-muted text-lg">Ver {{post.commentsCount}} k comentarios.</a>
+  </section>
+  <footer>
+    <p class="text-skin-muted">Hace {{post.createdAt}}</p>
+  </footer>
+</article>
+<aside *ngIf="showOptions" class="text-primary font-semibold flex flex-col justify-between py-14 px-4 bg-skin-fill rounded-tl rounded-tr-2xl rounded-bl rounded-br-2xl items-center">
+  <a><mat-icon svgIcon="kebab-menu"></mat-icon></a>
+  <a><mat-icon svgIcon="save"></mat-icon></a>
+  <a><mat-icon svgIcon="send"></mat-icon></a>
+  <a class="flex flex-col items-center">
+    <mat-icon svgIcon="comments"></mat-icon>
+    <p *ngIf="post.commentsCount">{{post.commentsCount}} k</p>
+  </a>
+  <a class="flex flex-col items-center">
+    <mat-icon svgIcon="heart"></mat-icon>
+    <p *ngIf="post.likesCount">{{post.likesCount}} k</p>
+  </a>
+</aside>
+
