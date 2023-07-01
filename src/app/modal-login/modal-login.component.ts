@@ -1,6 +1,7 @@
 import { Component, Input, HostListener, Renderer2 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Modal_Account_Icons } from '../constants/icons';
+import { LOGIN_STEPS, ModalSteps, REGISTER_STEPS } from '../constants/modal_steps';
 import { Modal_Account } from '../models/modal.model';
 import { IconService } from '../services/Icon.service';
 import { ModalService } from '../services/modal.service';
@@ -35,51 +36,8 @@ export class ModalLoginComponent {
     this.iconService.registerIcons(Modal_Account_Icons, 'landing_icons');
   }
 
-  MODAL_STEPS = [
-    {
-      name: '',
-      step: 0,
-      buttonType: 'button',
-      buttonText: 'Continuar',
-      inputType: '',
-      placeholder: '',
-    },
-    {
-      name: 'name',
-      step: 1,
-      buttonText: 'Continuar',
-      buttonType: 'button',
-      inputType: 'text',
-      placeholder: 'Ingrese su nombre completo',
-    },
-    {
-      step: 2,
-      name: 'email',
-      buttonText: 'Continuar',
-      buttonType: 'button',
-      type: 'email',
-      placeholder: 'Ingrese su email',
-    },
-    {
-      step: 3,
-      name: 'password',
-      buttonText: 'Continuar',
-      buttonType: 'button',
-      inputType: 'password',
-      placeholder: 'Ingrese su contraseña',
-    },
-    {
-      step: 4,
-      name: 'password_confirmed',
-      buttonText: 'Finalizar',
-      buttonType: 'submit',
-      inputType: 'password',
-      placeholder: 'Repita su contraseña',
-    },
-  ];
-
   step: number = 0;
-  content: any = this.MODAL_STEPS[this.step];
+  content: ModalSteps = LOGIN_STEPS[this.step]
 
   checkoutForm = this.formBuilder.group({
     name: '',
@@ -102,7 +60,16 @@ export class ModalLoginComponent {
     console.log('matibe')
   }
 
+  identifyModalType(){
+    if (this.modal.type === 'login'){
+      return LOGIN_STEPS[this.step];
+    }
+    return REGISTER_STEPS[this.step];
+  }
+
   ngOnInit() {
+    const modalType = this.identifyModalType()
+    this.content = modalType
     this.fillModalWithInfo();
   }
 
@@ -127,11 +94,11 @@ export class ModalLoginComponent {
   updateStep(newStep: any) {
     if (newStep) {
       this.nextStep();
-      this.content = this.MODAL_STEPS[this.step];
+      this.content = this.identifyModalType()
       return;
     }
     this.prevStep();
-    this.content = this.MODAL_STEPS[this.step];
+    this.content = this.identifyModalType();
   }
 
   nextStep() {

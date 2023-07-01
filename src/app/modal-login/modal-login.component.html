@@ -58,7 +58,21 @@
       >
         &lt;-
       </button>
-      <div class="flex justify-center items-center gap-2">
+      <div *ngIf="modal.type === 'register'" class="flex justify-center items-center gap-2">
+        <span
+          [ngClass]="{
+            colored_bulletpoint: step === 1,
+          }"
+          class="w-[12px] bg-modal-button h-[12px] rounded-full"
+        ></span>
+        <span
+          [ngClass]="{
+          colored_bulletpoint: step === 2,
+        }"
+          class="w-[12px] bg-modal-button h-[12px] rounded-full"
+        ></span>
+      </div>
+      <div *ngIf="modal.type === 'login'" class="flex justify-center items-center gap-2">
         <span
           [ngClass]="{
             colored_bulletpoint: step === 1,
