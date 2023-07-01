@@ -16,6 +16,7 @@
     --color-primary: #3882ea;
     --color-secondary: #e81cff;
     --color-background-fill: #1a1a1a;
+    --color-background-fill-muted: #1e1e1e;
     --color-text-base: #eaeaea;
     --color-text-muted: #8c8c8c;
     --color-dark-button: #ffffff;
@@ -29,6 +30,7 @@
     --color-primary: #3882ea;
     --color-secondary: #e81cff;
     --color-background-fill: #ffffff;
+    --color-background-fill-muted: #f3f1f7;
     --color-text-base: #213547;
     --color-text-muted: #8f99a2;
     --color-dark-button: #ffffff;
