@@ -19,7 +19,7 @@ import { ModalStepComponent } from './components/modal-step/modal-step.component
 import { DemoModalComponent } from './components/demo-modal/demo-modal.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
-import { MainPageComponent } from './components/main-page-component/main-page-component.component';
+import { MainPageComponent } from './components/main-page-component/main-page.component';
 import { MainNavbarComponent } from './components/main-navbar/main-navbar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PostComponent } from './components/post/post.component';
