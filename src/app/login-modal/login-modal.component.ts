@@ -24,7 +24,7 @@ export class LoginModalComponent {
     password: '',
   });
 
-  step: number = 0
+  step: number = 1
   content: ModalSteps = LOGIN_STEPS[this.step]
 
   modal: any = {

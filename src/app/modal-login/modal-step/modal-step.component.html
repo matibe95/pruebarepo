@@ -1,5 +1,5 @@
 <ng-container [formGroup]="form">
-  <section class="flex flex-col gap-4 w-full font-medium">
+  <section class="flex flex-col gap-4 mt-5 w-full font-medium">
     <ng-container *ngIf="content.inputType === ''">
       <button
         type="button"
@@ -23,6 +23,7 @@
       <section 
         @fadeIn
        class="flex flex-col gap-4 w-full font-medium">
+        <!-- <span *ngIf="error" class="absolute bottom-[62%] text-sm text-red-500">Este campo no puede estar vacío</span> -->
         <input
           #input_info
           autofocus
@@ -31,12 +32,12 @@
           [ngClass]="error === true ? 'error' : ''"
           class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
           placeholder="{{ content.placeholder }}"
-          />
-          <button
+        />
+        <button
           (click)="updateStep()"
           type="{{ content.buttonType }}"
           class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
-          >
+        >
           {{ content.buttonText }}
         </button>
       </section>

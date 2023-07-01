@@ -58,9 +58,6 @@ export class ModalStepComponent {
     return linkText
   }
 
-  
-
-
   showInputError(){
     this.error = true
     setTimeout(()=> {
@@ -74,17 +71,10 @@ export class ModalStepComponent {
         return this.showInputError()
       }
     }
-    // if (this.content.step === ){
-    //   this.buttonType = 'submit'
-    // }
-    // if (this.content.step !== 4){
-    //   this.buttonType = 'button'
-    // }
     this.changeStepEvent.emit(true);
   }
 
   ngOnInit(){
-    console.log(this.setAnchorUrl())
     this.form = this.rootFormGroup.control 
   }
 }
