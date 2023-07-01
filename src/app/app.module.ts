@@ -17,6 +17,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalStepComponent } from './modal-login/modal-step/modal-step.component';
+import { DemoModalComponent } from './demo-modal/demo-modal.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { RegisterModalComponent } from './register-modal/register-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { ModalStepComponent } from './modal-login/modal-step/modal-step.componen
     ModalLoginComponent,
     LinkAndIconComponent,
     ModalStepComponent,
+    DemoModalComponent,
+    LoginModalComponent,
+    RegisterModalComponent,
   ],
   imports: [
     BrowserModule,
