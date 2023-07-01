@@ -16,7 +16,7 @@
       </button>
       <p>
         Si no tienes una cuenta,
-        <span class="cursor-pointer font-bold">registrate.</span>
+        <a routerLink={{routeLink}} class="cursor-pointer font-bold">{{routeText}}.</a>
       </p>
     </ng-container>
     <ng-container *ngIf="content.inputType !== ''">
@@ -34,7 +34,7 @@
           />
           <button
           (click)="updateStep()"
-          type="{{ buttonType }}"
+          type="{{ content.buttonType }}"
           class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
           >
           {{ content.buttonText }}
