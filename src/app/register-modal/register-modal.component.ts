@@ -5,11 +5,35 @@ import { ModalSteps, REGISTER_STEPS } from '../constants/modal_steps';
 import { IconService } from '../services/Icon.service';
 import { UsuarioService } from '../services/usuario.service';
 import { Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
 
+const enterTransition = transition(':enter', [
+  style({
+    transform: 'translateY(50%)',
+    opacity:0 
+  }),
+  animate('500ms ease-in-out', style({
+    transform: 'translateY(0)',
+    opacity: 1
+  }))
+])
+const exitTransition = transition(':leave', [
+  style({
+    transform: 'translateY(0%)',
+    opacity: 1
+  }),
+  animate('500ms ease-in-out', style({
+    transform: 'translateY(50%)',
+    opacity: 0
+  }))
+])
+
+const fadeInOut = trigger('fadeInOut', [enterTransition, exitTransition])
 @Component({
   selector: 'app-register-modal',
   templateUrl: './register-modal.component.html',
-  styleUrls: ['./register-modal.component.css']
+  styleUrls: ['./register-modal.component.css'],
+  animations:[fadeInOut]
 })
 export class RegisterModalComponent {
   @HostListener('document:keydown', ['$event']) onKeydownHandler(

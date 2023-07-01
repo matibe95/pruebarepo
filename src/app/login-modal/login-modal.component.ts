@@ -5,11 +5,25 @@ import { LOGIN_STEPS, ModalSteps } from '../constants/modal_steps';
 import { IconService } from '../services/Icon.service';
 import { UsuarioService } from '../services/usuario.service';
 import { Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
+
+const enterTransition = transition(':enter', [
+  style({
+    transform: 'translateY(50%)',
+    opacity:0 
+  }),
+  animate('500ms ease-in-out', style({
+    transform: 'translateY(0)',
+    opacity: 1
+  }))
+])
+const colorRed = trigger('fadeIn', [enterTransition])
 
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
-  styleUrls: ['./login-modal.component.css']
+  styleUrls: ['./login-modal.component.css'],
+  animations: [colorRed]
 })
 export class LoginModalComponent {
 
@@ -24,7 +38,7 @@ export class LoginModalComponent {
     password: '',
   });
 
-  step: number = 1
+  step: number = 0
   content: ModalSteps = LOGIN_STEPS[this.step]
 
   modal: any = {
