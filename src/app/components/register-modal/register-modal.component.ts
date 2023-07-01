@@ -1,9 +1,9 @@
 import { Component, HostListener, Renderer2 } from '@angular/core';
-import { Modal_Account_Icons } from '../constants/icons';
+import { Modal_Account_Icons } from '../../constants/icons';
 import { FormBuilder } from '@angular/forms';
-import { ModalSteps, REGISTER_STEPS } from '../constants/modal_steps';
-import { IconService } from '../services/Icon.service';
-import { UsuarioService } from '../services/usuario.service';
+import { ModalSteps, REGISTER_STEPS } from '../../constants/modal_steps';
+import { IconService } from '../../services/Icon.service';
+import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -79,7 +79,7 @@ export class RegisterModalComponent {
   }
 
   showEmptyError(){
-    alert('las contraseñas no son iguales mano')
+    alert('Las contraseñas no coinciden.')
   }
 
 

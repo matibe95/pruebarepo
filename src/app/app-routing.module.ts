@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { LoginModalComponent } from './login-modal/login-modal.component';
-import { RegisterModalComponent } from './register-modal/register-modal.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 
 const routes: Routes = [
   { path:'welcome',

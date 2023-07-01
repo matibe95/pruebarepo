@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { InfoItem } from '../../models/info-item.model';
-import { IconService } from '../../services/Icon.service';
-import { InfoItemsIcons } from "../../constants/icons";
+import { InfoItem } from '../../../models/info-item.model';
+import { IconService } from '../../../services/Icon.service';
+import { InfoItemsIcons } from "../../../constants/icons";
 
 @Component({
   selector: 'app-info-item',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { InfoItem } from '../models/info-item.model';
-import { INFO_ITEMS_LIST } from '../constants/infoItem';
-import { ModalService } from '../services/modal.service';
-import { Modal_Account } from '../models/modal.model';
+import { InfoItem } from '../../models/info-item.model';
+import { INFO_ITEMS_LIST } from '../../constants/infoItem';
+import { ModalService } from '../../services/modal.service';
+import { Modal_Account } from '../../models/modal.model';
 
 @Component({
   selector: 'app-landing-page',

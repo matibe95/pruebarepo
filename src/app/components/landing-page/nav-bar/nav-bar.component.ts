@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
-import { URL_LOGOS } from '../../constants/logoUrl';
+import { URL_LOGOS } from '../../../constants/logoUrl';
 
 @Component({
   selector: 'app-nav-bar',
