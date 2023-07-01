@@ -68,7 +68,7 @@ export class LoginModalComponent {
   }
 
   showEmptyError(){
-    alert('las contraseñas no son iguales mano')
+    alert('las contraseñas no coinciden')
   }
 
 
