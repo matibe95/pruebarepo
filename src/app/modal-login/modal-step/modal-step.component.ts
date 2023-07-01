@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, HostListener, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { trigger, animate,transition, style } from '@angular/animations'
+import { Router } from '@angular/router';
 
 const enterTransition = transition(':enter', [
   style({ 
@@ -17,15 +18,12 @@ const colorRed = trigger('fadeIn', [enterTransition])
   animations: [colorRed]
 })
 export class ModalStepComponent {
-  @Input() content:any
-  @Input() currentStep!: number
-  @Output() changeStepEvent = new EventEmitter<boolean>();
-  buttonType: string = 'button'
-  form!: FormGroup
-  error: boolean = false
-
+  @ViewChild('input_info') input!: ElementRef; 
+  constructor (
+    private rootFormGroup: FormGroupDirective,
+    private router: Router
+  ){}
   @HostListener ('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
-    
     if (event.key === "ArrowRight"){
       if (this.content.step > 0) this.updateStep()
     }
@@ -35,9 +33,33 @@ export class ModalStepComponent {
       if (this.content.step > 0) this.updateStep()
     }
   }
+  @Input() content: any
+  @Input() currentStep!: number
+  @Output() changeStepEvent = new EventEmitter<boolean>();
+  buttonType: string = 'button'
+  form!: FormGroup
+  error: boolean = false
+  routeLink: string = this.setAnchorUrl() 
+  routeText: string = this.setLinkText() 
 
-  @ViewChild('input_info') input!: ElementRef; 
-  constructor (private rootFormGroup: FormGroupDirective){}
+  setAnchorUrl(): string{
+    const [ firstValue, page, current ]: string[] = this.router.url.split('/')
+    const redirectEndPoint: string = current === 'login'
+      ? 'register'
+      : 'login'
+    return `/${page}/${redirectEndPoint}`
+  }
+  
+  setLinkText(): string{
+    const [ firstValue, page, current ]: string[] = this.router.url.split('/')
+    const linkText: string = current === 'login'
+      ? 'registrate'
+      : 'inicia sesión'
+    return linkText
+  }
+
+  
+
 
   showInputError(){
     this.error = true
@@ -52,16 +74,17 @@ export class ModalStepComponent {
         return this.showInputError()
       }
     }
-    if (this.content.step === 4){
-      this.buttonType = 'submit'
-    }
-    if (this.content.step !== 4){
-      this.buttonType = 'button'
-    }
+    // if (this.content.step === ){
+    //   this.buttonType = 'submit'
+    // }
+    // if (this.content.step !== 4){
+    //   this.buttonType = 'button'
+    // }
     this.changeStepEvent.emit(true);
   }
 
   ngOnInit(){
+    console.log(this.setAnchorUrl())
     this.form = this.rootFormGroup.control 
   }
 }
