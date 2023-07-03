@@ -13,10 +13,6 @@ export const NAVBAR_ITEMS: Array<NavBarIcon> = [
     route: '/explore'
   },
   {
-    svgIcon: 'add',
-    route: ''
-  },
-  {
     svgIcon: 'fire',
     route: '/match'
   }
