@@ -25,6 +25,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { PostComponent } from './components/post/post.component';
 import { ActionButtonComponent } from './components/action-button/action-button.component';
 import { NavbarButtonComponent } from './components/navbar-button/navbar-button.component';
+import { CreateMenuComponent } from './components/create-menu/create-menu.component';
+import { PostMenuComponent } from './components/post-menu/post-menu.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { NavbarButtonComponent } from './components/navbar-button/navbar-button.
     PostComponent,
     ActionButtonComponent,
     NavbarButtonComponent,
+    CreateMenuComponent,
+    PostMenuComponent,
   ],
   imports: [
     BrowserModule,
