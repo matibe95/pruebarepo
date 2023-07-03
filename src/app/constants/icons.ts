@@ -28,13 +28,24 @@ export enum NavBar_Icons {
   explore,
   add,
   fire,
+  event,
+  community,
+  post
+}
+
+
+export enum PostMenu_Icons {
+  camera,
+  gallery
 }
 
 export enum Post_Icons {
+  plus,
   location,
   'kebab-menu',
   save,
   send,
   comments,
   heart,
+  backarrow
 }
