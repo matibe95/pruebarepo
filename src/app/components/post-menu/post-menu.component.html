@@ -1,0 +1,44 @@
+<section *ngIf="!loadPost"  class="flex flex-col gap-6 items-center pt-2 pb-8">
+  <h2 class="font-semibold text-3xl text-skin-dark-button">Post</h2>
+  <div class="flex w-full justify-evenly py-2 items-center">
+    <button class="absolute left-0 mb-7 ml-5">
+      <mat-icon svgIcon="backarrow"></mat-icon>  
+    </button>
+    <button class="flex flex-col gap-4 items-center text-skin-dark-button font-semibold text-lg">
+      <div class="h-[70px] px-6 flex items-center justify-center bg-skin-fill rounded-2xl">
+        <mat-icon svgIcon="camera"></mat-icon>
+      </div>
+      Camara
+    </button>
+    <button (click)="showLoadPostMenu()" class="flex flex-col gap-4 items-center text-skin-dark-button font-semibold text-lg">
+      <div class="h-[70px] px-6 flex items-center justify-center bg-skin-fill rounded-2xl">
+        <mat-icon svgIcon="gallery"></mat-icon>
+      </div>
+      Galería
+    </button>
+  </div>
+</section>
+
+<section *ngIf="loadPost" class="flex flex-col gap-6 items-center pt-2 pb-8">
+  <h1 class="text-skin-dark-button font-semibold text-3xl">Configura tu post</h1>
+  <section class="flex justify-center w-full bg-skin-fill py-4 rounded-2xl">
+    <div class="buttons_section w-full">
+      <div class="bg-primary rounded-lg h-[80px] w-[80px] flex items-center justify-center font-semibold text-4xl text-primary">
+        <input #fileupload id="fileupload" type="file" class="hidden" (change)="onSelectFile($event)">
+        <label for="fileupload">
+          <img 
+            [src]="url" 
+            [ngClass]="{'customImg': url !== './assets/main_icons/plus.svg'}"
+            class="rounded-lg" 
+            alt=""
+          >
+        </label>
+      </div>
+    </div>
+  </section>
+  <section class="text-skin-muted px-3 py-4 bg-skin-fill w-full flex flex-col gap-3 rounded-2xl justify-center">
+    <!-- <label for="post_description">Ponga su descripción.</label> -->
+    <textarea id="post_description" placeholder="Ponga su descripción." class="w-full outline-none h-auto resize-none" rows="2"></textarea>
+    <footer class="self-end"><p>0/250</p></footer>
+  </section>
+</section>
