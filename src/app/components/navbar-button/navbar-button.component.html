@@ -1,3 +1,9 @@
-<a routerLink="{{item.route}}" class="flex items-center justify-center">
+<!-- <button *ngIf="item.svgIcon === 'add'" 
+  (click)="openCreateMenu()"
+>
+  <mat-icon svgIcon="{{item.svgIcon}}"></mat-icon>
+</button> -->
+
+<a *ngIf="item.svgIcon !== 'add'" routerLink="{{item.route}}" class="flex items-center justify-center">
   <mat-icon svgIcon="{{item.svgIcon}}"></mat-icon>
 </a>
