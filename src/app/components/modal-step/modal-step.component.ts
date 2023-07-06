@@ -70,6 +70,12 @@ export class ModalStepComponent {
       if (this.input.nativeElement.value === '') {
         return this.showInputError()
       }
+      if (this.input.nativeElement.name === 'nickname' || this.input.nativeElement.name === 'password'){
+        if (this.input.nativeElement.value.length < 8) {
+          alert('El contenido debe tener minimo 8 caracteres')
+          return this.showInputError()
+        }
+      }
     }
     this.changeStepEvent.emit(true);
   }
