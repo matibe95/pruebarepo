@@ -76,9 +76,23 @@ export class LoginModalComponent {
     if (this.checkoutForm.value.password === ''){
       return
     }
-    this.userService.addData(this.checkoutForm.value).subscribe((res) => {
-      console.log(res);
-    });
+    this.loginUser(this.checkoutForm.value) 
+  }
+
+  loginUser(data: any){
+    const newData = {
+      username: data.email,
+      password: data.password,
+      grant_type: "password",
+      client_id: "2",
+      client_secret: "0L43j0YgY3tdKZSp4zoHKLsEPG9MGeZlyxdhoCk0"
+    }
+    this.userService.loginUser(newData).subscribe((res)=>{
+      if (res.access_token){
+        localStorage.setItem("accessToken", res['access_token'])
+        this.router.navigate(['/home']);
+      }
+    })
   }
 
   updateStep(newStep: any){
