@@ -5,24 +5,49 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private userUrl = 'https://jsonplaceholder.typicode.com/posts'
-  // private apiUrl = "http://localhost:8001/api/v1/empanada";
+  // private userUrl = 'https://jsonplaceholder.typicode.com/posts'
+  private registerUserUrl = 'http://localhost:8000/api/v1/oauth/register'
+
+  private loginUserUrl = 'http://localhost:8000/oauth/token'
 
   constructor(private http: HttpClient) { }
   
-  addData(data: any){
-    return this.http.post<any>(this.userUrl, data)
-  }
+  // addData(data: any){
+  //   return this.http.post<any>(this.userUrl, data)
+  // }
 
-  getUser(){
-    const httpOptions = {
+  registerUser(data: any){
+    const httpHeaders = {
       headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
-        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken") 
       })
     };
 
-    return this.http.get(this.userUrl, httpOptions);
+    return this.http.post<any>(this.registerUserUrl, data, httpHeaders);
   }
+
+  loginUser(bodyData: any){
+    const httpHeaders = {
+      headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+      })
+    };
+    return this.http.post<any>(this.loginUserUrl, bodyData, httpHeaders);
+  }
+
+  verifyUser(){
+
+  }
+
+  // getUser(){
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({ 
+  //       'Content-Type': 'application/json',
+  //       'Authorization' : 'Bearer ' + localStorage.getItem("accessToken") 
+  //     })
+  //   };
+
+  //   return this.http.get(this.userUrl, httpOptions);
+  // }
   
 }
