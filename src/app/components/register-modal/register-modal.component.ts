@@ -43,10 +43,10 @@ export class RegisterModalComponent {
   }
 
   checkoutForm = this.formBuilder.group({
-    name: '',
+    nickname: '',
     email: '',
     password: '',
-    password_confirmed: '',
+    password_confirmation: '',
   });
 
   step: number = 0
@@ -84,12 +84,39 @@ export class RegisterModalComponent {
 
 
   onSubmit(){
-    if (this.checkoutForm.value.password_confirmed !== this.checkoutForm.value.password) {
+    if (this.checkoutForm.value.password_confirmation !== this.checkoutForm.value.password) {
       return this.showEmptyError()
     }
-    this.userService.addData(this.checkoutForm.value).subscribe((res) => {
+    this.registerUser(this.checkoutForm.value)
+  }
+
+  registerUser(data: any){
+    this.userService.registerUser(data).subscribe((res) => {
       console.log(res);
+      if (res.message !== 'Register Correctly executed') return this.showError()
+      return this.loginUser(data)
     });
+  }
+
+  showError(){
+    alert('Nos atrapaste, ocurrió un error.')
+  }
+
+  loginUser(data: any){
+    const newData = {
+      username: data.email,
+      password: data.password,
+      grant_type: "password",
+      client_id: "2",
+      client_secret: "0L43j0YgY3tdKZSp4zoHKLsEPG9MGeZlyxdhoCk0"
+    }
+    this.userService.loginUser(newData).subscribe((res)=>{
+      if (res.access_token){
+        localStorage.setItem("accessToken", res['access_token'])
+        this.router.navigate(['/home']);
+      }
+      this.showError()
+    })
   }
 
   updateStep(newStep: any){
