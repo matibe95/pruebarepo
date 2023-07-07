@@ -27,6 +27,7 @@
         <input
           #input_info
           autofocus
+          name={{content.name}}
           formControlName={{content.name}}
           type={{content.inputType}}
           [ngClass]="error === true ? 'error' : ''"

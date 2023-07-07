@@ -6,6 +6,8 @@ import { IconService } from '../../services/Icon.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { AuthService } from 'src/app/services/auth.service';
+import { ModalService } from 'src/app/services/modal.service';
 
 const enterTransition = transition(':enter', [
   style({
@@ -40,6 +42,7 @@ export class LoginModalComponent {
 
   step: number = 0
   content: ModalSteps = LOGIN_STEPS[this.step]
+  loading: boolean = false
 
   modal: any = {
     title: '¡Bienvenido a ',
@@ -51,8 +54,9 @@ export class LoginModalComponent {
     private iconService: IconService,
     private renderer: Renderer2,
     private formBuilder: FormBuilder,
-    private userService: UsuarioService,
-    private router: Router
+    private authService: AuthService,
+    private router: Router,
+    private loadingSS: ModalService,
   ) {
     this.renderer.listen('window', 'click', (e: any) => {
       if (e.target.id === 'modal_container') {
@@ -76,9 +80,28 @@ export class LoginModalComponent {
     if (this.checkoutForm.value.password === ''){
       return
     }
-    this.userService.addData(this.checkoutForm.value).subscribe((res) => {
-      console.log(res);
-    });
+    this.loginUser(this.checkoutForm.value) 
+  }
+
+  loginUser(data: any){
+    this.loadingSS.$loading.emit({
+      state: true
+    })
+    setTimeout(()=>{
+      this.loadingSS.$loading.emit({
+        state: false
+      })
+    }, 10000)
+    
+    this.authService.sendLogin(data).subscribe((res)=>{
+      if (res.access_token){
+        localStorage.setItem("accessToken", res['access_token'])
+          this.authService.verificarUsuario().subscribe((res:any)=>{
+            localStorage.setItem('id_user', res.id)
+            this.router.navigate(['/home']);
+          })
+      }
+    })
   }
 
   updateStep(newStep: any){

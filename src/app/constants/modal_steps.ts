@@ -44,12 +44,12 @@ export const REGISTER_STEPS: ModalSteps[] = [
     placeholder: '',
   },
   {
-    name: 'name',
+    name: 'nickname',
     step: 1,
     buttonText: 'Continuar',
     buttonType: 'button',
     inputType: 'text',
-    placeholder: 'Ingrese su nombre completo',
+    placeholder: 'Ingrese su nickname',
   },
   {
     step: 2,
@@ -69,7 +69,7 @@ export const REGISTER_STEPS: ModalSteps[] = [
   },
   {
     step: 4,
-    name: 'password_confirmed',
+    name: 'password_confirmation',
     buttonText: 'Finalizar',
     buttonType: 'submit',
     inputType: 'password',

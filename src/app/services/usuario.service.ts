@@ -5,16 +5,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private userUrl = 'https://jsonplaceholder.typicode.com/posts'
-  // private apiUrl = "http://localhost:8001/api/v1/empanada";
+  private registerUserUrl = 'http://localhost:8000/api/v1/oauth/register'
+  private getUserUrl = 'http://localhost:8000/api/v1/user/'
+
 
   constructor(private http: HttpClient) { }
   
-  addData(data: any){
-    return this.http.post<any>(this.userUrl, data)
+  registerUser(data: any){
+    const httpHeaders = {
+      headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+      })
+    };
+
+    return this.http.post<any>(this.registerUserUrl, data, httpHeaders);
   }
 
-  getUser(){
+  getUser(userId: any){
     const httpOptions = {
       headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
@@ -22,7 +29,8 @@ export class UsuarioService {
       })
     };
 
-    return this.http.get(this.userUrl, httpOptions);
+    const getUserUrl = this.getUserUrl + userId  
+
+    return this.http.get(getUserUrl, httpOptions);
   }
-  
 }

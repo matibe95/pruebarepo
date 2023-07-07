@@ -1,0 +1,4 @@
+.selected_button {
+  color: var(--color-dark-button);
+  background-color: var(--color-primary);
+}

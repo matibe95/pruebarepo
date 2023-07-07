@@ -19,12 +19,15 @@ import { ModalStepComponent } from './components/modal-step/modal-step.component
 import { DemoModalComponent } from './components/demo-modal/demo-modal.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
-import { MainPageComponent } from './components/main-page-component/main-page-component.component';
+import { MainPageComponent } from './components/main-page-component/main-page.component';
 import { MainNavbarComponent } from './components/main-navbar/main-navbar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PostComponent } from './components/post/post.component';
 import { ActionButtonComponent } from './components/action-button/action-button.component';
 import { NavbarButtonComponent } from './components/navbar-button/navbar-button.component';
+import { CreateMenuComponent } from './components/create-menu/create-menu.component';
+import { PostMenuComponent } from './components/post-menu/post-menu.component';
+import { LoadingModalComponent } from './components/loading-modal/loading-modal.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { NavbarButtonComponent } from './components/navbar-button/navbar-button.
     PostComponent,
     ActionButtonComponent,
     NavbarButtonComponent,
+    CreateMenuComponent,
+    PostMenuComponent,
+    LoadingModalComponent,
   ],
   imports: [
     BrowserModule,

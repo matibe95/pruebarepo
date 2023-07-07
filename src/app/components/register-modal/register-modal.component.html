@@ -17,7 +17,8 @@
           >{{ modal.coloredWord }}</span
         >{{ modal.lastCharacter }}
       </h1>
-      <form 
+      <form
+      (keydown.enter)="$event.preventDefault()" 
       (ngSubmit)="onSubmit()"
       [formGroup]="checkoutForm"
       [ngSwitch]="step">

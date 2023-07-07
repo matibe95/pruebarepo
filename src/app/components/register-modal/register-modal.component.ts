@@ -6,6 +6,8 @@ import { IconService } from '../../services/Icon.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { AuthService } from 'src/app/services/auth.service';
+import { ModalService } from 'src/app/services/modal.service';
 
 const enterTransition = transition(':enter', [
   style({
@@ -43,10 +45,10 @@ export class RegisterModalComponent {
   }
 
   checkoutForm = this.formBuilder.group({
-    name: '',
+    nickname: '',
     email: '',
     password: '',
-    password_confirmed: '',
+    password_confirmation: '',
   });
 
   step: number = 0
@@ -63,6 +65,8 @@ export class RegisterModalComponent {
     private renderer: Renderer2,
     private formBuilder: FormBuilder,
     private userService: UsuarioService,
+    private authService: AuthService,
+    private loadingSS: ModalService,
     private router: Router
   ) {
     this.renderer.listen('window', 'click', (e: any) => {
@@ -84,12 +88,43 @@ export class RegisterModalComponent {
 
 
   onSubmit(){
-    if (this.checkoutForm.value.password_confirmed !== this.checkoutForm.value.password) {
+    if (this.checkoutForm.value.password_confirmation !== this.checkoutForm.value.password) {
       return this.showEmptyError()
     }
-    this.userService.addData(this.checkoutForm.value).subscribe((res) => {
+    this.registerUser(this.checkoutForm.value)
+  }
+
+  registerUser(data: any){
+    this.loadingSS.$loading.emit({
+      state: true
+    })
+    setTimeout(()=>{
+      this.loadingSS.$loading.emit({
+        state: false
+      })
+    }, 12000)
+    
+    this.userService.registerUser(data).subscribe((res) => {
       console.log(res);
+      if (res.message !== 'Register Correctly executed') return this.showError()
+      return this.loginUser(data)
     });
+  }
+
+  showError(){
+    alert('Nos atrapaste, ocurrió un error.')
+  }
+
+  loginUser(data: any){
+    this.authService.sendLogin(data).subscribe((res)=>{
+      if (res.access_token){
+        localStorage.setItem("accessToken", res['access_token'])
+          this.authService.verificarUsuario().subscribe((res:any)=>{
+            localStorage.setItem('id_user', res.id)
+            this.router.navigate(['/home']);
+          })
+      }
+    })
   }
 
   updateStep(newStep: any){

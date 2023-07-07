@@ -18,6 +18,7 @@ module.exports = {
       backgroundColor: {
         skin: {
           fill: 'var(--color-background-fill)',
+          'fill-muted': 'var(--color-background-fill-muted)',
           'button-hover-primary': 'var(--color-button-hover-primary)',
           'button-hover-alternative': 'var(--color-button-hover-alternative)'
           // fill: 'var(--color-fill)',
