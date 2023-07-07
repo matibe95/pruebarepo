@@ -1,7 +1,6 @@
 <nav class="fixed bottom-0 w-full bg-primary overflow-clip px-[45px] py-[18px]">
   <app-create-menu  
-    *ngIf="isUploadMenuActive"
-    (changeStepEvent)="updateStep($event)">
+    *ngIf="isUploadMenuActive">
   </app-create-menu>
   <section class="flex flex-row justify-between items-center">
     <a routerLink='' class="flex items-center justify-center">
