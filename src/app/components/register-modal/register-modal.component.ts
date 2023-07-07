@@ -119,7 +119,10 @@ export class RegisterModalComponent {
     this.authService.sendLogin(data).subscribe((res)=>{
       if (res.access_token){
         localStorage.setItem("accessToken", res['access_token'])
-        this.router.navigate(['/home']);
+          this.authService.verificarUsuario().subscribe((res:any)=>{
+            localStorage.setItem('id_user', res.id)
+            this.router.navigate(['/home']);
+          })
       }
     })
   }
