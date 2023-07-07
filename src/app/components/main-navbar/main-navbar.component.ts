@@ -17,10 +17,6 @@ export class MainNavbarComponent {
 
   isUploadMenuActive: boolean = false
 
-  updateStep(newStep: any){
-    console.log(newStep)
-  }
-
   openUploadPostMenu(){
     this.isUploadMenuActive = !this.isUploadMenuActive
   }
