@@ -1,0 +1,25 @@
+<section *ngIf="!menuType" @fadeIn class="flex flex-col gap-6 items-center pt-2 pb-8">
+  <h2 class="font-semibold text-3xl text-skin-dark-button">Crear</h2>
+  <div class="flex w-full justify-between py-2 items-center">
+    <button class="flex flex-col gap-4 items-center text-skin-dark-button font-semibold text-lg">
+      <div class="h-[70px] px-6 flex items-center justify-center bg-skin-fill rounded-2xl">
+        <mat-icon svgIcon="event"></mat-icon>
+      </div>
+      Evento
+    </button>
+    <button class="flex flex-col gap-4 items-center text-skin-dark-button font-semibold text-lg">
+      <div class="h-[70px] px-6 flex items-center justify-center bg-skin-fill rounded-2xl">
+        <mat-icon svgIcon="community"></mat-icon>
+      </div>
+      Comunidad
+    </button>
+    <button (click)="nextStep()" class="flex flex-col gap-4 items-center text-skin-dark-button font-semibold text-lg">
+      <div class="h-[70px] px-6 flex items-center justify-center bg-skin-fill rounded-2xl">
+        <mat-icon svgIcon="post"></mat-icon>
+      </div>
+      Post
+    </button>
+  </div>
+</section>
+<app-post-menu *ngIf="menuType === 'post'"></app-post-menu>
+

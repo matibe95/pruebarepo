@@ -1,0 +1,47 @@
+<ng-container [formGroup]="form">
+  <section class="flex flex-col gap-4 mt-5 w-full font-medium">
+    <ng-container *ngIf="content.inputType === ''">
+      <button
+        type="button"
+        class="bg-modal-button flex justify-center py-3 w-full transition-all hover:bg-skin-button-hover-alternative rounded-lg"
+      >
+        <mat-icon></mat-icon>
+      </button>
+      <button
+        (click)="updateStep()"
+        type="{{ content.buttonType }}"
+        class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
+      >
+        Continuar con Email
+      </button>
+      <p>
+        Si no tienes una cuenta,
+        <a routerLink={{routeLink}} class="cursor-pointer font-bold">{{routeText}}.</a>
+      </p>
+    </ng-container>
+    <ng-container *ngIf="content.inputType !== ''">
+      <section 
+        @fadeIn
+       class="flex flex-col gap-4 w-full font-medium">
+        <!-- <span *ngIf="error" class="absolute bottom-[62%] text-sm text-red-500">Este campo no puede estar vacío</span> -->
+        <input
+          #input_info
+          autofocus
+          name={{content.name}}
+          formControlName={{content.name}}
+          type={{content.inputType}}
+          [ngClass]="error === true ? 'error' : ''"
+          class="w-full outline-none py-3 px-4 rounded-md bg-modal-button text-base"
+          placeholder="{{ content.placeholder }}"
+        />
+        <button
+          (click)="updateStep()"
+          type="{{ content.buttonType }}"
+          class="py-3 w-full bg-primary rounded-lg text-skin-dark-button transition-all hover:bg-skin-button-hover-primary"
+        >
+          {{ content.buttonText }}
+        </button>
+      </section>
+    </ng-container>
+  </section>
+</ng-container>

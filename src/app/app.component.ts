@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'web-origins';
+  isDarkMode!: boolean;
+
+  constructor(private themeService: ThemeService){
+    this.themeService.initTheme()
+    this.isDarkMode = this.themeService.isDarkMode()
+  }
 }
