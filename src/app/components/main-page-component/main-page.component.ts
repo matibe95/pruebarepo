@@ -54,10 +54,9 @@ export class MainPageComponent {
   postsList!: any[]
 
   ngOnInit(){
-    console.log('first')
     this.postsService.listarPosts().subscribe((res)=>{
-      console.log(res)
+      this.postsList = res
+      this.postsList.reverse()
     })
   }
-
 }
