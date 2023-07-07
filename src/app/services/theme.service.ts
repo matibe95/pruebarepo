@@ -15,7 +15,6 @@ export class ThemeService{
   initTheme(){
     this.getColorTheme()
     this.renderer.addClass(document.body, this.colorTheme)
-    // document.documentElement.style.setProperty('color-scheme', this.colorTheme.split('-')[0])
   }
 
   update(theme: 'dark-mode' | 'light-mode') {

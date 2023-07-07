@@ -3,11 +3,9 @@ import { animate, style, transition, trigger } from '@angular/animations';
 
 const enterTransition = transition(':enter', [
   style({
-    // transform: 'translateX(20%)',
     opacity:0 
   }),
   animate('500ms ease-in-out', style({
-    // transform: 'translateX(0)',
     opacity: 1
   }))
 ])

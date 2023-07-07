@@ -27,6 +27,7 @@ import { ActionButtonComponent } from './components/action-button/action-button.
 import { NavbarButtonComponent } from './components/navbar-button/navbar-button.component';
 import { CreateMenuComponent } from './components/create-menu/create-menu.component';
 import { PostMenuComponent } from './components/post-menu/post-menu.component';
+import { LoadingModalComponent } from './components/loading-modal/loading-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { PostMenuComponent } from './components/post-menu/post-menu.component';
     NavbarButtonComponent,
     CreateMenuComponent,
     PostMenuComponent,
+    LoadingModalComponent,
   ],
   imports: [
     BrowserModule,

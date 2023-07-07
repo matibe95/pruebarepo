@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Post } from 'src/app/models/Post';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,44 +8,56 @@ import { Post } from 'src/app/models/Post';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
-  postsList: Post[] = [
-    {
-      id: 1,
-      profileFrom: 'el_caehom',
-      content: "",
-      description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-      likesCount: 22.6,
-      commentsCount: 22.6,
-      location: 'Singapur, El alfa.',
-      createdAt: '1 hora'
-    },
-    {
-      id: 1,
-      profileFrom: 'el_caehom',
-      content: "",
-      description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-      location: 'Singapur, El alfa.',
-      createdAt: '1 hora'
-    },
-    {
-      id: 1,
-      profileFrom: 'el_caehom',
-      content: "",
-      description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-      likesCount: 22.6,
-      commentsCount: 22.6,
-      location: 'Singapur, El alfa.',
-      createdAt: '1 hora'
-    },
-    {
-      id: 1,
-      profileFrom: 'el_caehom',
-      content: "",
-      description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-      likesCount: 22.6,
-      commentsCount: 22.6,
-      location: 'Singapur, El alfa.',
-      createdAt: '1 hora'
-    },
-  ]
+  // postsList: Post[] = [
+  //   {
+  //     id: 1,
+  //     profileFrom: 'el_caehom',
+  //     content: "",
+  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
+  //     likesCount: 22.6,
+  //     commentsCount: 22.6,
+  //     location: 'Singapur, El alfa.',
+  //     createdAt: '1 hora'
+  //   },
+  //   {
+  //     id: 1,
+  //     profileFrom: 'el_caehom',
+  //     content: "",
+  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
+  //     location: 'Singapur, El alfa.',
+  //     createdAt: '1 hora'
+  //   },
+  //   {
+  //     id: 1,
+  //     profileFrom: 'el_caehom',
+  //     content: "",
+  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
+  //     likesCount: 22.6,
+  //     commentsCount: 22.6,
+  //     location: 'Singapur, El alfa.',
+  //     createdAt: '1 hora'
+  //   },
+  //   {
+  //     id: 1,
+  //     profileFrom: 'el_caehom',
+  //     content: "",
+  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
+  //     likesCount: 22.6,
+  //     commentsCount: 22.6,
+  //     location: 'Singapur, El alfa.',
+  //     createdAt: '1 hora'
+  //   },
+  // ]
+
+  constructor(private postsService: PostsService){}
+
+  postsList!: any[]
+
+  ngOnInit(){
+    console.log('first')
+    this.postsService.listarPosts().subscribe((res)=>{
+      console.log(res)
+    })
+  }
+
 }
