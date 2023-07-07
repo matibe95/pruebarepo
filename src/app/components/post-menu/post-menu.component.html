@@ -19,26 +19,29 @@
   </div>
 </section>
 
-<section *ngIf="loadPost" class="flex flex-col gap-6 items-center pt-2 pb-8">
+<form (ngSubmit)="onSubmit()" [formGroup]="checkoutForm" *ngIf="loadPost" class="flex flex-col gap-6 items-center pt-2 pb-8">
   <h1 class="text-skin-dark-button font-semibold text-3xl">Configura tu post</h1>
   <section class="flex justify-center w-full bg-skin-fill py-4 rounded-2xl">
     <div class="buttons_section w-full">
       <div class="bg-primary rounded-lg h-[80px] w-[80px] flex items-center justify-center font-semibold text-4xl text-primary">
-        <input #fileupload id="fileupload" type="file" class="hidden" (change)="onSelectFile($event)">
-        <label for="fileupload">
-          <img 
+        <section>
+          <input formControlName="imagen" #fileupload id="fileupload" type="file" class="hidden" (change)="onFileSelected($event)">
+          <label for="fileupload" class="w-full">
+            <img
             [src]="url" 
             [ngClass]="{'customImg': url !== './assets/main_icons/plus.svg'}"
             class="rounded-lg" 
             alt=""
-          >
-        </label>
+            >
+          </label>
+        </section>
       </div>
     </div>
   </section>
   <section class="text-skin-muted px-3 py-4 bg-skin-fill w-full flex flex-col gap-3 rounded-2xl justify-center">
     <!-- <label for="post_description">Ponga su descripción.</label> -->
-    <textarea id="post_description" placeholder="Ponga su descripción." class="w-full outline-none h-auto resize-none" rows="2"></textarea>
+    <input formControlName="description" id="post_description" placeholder="Ponga su descripción." class="w-full outline-none h-auto resize-none" rows="2">
     <footer class="self-end"><p>0/250</p></footer>
   </section>
-</section>
+  <button type="submit" class="bg-skin-fill px-5 py-4 rounded-2xl">Enviar</button>
+</form>
