@@ -1,0 +1,15 @@
+<nav class="px-24 py-1 w-full border-border-fill border-b-[1px]">
+  <ul class="navbar_container flex py-3 items-center justify-between">
+    <li class="first">
+      <a routerLink="/">
+        <img src={{logoUrl}} width="100" title="Logo de Origins" alt="Logo de Origins">
+      </a>
+    </li>
+    <li (click)="updateLogo()" class="second flex justify-center items-center">
+      <app-toggle-theme-button></app-toggle-theme-button>
+    </li>
+    <li class="mobile-s:block hidden">
+      <a routerLink="/welcome/login" class="bg-button-fill text-skin-dark-button w-full font-medium rounded-md px-4 py-2 bg-base-inverted">Iniciar Sesión</a>
+    </li>
+  </ul>
+</nav>

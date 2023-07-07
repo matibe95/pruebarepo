@@ -1,0 +1,19 @@
+<router-outlet></router-outlet>
+
+<app-nav-bar />
+<main class="flex flex-col items-center justify-center px-8 py-20">
+  <app-main />
+  <hr class="border-border-fill w-[100%]" />
+  <div class="flex flex-col justify-center items-center gap-8">
+    <section class="w-2/3 flex flex-col items-center gap-12 justify-center pt-8 sm:flex-row sm:gap-6">
+      <app-info-item [item]="item" *ngFor="let item of infoItems"></app-info-item>
+    </section>
+    <hr class="border-border-fill w-full" />
+    <section class="flex flex-col items-center">
+      <img src="assets/landing_icons/purple_planet.png" alt="Planeta Purpura" width="400" />
+      <h2 class="landing_page_lastText mobile-m:leading-tight mobile-l:leading-normal text-skin-base w-[70%] text-center mobile-l:text-6xl mobile-m:text-4xl text-4xl mobile-m:w-[90%] font-extrabold tracking-tight"><span class="first_span mobile-l:text-7xl mobile-m:text-5xl text-4xl tracking-tighter">Conoce </span>personas de todo el <span class="second_span mobile-l:text-7xl mobile-m:text-5xl text-4xl"> globo</span></h2>
+    </section>
+  </div>
+</main>
+<app-footer />
+
