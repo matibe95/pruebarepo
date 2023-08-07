@@ -3,3 +3,16 @@
   gap: 8px;
   grid-template-columns: auto auto;
 }
+
+.options_post {
+  @apply bg-primary rounded-full h-14 w-14 flex items-center justify-center;
+}
+
+.options_post:nth-child(3) {
+  @apply h-16 w-16;
+}
+
+.customIconSize {
+  height: 35px ;
+  width: 35px ;
+}
