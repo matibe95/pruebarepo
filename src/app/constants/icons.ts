@@ -43,6 +43,7 @@ export enum Post_Icons {
   plus,
   location,
   'kebab-menu',
+  options,
   save,
   send,
   comments,
