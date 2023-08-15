@@ -28,6 +28,8 @@ import { NavbarButtonComponent } from './components/navbar-button/navbar-button.
 import { CreateMenuComponent } from './components/create-menu/create-menu.component';
 import { PostMenuComponent } from './components/post-menu/post-menu.component';
 import { LoadingModalComponent } from './components/loading-modal/loading-modal.component';
+import { DesktopSidebarComponent } from './desktop-sidebar/desktop-sidebar.component';
+import { FiltersHeaderComponent } from './filters-header/filters-header.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { LoadingModalComponent } from './components/loading-modal/loading-modal.
     CreateMenuComponent,
     PostMenuComponent,
     LoadingModalComponent,
+    DesktopSidebarComponent,
+    FiltersHeaderComponent,
   ],
   imports: [
     BrowserModule,

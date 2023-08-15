@@ -3,7 +3,7 @@ export interface Post{
   content: any;
   location?: any;
   profileFrom: string;
-  description: string;
+  descripcion: string;
   createdAt?: any;
   likesCount?: number;
   commentsCount?: number;

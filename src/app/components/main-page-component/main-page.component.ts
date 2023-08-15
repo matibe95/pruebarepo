@@ -52,8 +52,13 @@ export class MainPageComponent {
   constructor(private postsService: PostsService){}
 
   postsList!: any[]
+  mobile: Boolean = false;
 
   ngOnInit(){
+    if (window.innerWidth < 650) {
+      this.mobile = true
+    }
+
     this.postsService.listarPosts().subscribe((res)=>{
       this.postsList = res
       this.postsList.reverse()
