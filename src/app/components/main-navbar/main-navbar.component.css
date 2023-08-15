@@ -1,0 +1,15 @@
+.mobile-navbar-icons_container a mat-icon{ 
+    height: 32px ;
+    width: 32px ;
+}
+
+.mobile-navbar-icons_container button mat-icon{ 
+    height: 45px ;
+    width: 45px ;
+}
+
+@media (max-width: 375px) {
+    .mobile-navbar {
+        padding: 18px 25px;
+    }
+}

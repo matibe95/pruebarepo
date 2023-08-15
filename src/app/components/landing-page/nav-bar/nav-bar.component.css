@@ -1,3 +1,14 @@
+@media (max-width: 450px) {
+  /* .navbar_container ul {
+    flex-direction: column;
+    gap: 15px;
+  } */
+
+  #iniciar_sesion {
+    display: none;
+  }
+}
+
 /* .navbar_container {
   display: grid;
   grid-template-columns: auto auto;
