@@ -7,4 +7,11 @@ export interface Modal_Account {
   lastCharacter?: string
 }
 
+export interface Modal_Option {
+  type?: OptionType
+  state?: boolean
+}
+
+
+type OptionType = 'event' | 'community' | 'post' | 'main'
 type ModalType = 'login' | 'register'
