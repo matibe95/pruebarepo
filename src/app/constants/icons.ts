@@ -30,7 +30,11 @@ export enum NavBar_Icons {
   fire,
   event,
   community,
-  post
+  post,
+  cross,
+  gallery,
+  location,
+  check,
 }
 
 export enum Desktop_Sidebar{
