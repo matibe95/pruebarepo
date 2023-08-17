@@ -7,7 +7,3 @@
   display: grid;
   grid-template-columns: auto auto;
 }
-
-.sidebar-container main {
-  max-width: 80%;
-}
