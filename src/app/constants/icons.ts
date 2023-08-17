@@ -33,6 +33,19 @@ export enum NavBar_Icons {
   post
 }
 
+export enum Desktop_Sidebar{
+  home,
+  explore,
+  fire,
+  event,
+  community,
+  post,
+  'origins-logo-blue',
+  add,
+  bell,
+  messages
+}
+
 
 export enum PostMenu_Icons {
   camera,
