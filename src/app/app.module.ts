@@ -31,6 +31,9 @@ import { LoadingModalComponent } from './components/loading-modal/loading-modal.
 import { DesktopSidebarComponent } from './desktop-sidebar/desktop-sidebar.component';
 import { FiltersHeaderComponent } from './filters-header/filters-header.component';
 import { SidebarButtonComponent } from './sidebar-button/sidebar-button.component';
+import { DesktopUploadModalComponent } from './desktop-upload-modal/desktop-upload-modal.component';
+import { RulesButtonComponent } from './rules-button/rules-button.component';
+import { RuleNumberComponent } from './rule-number/rule-number.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { SidebarButtonComponent } from './sidebar-button/sidebar-button.componen
     DesktopSidebarComponent,
     FiltersHeaderComponent,
     SidebarButtonComponent,
+    DesktopUploadModalComponent,
+    RulesButtonComponent,
+    RuleNumberComponent,
   ],
   imports: [
     BrowserModule,
