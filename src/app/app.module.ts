@@ -30,6 +30,7 @@ import { PostMenuComponent } from './components/post-menu/post-menu.component';
 import { LoadingModalComponent } from './components/loading-modal/loading-modal.component';
 import { DesktopSidebarComponent } from './desktop-sidebar/desktop-sidebar.component';
 import { FiltersHeaderComponent } from './filters-header/filters-header.component';
+import { SidebarButtonComponent } from './sidebar-button/sidebar-button.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { FiltersHeaderComponent } from './filters-header/filters-header.componen
     LoadingModalComponent,
     DesktopSidebarComponent,
     FiltersHeaderComponent,
+    SidebarButtonComponent,
   ],
   imports: [
     BrowserModule,
