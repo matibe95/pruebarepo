@@ -21,10 +21,6 @@ module.exports = {
           'fill-muted': 'var(--color-background-fill-muted)',
           'button-hover-primary': 'var(--color-button-hover-primary)',
           'button-hover-alternative': 'var(--color-button-hover-alternative)'
-          // fill: 'var(--color-fill)',
-          // 'button-accent': 'var(--color-button-accent)',
-          // 'button-accent-hover': 'var(--color-button-accent-hover)',
-          // 'button-muted': 'var(--color-button-muted)'
         }
       },
       screens: {
@@ -35,6 +31,7 @@ module.exports = {
       colors: {
         'modal-button': 'var(--color-modal-button)',
         'border-fill': 'var(--color-border)',
+        'button-muted': 'var(--color-button-muted)',
         'button-fill': 'var(--color-button-fill)',
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)'
