@@ -14,7 +14,6 @@ export class SidebarButtonComponent {
   constructor(private router: Router ) {}
 
   ngOnInit(){
-    console.log(this.router.url)
     if (this.router.url === this.route){
       this.background = 'bg-button-muted' 
     }
