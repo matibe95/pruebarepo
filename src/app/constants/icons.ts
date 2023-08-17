@@ -46,6 +46,11 @@ export enum Desktop_Sidebar{
   messages
 }
 
+export enum Desktop_Header {
+  filters,
+  refresh
+}
+
 
 export enum PostMenu_Icons {
   camera,
