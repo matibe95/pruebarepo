@@ -12,10 +12,13 @@
   <main-navbar></main-navbar>
 </div>
 
-<div *ngIf="!mobile" class="sidebar-container bg-skin-fill-muted transition-all h-[100vh]">
-  <desktop-sidebar></desktop-sidebar>
-  <main class="flex flex-col w-full px-[10%]">
-    <filters-header></filters-header>
-    <app-post class="w-full" [post]="post" *ngFor="let post of postsList"></app-post>
-  </main>
+<div *ngIf="!mobile" class="bg-skin-fill-muted">
+  <desktop-upload-modal></desktop-upload-modal>
+  <div class="sidebar-container h-[100vh]">
+    <desktop-sidebar></desktop-sidebar>
+    <main class="flex flex-col w-full px-[10%]">
+      <filters-header></filters-header>
+      <app-post class="w-full" [post]="post" *ngFor="let post of postsList"></app-post>
+    </main>
+  </div>
 </div>
