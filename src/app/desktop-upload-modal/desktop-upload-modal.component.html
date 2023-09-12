@@ -60,7 +60,7 @@
     <form
       class="w-full h-full"
       [formGroup]="checkoutForm"
-      (ngSubmit)="onSubmit()"
+      (ngSubmit)="onSubmitEvent()"
       [ngSwitch]="steps"
     >
       <div
@@ -68,9 +68,30 @@
         class="flex flex-col items-center w-full h-full justify-between"
       >
         <h2 class="text-skin-dark-button font-bold text-4xl">Crea tu Evento</h2>
-        <picture class="image_selector_container">
-          <mat-icon svgIcon="gallery"></mat-icon>
-        </picture>
+        <section
+          class="overflow-hidden rounded-full h-24 w-24 bg-skin-fill flex items-center justify-center"
+        >
+          <label
+            for="fileupload"
+            class="w-full flex items-center justify-center"
+          >
+            <img
+              [src]="url"
+              [ngClass]="{
+                customImg: url !== './assets/main_icons/gallery.svg'
+              }"
+              class="rounded-lg"
+              alt=""
+            />
+          </label>
+          <input
+            (change)="onFileSelected($event)"
+            formControlName="image"
+            id="fileupload"
+            type="file"
+            class="hidden"
+          />
+        </section>
         <div class="flex w-full flex-col">
           <label
             for="event_name"
@@ -117,7 +138,8 @@
         </div>
         <div class="">
           <button
-            type="submit"
+            (click)="goToRules()"
+            type="button"
             class="rounded-xl w-14 h-14 flex items-center justify-center bg-button-muted"
           >
             <mat-icon svgIcon="check"></mat-icon>
@@ -126,35 +148,89 @@
       </div>
       <div
         *ngSwitchCase="1"
-        class="flex flex-col items-center w-full h-full gap-12"
+        class="rules_container items-center w-full h-full gap-12"
       >
-        <h2 class="text-skin-dark-button font-bold text-4xl">
-          Crea tus Reglas
-        </h2>
-        <section
-          class="w-full flex flex-wrap gap-2 justify-center items-center"
-        >
-          <app-rules-button
-            (changeCurrentRule)="showRule($event)"
-            [rule]="rule"
-            *ngFor="let rule of rules"
-          ></app-rules-button>
-          <div *ngIf="this.rules.length != 9" class="desktopModal_option">
-            <button
-              (click)="addNewRule()"
-              type="button"
-              class="rounded-xl w-14 h-14 flex items-center justify-center bg-skin-fill"
-            >
-              <mat-icon svgIcon="add"></mat-icon>
-            </button>
-          </div>
-        </section>
-        <section class="w-full">
-          <app-rule-number
-            *ngIf="this.rules.length > 0"
-            [currentRule]="currentRule"
-          ></app-rule-number>
-        </section>
+        <div class="flex flex-col gap-12 items-center w-full">
+          <h2 class="text-skin-dark-button font-bold text-4xl">
+            Crea tus Reglas
+          </h2>
+          <section
+            class="w-full flex flex-wrap gap-2 justify-center items-center"
+          >
+            <app-rules-button
+              (changeCurrentRule)="showRule($event)"
+              [rule]="rule"
+              [currentRule]="content"
+              *ngFor="let rule of rules"
+            ></app-rules-button>
+            <div *ngIf="this.rules.length != 9" class="desktopModal_option">
+              <button
+                (click)="addNewRule()"
+                type="button"
+                class="rounded-xl w-14 h-14 flex items-center justify-center bg-skin-fill"
+              >
+                <mat-icon svgIcon="add"></mat-icon>
+              </button>
+            </div>
+          </section>
+        </div>
+        <div>
+          <section class="w-full" [ngSwitch]="currentRule.number">
+            <app-rule-number
+              *ngSwitchCase="1"
+              [content]="content"
+              [currentRule]="currentRule"
+            ></app-rule-number>
+            <app-rule-number
+              *ngSwitchCase="2"
+              [content]="content"
+              [currentRule]="currentRule"
+            ></app-rule-number>
+            <app-rule-number
+              *ngSwitchCase="3"
+              [content]="content"
+              [currentRule]="currentRule"
+            ></app-rule-number>
+            <app-rule-number
+              *ngSwitchCase="4"
+              [content]="content"
+              [currentRule]="currentRule"
+            ></app-rule-number>
+            <app-rule-number
+              *ngSwitchCase="5"
+              [content]="content"
+              [currentRule]="currentRule"
+            ></app-rule-number>
+            <app-rule-number
+              *ngSwitchCase="6"
+              [content]="content"
+              [currentRule]="currentRule"
+            ></app-rule-number>
+            <app-rule-number
+              *ngSwitchCase="7"
+              [content]="content"
+              [currentRule]="currentRule"
+            ></app-rule-number>
+            <app-rule-number
+              *ngSwitchCase="8"
+              [content]="content"
+              [currentRule]="currentRule"
+            ></app-rule-number>
+          </section>
+        </div>
+        <footer class="flex gap-5 w-full items-center justify-center">
+          <button
+            (click)="prevStep()"
+            class="bg-button-muted rounded-xl w-14 h-14 flex items-center justify-center"
+          >
+            <mat-icon svgIcon="previous"></mat-icon>
+          </button>
+          <button
+            class="bg-button-muted rounded-xl w-14 h-14 flex items-center justify-center"
+          >
+            <mat-icon svgIcon="check"></mat-icon>
+          </button>
+        </footer>
       </div>
     </form>
   </article>
