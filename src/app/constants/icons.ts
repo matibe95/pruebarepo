@@ -35,6 +35,7 @@ export enum NavBar_Icons {
   gallery,
   location,
   check,
+  previous,
 }
 
 export enum Desktop_Sidebar{
