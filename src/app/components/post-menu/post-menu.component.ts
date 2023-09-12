@@ -58,9 +58,8 @@ export class PostMenuComponent {
       imagen: arrayImg
     }
 
-    this.postService.createPost(data).subscribe((res)=>{
+    this.postService.createPost(data).subscribe(()=>{
       window.location.reload()
-      // console.log(res)
     })
   }
 
