@@ -34,6 +34,7 @@ import { SidebarButtonComponent } from './sidebar-button/sidebar-button.componen
 import { DesktopUploadModalComponent } from './desktop-upload-modal/desktop-upload-modal.component';
 import { RulesButtonComponent } from './rules-button/rules-button.component';
 import { RuleNumberComponent } from './rule-number/rule-number.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { RuleNumberComponent } from './rule-number/rule-number.component';
     DesktopUploadModalComponent,
     RulesButtonComponent,
     RuleNumberComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
