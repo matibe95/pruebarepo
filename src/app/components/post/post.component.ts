@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Post_Icons } from 'src/app/constants/icons';
 import { IconService } from 'src/app/services/Icon.service';
+import { PostsService } from 'src/app/services/posts.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -11,17 +12,21 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class PostComponent {
   @Input() post!: any
 
-  constructor(private iconService: IconService, private userService: UsuarioService) {
+  
+  constructor(private iconService: IconService, private userService: UsuarioService, private postService: PostsService) {
     this.iconService.registerIcons( Post_Icons ,'main_icons')
   }
 
   showOptions: boolean = true
-  userPost: any
 
   ngOnInit(){
-    this.post = this.post.post
-    this.userService.getUser(this.post.id_usuario).subscribe((res: any) =>{
-      this.userPost = res[0].nickname
+    console.log(this.post)
+  }
+
+  likePost(){
+
+    this.postService.LikePost(this.post.id).subscribe((res)=>{
+      console.log(res)
     })
   }
 
