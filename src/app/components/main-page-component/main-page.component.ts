@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Post } from 'src/app/models/Post';
 import { PostsService } from 'src/app/services/posts.service';
 
@@ -8,60 +8,30 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
-  // postsList: Post[] = [
-  //   {
-  //     id: 1,
-  //     profileFrom: 'el_caehom',
-  //     content: "",
-  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-  //     likesCount: 22.6,
-  //     commentsCount: 22.6,
-  //     location: 'Singapur, El alfa.',
-  //     createdAt: '1 hora'
-  //   },
-  //   {
-  //     id: 1,
-  //     profileFrom: 'el_caehom',
-  //     content: "",
-  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-  //     location: 'Singapur, El alfa.',
-  //     createdAt: '1 hora'
-  //   },
-  //   {
-  //     id: 1,
-  //     profileFrom: 'el_caehom',
-  //     content: "",
-  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-  //     likesCount: 22.6,
-  //     commentsCount: 22.6,
-  //     location: 'Singapur, El alfa.',
-  //     createdAt: '1 hora'
-  //   },
-  //   {
-  //     id: 1,
-  //     profileFrom: 'el_caehom',
-  //     content: "",
-  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-  //     likesCount: 22.6,
-  //     commentsCount: 22.6,
-  //     location: 'Singapur, El alfa.',
-  //     createdAt: '1 hora'
-  //   },
-  // ]
 
   constructor(private postsService: PostsService){}
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (event.target.innerWidth < 750) {
+      this.mobile = true
+      return
+    }
+    this.mobile = false
+  }
 
   postsList!: any[]
   mobile: Boolean = false;
 
   ngOnInit(){
-    if (window.innerWidth < 650) {
+    if (window.innerWidth < 750) {
       this.mobile = true
+    } else {
+      this.mobile = false
     }
 
-    this.postsService.listarPosts().subscribe((res)=>{
-      this.postsList = res
-      this.postsList.reverse()
+    this.postsService.ListarPostsUsuario().subscribe((res)=>{
+      this.postsList = res.data
+      // this.postsList.reverse()
     })
   }
 }
