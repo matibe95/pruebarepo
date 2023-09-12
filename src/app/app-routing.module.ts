@@ -5,6 +5,7 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
 import { MainPageComponent } from './components/main-page-component/main-page.component';
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 import { autenticacionGuard } from './guards/autenticacion.guard';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path:'welcome',
@@ -22,6 +23,7 @@ const routes: Routes = [
   },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'home', component: MainPageComponent, canActivate: [autenticacionGuard]},
+  { path: 'user/:id', component: UserProfileComponent, canActivate: [autenticacionGuard]},
 ];
 
 @NgModule({
