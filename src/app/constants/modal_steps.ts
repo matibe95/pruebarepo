@@ -6,6 +6,11 @@ export type ModalSteps = {
   inputType: string,
   placeholder: string
 }
+export type ModalRules = {
+  name: `rule_${number}`,
+  content: `content_${number}`,
+  number: number,
+}
 
 export const LOGIN_STEPS: ModalSteps[]  = [
   {
@@ -31,6 +36,59 @@ export const LOGIN_STEPS: ModalSteps[]  = [
     buttonType: 'submit',
     inputType: 'password',
     placeholder: 'Ingrese su contraseña',
+  },
+];
+
+export const RULES_STEPS: ModalRules[]  = [
+  {
+    name: 'rule_0',
+    content: 'content_0',
+    number: 0,
+  },
+  {
+    name: 'rule_1',
+    content: 'content_1',
+    number: 1,
+  },
+  {
+    number: 2,
+    content: 'content_2',
+    name: 'rule_2',
+  },
+  {
+    number: 3,
+    content: 'content_3',
+    name: 'rule_3',
+  },
+  {
+    number: 4,
+    content: 'content_4',
+    name: 'rule_4',
+  },
+  {
+    number: 5,
+    name: 'rule_5',
+    content: 'content_5',
+  },
+  {
+    number: 6,
+    name: 'rule_6',
+    content: 'content_6',
+  },
+  {
+    number: 7,
+    name: 'rule_7',
+    content: 'content_7',
+  },
+  {
+    number: 8,
+    name: 'rule_8',
+    content: 'content_8',
+  },
+  {
+    number: 9,
+    name: 'rule_9',
+    content: 'content_9',
   },
 ];
 
