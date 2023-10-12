@@ -20,12 +20,12 @@ export class PostComponent {
   showOptions: boolean = true
 
   ngOnInit(){
-    console.log(this.post)
+    // console.log(this.post)
   }
 
   likePost(){
     this.postService.LikePost(this.post.id).subscribe((res)=>{
-      // console.log(res)
+      console.log(res)
     })
   }
 
