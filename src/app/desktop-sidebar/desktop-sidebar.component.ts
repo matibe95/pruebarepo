@@ -16,7 +16,7 @@ export class DesktopSidebarComponent {
   openUploadMenu(){
     this.modalSS.$modal_option.emit({state: true, type:'main'})
   }
-  navigateToHome(){
-    this.router.navigateByUrl('/home');
+  navigateTo(route: any){
+    this.router.navigateByUrl(route);
   }
 }
