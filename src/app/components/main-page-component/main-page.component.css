@@ -2,8 +2,8 @@
   color: var(--color-dark-button);
   background-color: var(--color-primary);
 }
-
+/* 
 .sidebar-container {
   display: grid;
-  grid-template-columns: auto auto;
-}
+  grid-template-columns: auto 2fr;
+} */
