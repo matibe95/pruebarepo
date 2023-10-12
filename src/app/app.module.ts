@@ -35,6 +35,8 @@ import { DesktopUploadModalComponent } from './desktop-upload-modal/desktop-uplo
 import { RulesButtonComponent } from './rules-button/rules-button.component';
 import { RuleNumberComponent } from './rule-number/rule-number.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ExplorePageComponent } from './components/explore-page/explore-page.component';
+import { ExplorePostComponent } from './components/explore-post/explore-post.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     RulesButtonComponent,
     RuleNumberComponent,
     UserProfileComponent,
+    ExplorePageComponent,
+    ExplorePostComponent,
   ],
   imports: [
     BrowserModule,
