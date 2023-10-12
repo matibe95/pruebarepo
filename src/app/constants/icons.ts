@@ -8,6 +8,11 @@ export enum Landing_Icons {
   mobile_landing_background
 }
 
+export enum SearchBar_Icons {
+  search,
+  refresh
+}
+
 export enum Modal_Account_Icons{
   cross
 }
