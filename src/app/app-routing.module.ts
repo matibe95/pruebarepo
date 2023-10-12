@@ -6,6 +6,7 @@ import { MainPageComponent } from './components/main-page-component/main-page.co
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 import { autenticacionGuard } from './guards/autenticacion.guard';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ExplorePageComponent } from './components/explore-page/explore-page.component';
 
 const routes: Routes = [
   { path:'welcome',
@@ -23,6 +24,7 @@ const routes: Routes = [
   },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'home', component: MainPageComponent, canActivate: [autenticacionGuard]},
+  { path: 'explore', component: ExplorePageComponent, canActivate: [autenticacionGuard]},
   { path: 'user/:id', component: UserProfileComponent, canActivate: [autenticacionGuard]},
 ];
 
