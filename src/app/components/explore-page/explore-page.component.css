@@ -1,0 +1,6 @@
+.masonryLayoutContainer {
+    padding: 20px 0;
+    columns: 4;
+    column-gap: 10px;
+    width: 100%;
+}
