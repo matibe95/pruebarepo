@@ -2,7 +2,7 @@
   class="flex flex-col px-4 py-6 gap-8 items-center bg-primary h-full fixed overflow-auto w-[92px]"
 >
   <button
-    (click)="navigateToHome()"
+    (click)="navigateTo('/home')"
     class="p-3 rounded-xl flex items-center bg-skin-fill"
   >
     <mat-icon svgIcon="origins-logo-blue"></mat-icon>
@@ -10,11 +10,15 @@
   <hr class="w-full bg-skin-fill h-[1px]" />
   <div class="flex flex-col items-center justify-between h-full">
     <app-sidebar-button
-      (click)="navigateToHome()"
+      (click)="navigateTo('/home')"
       route="/home"
       icon="home"
     ></app-sidebar-button>
-    <app-sidebar-button route="/explore" icon="explore"></app-sidebar-button>
+    <app-sidebar-button
+      (click)="navigateTo('/explore')"
+      route="/explore"
+      icon="explore"
+    ></app-sidebar-button>
     <app-sidebar-button route="/match" icon="fire"></app-sidebar-button>
     <app-sidebar-button
       (click)="openUploadMenu()"
