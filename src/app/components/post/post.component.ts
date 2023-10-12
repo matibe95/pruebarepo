@@ -24,9 +24,8 @@ export class PostComponent {
   }
 
   likePost(){
-
     this.postService.LikePost(this.post.id).subscribe((res)=>{
-      console.log(res)
+      // console.log(res)
     })
   }
 
