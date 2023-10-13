@@ -37,6 +37,8 @@ import { RuleNumberComponent } from './rule-number/rule-number.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ExplorePageComponent } from './components/explore-page/explore-page.component';
 import { ExplorePostComponent } from './components/explore-post/explore-post.component';
+import { DetectFocusDirective } from './directives/detect-focus.directive';
+import { SpecificSearchComponent } from './components/specific-search/specific-search.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { ExplorePostComponent } from './components/explore-post/explore-post.com
     UserProfileComponent,
     ExplorePageComponent,
     ExplorePostComponent,
+    DetectFocusDirective,
+    SpecificSearchComponent,
   ],
   imports: [
     BrowserModule,
