@@ -4,3 +4,26 @@
     column-gap: 10px;
     width: 100%;
 }
+
+
+@media (max-width: 750px){
+    .masonryLayoutContainer {
+        padding: 0;
+        columns: 2;
+    }
+}
+
+.hiddenContainer {
+    animation: fade-out .5s forwards;
+}
+
+.visibleContainer {
+    display: block;
+}
+
+@keyframes fade-out {
+    to {
+        display: none;
+        opacity: 0;
+    }
+}
