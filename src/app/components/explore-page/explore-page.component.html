@@ -4,25 +4,25 @@
     class="flex flex-col items-center gap-6 px-4 py-4 bg-skin-fill-muted w-full"
   >
     <!-- <app-toggle-theme-button></app-toggle-theme-button> -->
-    <section
-      class="flex bg-skin-fill text-primary font-semibold px-2.5 py-[12px] justify-between items-center gap-2 rounded-2xl w-full text-lg"
-    >
-      <button
-        class="selected_button w-[121px] h-[45px] rounded-xl justify-center items-center flex"
-      >
-        Todo
+    <div class="w-full flex items-center gap-1 rounded-xl bg-skin-fill px-4">
+      <button (click)="onClick()" class="flex items-center justify-center">
+        <mat-icon svgIcon="search"></mat-icon>
       </button>
-      <button
-        class="w-[121px] h-[45px] rounded-xl justify-center items-center flex"
-      >
-        Seguidos
-      </button>
-      <button
-        class="w-[121px] h-[45px] rounded-xl justify-center items-center flex"
-      >
-        Descubrir
-      </button>
+      <input
+        class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
+        placeholder="Buscar"
+      />
+    </div>
+    <section class="masonryLayoutContainer {{ this.showPosts }}">
+      <app-explore-post
+        class="w-full"
+        [post]="post"
+        *ngFor="let post of postsList"
+      ></app-explore-post>
     </section>
+    <div class="{{ showOptions }} w-full">
+      <app-specific-search></app-specific-search>
+    </div>
   </main>
   <main-navbar></main-navbar>
 </div>
@@ -40,6 +40,7 @@
             <mat-icon svgIcon="search"></mat-icon>
           </button>
           <input
+            appDetectFocus
             class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
             placeholder="Buscar"
           />
