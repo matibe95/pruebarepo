@@ -39,6 +39,9 @@ import { ExplorePageComponent } from './components/explore-page/explore-page.com
 import { ExplorePostComponent } from './components/explore-post/explore-post.component';
 import { DetectFocusDirective } from './directives/detect-focus.directive';
 import { SpecificSearchComponent } from './components/specific-search/specific-search.component';
+import { SearchedUserCardComponent } from './components/searched-user-card/searched-user-card.component';
+import { SearchedCommunityCardComponent } from './components/searched-community-card/searched-community-card.component';
+import { SearchedEventCardComponent } from './components/searched-event-card/searched-event-card.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +77,9 @@ import { SpecificSearchComponent } from './components/specific-search/specific-s
     ExplorePostComponent,
     DetectFocusDirective,
     SpecificSearchComponent,
+    SearchedUserCardComponent,
+    SearchedCommunityCardComponent,
+    SearchedEventCardComponent,
   ],
   imports: [
     BrowserModule,
