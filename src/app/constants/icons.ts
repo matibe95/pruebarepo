@@ -8,6 +8,10 @@ export enum Landing_Icons {
   mobile_landing_background
 }
 
+export enum ExplorePage_Icons {
+  userIcon
+}
+
 export enum SearchBar_Icons {
   search,
   refresh
