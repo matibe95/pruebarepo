@@ -5,13 +5,19 @@
   >
     <!-- <app-toggle-theme-button></app-toggle-theme-button> -->
     <div class="w-full flex items-center gap-1 rounded-xl bg-skin-fill px-4">
-      <button (click)="onClick()" class="flex items-center justify-center">
+      <button class="flex items-center justify-center">
         <mat-icon svgIcon="search"></mat-icon>
       </button>
       <input
+        (input)="onChange($event.target)"
         class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
         placeholder="Buscar"
+        [(ngModel)]="filterName"
+        name="filterName"
       />
+      <button (click)="cleanSearch()">
+        <p class="text-button-muted">Cancel</p>
+      </button>
     </div>
     <section class="masonryLayoutContainer {{ this.showPosts }}">
       <app-explore-post
