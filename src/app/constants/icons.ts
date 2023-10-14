@@ -9,7 +9,9 @@ export enum Landing_Icons {
 }
 
 export enum ExplorePage_Icons {
-  userIcon
+  userIcon,
+  exploreEvents,
+  exploreCommunity
 }
 
 export enum SearchBar_Icons {
