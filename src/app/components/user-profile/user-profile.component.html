@@ -19,13 +19,7 @@
         <p class="text-button-muted">Cancel</p>
       </button>
     </div>
-    <section class="masonryLayoutContainer {{ this.showPosts }}">
-      <app-explore-post
-        class="w-full"
-        [post]="post"
-        *ngFor="let post of postsList"
-      ></app-explore-post>
-    </section>
+    <section class="masonryLayoutContainer {{ this.showPosts }}"></section>
     <div class="{{ showOptions }} w-full">
       <app-specific-search></app-specific-search>
     </div>
@@ -40,13 +34,43 @@
     <main class="flex flex-col px-[10%] ml-[92px] py-6 gap-6">
       <section class="w-full">
         <header
-          class="h-[155px] relative bg-primary w-full rounded-t-3xl"
+          class="h-[145px] relative bg-primary w-full rounded-t-3xl"
         ></header>
         <section class="relative px-[5%] py-5 flex justify-center">
           <div
             class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
           ></div>
         </section>
+        <section class="flex flex-col items-center gap-4 px-7 py-7">
+          <h1 class="font-bold text-center text-3xl">
+            {{ user.nickname }}
+          </h1>
+          <p class="text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra
+            sit amet aliquam id diam
+          </p>
+          <button
+            class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
+          >
+            Configurar
+            <mat-icon svgIcon="settings"></mat-icon>
+          </button>
+        </section>
+        <footer class="flex justify-center gap-8">
+          <div class="flex gap-3 justify-between items-center">
+            <mat-icon svgIcon="people"></mat-icon>
+            <p>{{ user.seguidor_count }}</p>
+          </div>
+          <div class="flex gap-3 justify-between items-center">
+            <mat-icon svgIcon="people"></mat-icon>
+            <p>{{ user.siguiendo_count }}</p>
+          </div>
+          <div class="flex gap-3 justify-between items-center">
+            <mat-icon svgIcon="people"></mat-icon>
+            <p>{{ post.data.length }}</p>
+          </div>
+        </footer>
       </section>
     </main>
   </div>

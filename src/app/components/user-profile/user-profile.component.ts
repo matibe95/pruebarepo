@@ -1,5 +1,7 @@
 import { Component, HostListener } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import { PostsService } from 'src/app/services/posts.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,8 +9,10 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
-  constructor(private postsService: PostsService){}
-  postsList!: any[]
+  constructor(private userService: UsuarioService){}
+  post!: any
+  user!: any
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     if (event.target.innerWidth < 750) {
@@ -28,8 +32,12 @@ export class UserProfileComponent {
     } else {
       this.mobile = false
     }
-    this.postsService.ListarPostsUsuario().subscribe((res)=>{
-      this.postsList = res.data
+    this.userService.getUser().subscribe((res: any)=>{
+      // this.postsList = res
+      this.user = res.user
+      this.post = res.post
+      
+      console.log(res)
       // this.postsList.reverse()
     })
   }
