@@ -19,7 +19,9 @@ export class SpecificSearchComponent {
     this.searchFilter = target.value
   }
 
-  users: any = []
+  users: any = [1]
+  events: any = [1]
+  communities: any = [1]
 
   constructor(
     private iconService: IconService,

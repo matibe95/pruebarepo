@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-searched-event-card',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./searched-event-card.component.css']
 })
 export class SearchedEventCardComponent {
-
+  @Input() event!: any
 }

@@ -34,6 +34,16 @@
       *ngFor="let user of users"
     ></app-searched-user-card>
   </section>
-  <section *ngSwitchCase="'comunidad'"></section>
-  <section *ngSwitchCase="'evento'"></section>
+  <section *ngSwitchCase="'comunidad'">
+    <app-searched-community-card
+      [community]="community"
+      *ngFor="let community of communities"
+    ></app-searched-community-card>
+  </section>
+  <section *ngSwitchCase="'evento'">
+    <app-searched-event-card
+      [event]="event"
+      *ngFor="let event of events"
+    ></app-searched-event-card>
+  </section>
 </div>

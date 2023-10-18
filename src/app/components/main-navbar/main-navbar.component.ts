@@ -20,4 +20,8 @@ export class MainNavbarComponent {
   openUploadPostMenu(){
     this.isUploadMenuActive = !this.isUploadMenuActive
   }
+
+  goToProfile(){
+    
+  }
 }
