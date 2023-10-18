@@ -1,80 +1,53 @@
-<div class="bg-skin-fill-muted h-[100vh]">
-  <desktop-upload-modal></desktop-upload-modal>
-  <div class="sidebar-container h-[100vh]">
-    <desktop-sidebar></desktop-sidebar>
-    <main class="flex flex-col gap-7 w-full items-center px-[10%] py-10">
-      <article class="bg-skin-fill rounded-3xl w-[800px]">
-        <section class="relative bg-primary rounded-t-3xl w-full h-[150px]">
-          <div
-            class="rounded-full h-12 w-12 left-5 top-5 bg-skin-fill absolute"
-          >
-            <mat-icon svgIcon="left_arrow"></mat-icon>
-          </div>
-        </section>
-        <section class="relative px-[5%] py-5 flex justify-center">
-          <div
-            class="rounded-full h-20 w-20 top-[-40px] bg-skin-button-hover-primary absolute"
-          ></div>
-          <div class="pt-10 flex flex-col items-center justify-between gap-5">
-            <h1 class="font-bold text-2xl">Gonzalo Gonzalez</h1>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Architecto quo debitis delectus provident recusandae ipsum fugit
-              eaque unde libero quidem cum maxime saepe hic laboriosam
-              inventore, quisquam dolores asperiores qui!
-            </p>
-            <div class="flex gap-5">
-              <button
-                class="flex px-4 py-2 rounded-xl bg-primary text-skin-dark-button"
-              >
-                Hablar
-                <mat-icon svgIcon="heart"></mat-icon>
-              </button>
-              <button
-                class="flex px-4 py-2 rounded-xl bg-primary text-skin-dark-button"
-              >
-                Seguir
-                <mat-icon svgIcon="heart"></mat-icon>
-              </button>
-            </div>
-          </div>
-        </section>
-        <footer
-          class="text-primary font-semibold py-5 flex justify-center gap-12"
-        >
-          <div>
-            <button>
-              <mat-icon svgIcon="people_filled"></mat-icon>
-            </button>
-            <span>20k</span>
-          </div>
-          <div>
-            <button>
-              <mat-icon svgIcon="heart_filled"></mat-icon>
-            </button>
-            <span>20k</span>
-          </div>
-          <div>
-            <button>
-              <mat-icon svgIcon="post_filled"></mat-icon>
-            </button>
-            <span>20k</span>
-          </div>
-        </footer>
-      </article>
-      <section class="py-6 flex gap-5 justify-center w-full">
-        <button class="px-5 py-2 rounded-lg bg-primary text-skin-dark-button">
-          Recientes
-        </button>
-        <button class="px-5 py-2 rounded-lg bg-skin-fill text-primary">
-          Populares
-        </button>
-      </section>
-      <app-post
+<div *ngIf="mobile" class="bg-skin-fill-muted h-[100vh]">
+  <app-header></app-header>
+  <main
+    class="flex flex-col items-center gap-6 px-4 py-4 bg-skin-fill-muted w-full"
+  >
+    <!-- <app-toggle-theme-button></app-toggle-theme-button> -->
+    <div class="w-full flex items-center gap-1 rounded-xl bg-skin-fill px-4">
+      <button class="flex items-center justify-center">
+        <mat-icon svgIcon="search"></mat-icon>
+      </button>
+      <input
+        autocomplete="off"
+        class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
+        placeholder="Buscar"
+        [(ngModel)]="filterName"
+        name="filterName"
+      />
+      <button>
+        <p class="text-button-muted">Cancel</p>
+      </button>
+    </div>
+    <section class="masonryLayoutContainer {{ this.showPosts }}">
+      <app-explore-post
         class="w-full"
         [post]="post"
         *ngFor="let post of postsList"
-      ></app-post>
+      ></app-explore-post>
+    </section>
+    <div class="{{ showOptions }} w-full">
+      <app-specific-search></app-specific-search>
+    </div>
+  </main>
+  <main-navbar></main-navbar>
+</div>
+
+<div *ngIf="!mobile" class="bg-skin-fill-muted h-[100%]">
+  <desktop-upload-modal></desktop-upload-modal>
+  <div class="sidebar-container h-[100%]">
+    <desktop-sidebar></desktop-sidebar>
+    <main class="flex flex-col px-[10%] ml-[92px] py-6 gap-6">
+      <section class="w-full">
+        <header
+          class="h-[155px] relative bg-primary w-full rounded-t-3xl"
+        ></header>
+        <section class="relative px-[5%] py-5 flex justify-center">
+          <div
+            class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
+          ></div>
+        </section>
+      </section>
     </main>
   </div>
 </div>
