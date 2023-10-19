@@ -8,6 +8,13 @@ export enum Landing_Icons {
   mobile_landing_background
 }
 
+export enum UserProfile_Icons {
+  settings,
+  heart_filled,
+  event_filled,
+  community_filled,
+}
+
 export enum ExplorePage_Icons {
   userIcon,
   exploreEvents,
