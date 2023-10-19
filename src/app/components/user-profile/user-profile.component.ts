@@ -1,5 +1,7 @@
 import { Component, HostListener } from '@angular/core';
+import { UserProfile_Icons } from 'src/app/constants/icons';
 import { User } from 'src/app/models/user.model';
+import { IconService } from 'src/app/services/Icon.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -9,7 +11,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
-  constructor(private userService: UsuarioService){}
+  constructor(private userService: UsuarioService, private iconSS: IconService){
+    iconSS.registerIcons(UserProfile_Icons,'main_icons')
+  }
   post!: any
   user!: any
 
