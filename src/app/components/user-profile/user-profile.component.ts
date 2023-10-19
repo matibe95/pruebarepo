@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserProfile_Icons } from 'src/app/constants/icons';
 import { User } from 'src/app/models/user.model';
 import { IconService } from 'src/app/services/Icon.service';
@@ -14,8 +15,16 @@ export class UserProfileComponent {
   constructor(private userService: UsuarioService, private iconSS: IconService){
     iconSS.registerIcons(UserProfile_Icons,'main_icons')
   }
+
+  private activatedRoute = inject(ActivatedRoute)
+  userId: any = this.activatedRoute.snapshot.params['id']
   post!: any
   user!: any
+  mobile: Boolean = false;
+  showPosts: String = 'visibleContainer';
+  showOptions: String ='hiddenContainer';
+  filterName: String = '';
+  myProfile: Boolean = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -25,10 +34,7 @@ export class UserProfileComponent {
     }
     this.mobile = false
   }
-  mobile: Boolean = false;
-  showPosts: String = 'visibleContainer';
-  showOptions: String ='hiddenContainer';
-  filterName: String = '';
+
 
   ngOnInit(){
     if (window.innerWidth < 750) {
@@ -36,8 +42,11 @@ export class UserProfileComponent {
     } else {
       this.mobile = false
     }
-    this.userService.getUser().subscribe((res: any)=>{
+    this.userService.getUser(this.userId).subscribe((res: any)=>{
       // this.postsList = res
+      if (this.userId === localStorage.getItem('id_user')){
+        this.myProfile = true
+      }
       this.user = res.user
       this.post = res.post
       
