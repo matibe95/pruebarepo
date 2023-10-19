@@ -13,6 +13,7 @@ export enum UserProfile_Icons {
   heart_filled,
   event_filled,
   community_filled,
+  follow,
 }
 
 export enum ExplorePage_Icons {
