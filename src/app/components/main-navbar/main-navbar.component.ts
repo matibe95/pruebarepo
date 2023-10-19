@@ -14,6 +14,7 @@ export class MainNavbarComponent {
     this.iconService.registerIcons(NavBar_Icons, 'main_icons')
   }
   navbarItems: NavBarIcon[] = NAVBAR_ITEMS
+  userId: Number = parseInt(localStorage.getItem('id_user') || '')
 
   isUploadMenuActive: boolean = false
 
@@ -21,7 +22,4 @@ export class MainNavbarComponent {
     this.isUploadMenuActive = !this.isUploadMenuActive
   }
 
-  goToProfile(){
-    
-  }
 }

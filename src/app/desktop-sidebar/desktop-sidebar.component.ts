@@ -13,6 +13,8 @@ export class DesktopSidebarComponent {
     this.iconService.registerIcons(Desktop_Sidebar, 'main_icons')
   }
 
+  userId: Number = parseInt(localStorage.getItem('id_user') || '')
+
   openUploadMenu(){
     this.modalSS.$modal_option.emit({state: true, type:'main'})
   }
