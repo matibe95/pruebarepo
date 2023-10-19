@@ -42,6 +42,7 @@ import { SpecificSearchComponent } from './components/specific-search/specific-s
 import { SearchedUserCardComponent } from './components/searched-user-card/searched-user-card.component';
 import { SearchedCommunityCardComponent } from './components/searched-community-card/searched-community-card.component';
 import { SearchedEventCardComponent } from './components/searched-event-card/searched-event-card.component';
+import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { SearchedEventCardComponent } from './components/searched-event-card/sea
     SearchedUserCardComponent,
     SearchedCommunityCardComponent,
     SearchedEventCardComponent,
+    ModifyProfileComponent,
   ],
   imports: [
     BrowserModule,
