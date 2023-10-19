@@ -32,7 +32,7 @@
   <div class="sidebar-container h-[100%]">
     <desktop-sidebar></desktop-sidebar>
     <main class="flex flex-col px-[10%] ml-[92px] py-6 gap-6">
-      <section class="w-full">
+      <article class="w-full bg-skin-fill rounded-3xl">
         <header
           class="h-[145px] relative bg-primary w-full rounded-t-3xl"
         ></header>
@@ -43,12 +43,10 @@
         </section>
         <section class="flex flex-col items-center gap-4 px-7 py-7">
           <h1 class="font-bold text-center text-3xl">
-            {{ user.nickname }}
+            {{ user?.nickname }}
           </h1>
           <p class="text-center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra
-            sit amet aliquam id diam
+            {{ user?.user_info?.biografia }}
           </p>
           <button
             class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
@@ -57,20 +55,45 @@
             <mat-icon svgIcon="settings"></mat-icon>
           </button>
         </section>
-        <footer class="flex justify-center gap-8">
+        <footer class="flex justify-center gap-8 pb-7">
           <div class="flex gap-3 justify-between items-center">
-            <mat-icon svgIcon="people"></mat-icon>
-            <p>{{ user.seguidor_count }}</p>
+            <mat-icon svgIcon="community_filled"></mat-icon>
+            <p>{{ user?.seguidor_count }}</p>
           </div>
           <div class="flex gap-3 justify-between items-center">
-            <mat-icon svgIcon="people"></mat-icon>
-            <p>{{ user.siguiendo_count }}</p>
+            <mat-icon svgIcon="heart_filled"></mat-icon>
+            <p>{{ user?.siguiendo_count }}</p>
           </div>
           <div class="flex gap-3 justify-between items-center">
-            <mat-icon svgIcon="people"></mat-icon>
-            <p>{{ post.data.length }}</p>
+            <mat-icon svgIcon="event_filled"></mat-icon>
+            <p>{{ post?.data?.length }}</p>
           </div>
         </footer>
+      </article>
+      <section class="radio-toolbar mb-8">
+        <input
+          type="radio"
+          id="radioRecientes"
+          name="radioFruit"
+          value="recientes"
+          checked
+        />
+        <label for="radioRecientes">Recientes</label>
+
+        <input
+          type="radio"
+          id="radioPopulares"
+          name="radioFruit"
+          value="populares"
+        />
+        <label for="radioPopulares">Populares</label>
+      </section>
+      <section>
+        <app-post
+          class="w-full"
+          [post]="post"
+          *ngFor="let post of post?.data"
+        ></app-post>
       </section>
     </main>
   </div>
