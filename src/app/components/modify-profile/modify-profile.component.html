@@ -1,0 +1,91 @@
+<div *ngIf="mobile" class="bg-skin-fill-muted h-[100vh]">
+  <app-header></app-header>
+  <main
+    class="flex flex-col items-center gap-1 px-4 py-4 bg-skin-fill-muted w-full"
+  >
+    <header class="relative flex justify-center w-full">
+      <button class="absolute top-0 left-0 text-primary text-xl">&#60;</button>
+      <h1 class="text-button-muted font-semibold text-3xl">Configuracion</h1>
+    </header>
+    <section class="flex flex-col w-full items-center py-6">
+      <div
+        class="rounded-full bg-gray-200 outline outline-button-muted h-[70px] w-[70px]"
+      ></div>
+    </section>
+    <section class="flex flex-col w-full items-center py-2 gap-4">
+      <p class="font-semibold text-xl text-button-muted">Cambiar Nickname</p>
+      <input
+        class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
+        placeholder="Ingrese su nickname"
+        type="text"
+      />
+    </section>
+    <section class="flex flex-col w-full items-center py-2 gap-4">
+      <p class="font-semibold text-xl text-button-muted">Cambiar Descripción</p>
+      <textarea
+        class="w-full resize-none rounded-2xl outline-none bg-skin-fill px-4 py-3"
+        placeholder="Ingrese su descripción"
+        name=""
+        id=""
+        cols="30"
+        rows="6"
+      ></textarea>
+    </section>
+    <footer class="flex justify-center w-full py-3">
+      <button
+        class="bg-button-muted px-6 py-3 font-semibold rounded-2xl text-skin-dark-button"
+      >
+        Guardar
+      </button>
+    </footer>
+  </main>
+  <main-navbar></main-navbar>
+</div>
+
+<div *ngIf="!mobile" class="bg-skin-fill-muted h-[100%]">
+  <desktop-upload-modal></desktop-upload-modal>
+  <div class="sidebar-container h-[100%]">
+    <desktop-sidebar></desktop-sidebar>
+    <main class="flex flex-col px-[10%] ml-[92px] py-8 gap-6">
+      <header class="relative flex justify-center">
+        <button class="absolute top-0 left-0 text-primary text-xl">
+          &#60;
+        </button>
+        <h1 class="text-button-muted font-semibold text-3xl">Configuracion</h1>
+      </header>
+      <section class="flex flex-col w-full items-center py-6 gap-8">
+        <div
+          class="rounded-full bg-gray-200 outline outline-button-muted h-[70px] w-[70px]"
+        ></div>
+      </section>
+      <section class="flex flex-col w-full items-center py-6 gap-8">
+        <p class="font-semibold text-xl text-button-muted">Cambiar Nickname</p>
+        <input
+          class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
+          placeholder="Ingrese su nickname"
+          type="text"
+        />
+      </section>
+      <section class="flex flex-col w-full items-center py-6 gap-8">
+        <p class="font-semibold text-xl text-button-muted">
+          Cambiar Descripción
+        </p>
+        <textarea
+          class="w-full resize-none rounded-2xl outline-none bg-skin-fill px-4 py-3"
+          placeholder="Ingrese su descripción"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
+      </section>
+      <footer class="flex justify-center w-full">
+        <button
+          class="bg-button-muted px-6 py-3 font-semibold rounded-2xl text-skin-dark-button"
+        >
+          Guardar
+        </button>
+      </footer>
+    </main>
+  </div>
+</div>
