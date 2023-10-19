@@ -100,13 +100,14 @@
           <p class="text-center">
             {{ user?.user_info?.biografia }}
           </p>
-          <button
+          <a
+            routerLink="/profile"
             *ngIf="myProfile === true"
             class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
           >
             Configurar
             <mat-icon svgIcon="settings"></mat-icon>
-          </button>
+          </a>
           <button
             *ngIf="myProfile === false"
             class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
