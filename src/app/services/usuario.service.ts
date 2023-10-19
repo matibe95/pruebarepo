@@ -20,12 +20,12 @@ export class UsuarioService {
     return this.http.post<any>(this.registerUserUrl, data, httpHeaders);
   }
 
-  getUser(){
+  getUser(idUser: any){
     const httpOptions = {
       headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
         'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"),
-        'id_usuario': localStorage.getItem('id_user') || ''
+        'id_usuario': idUser
       })
     };
 
