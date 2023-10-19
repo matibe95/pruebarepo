@@ -7,6 +7,7 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
 import { autenticacionGuard } from './guards/autenticacion.guard';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ExplorePageComponent } from './components/explore-page/explore-page.component';
+import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
 
 const routes: Routes = [
   { path:'welcome',
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'home', component: MainPageComponent, canActivate: [autenticacionGuard]},
   { path: 'explore', component: ExplorePageComponent, canActivate: [autenticacionGuard]},
   { path: 'user/:id', component: UserProfileComponent, canActivate: [autenticacionGuard]},
+  { path: 'profile', component: ModifyProfileComponent, canActivate: [autenticacionGuard]},
 ];
 
 @NgModule({
