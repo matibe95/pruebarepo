@@ -44,6 +44,7 @@ import { SearchedCommunityCardComponent } from './components/searched-community-
 import { SearchedEventCardComponent } from './components/searched-event-card/searched-event-card.component';
 import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
 import { ViewCommunityComponent } from './components/view-community/view-community.component';
+import { ViewEventComponent } from './components/view-event/view-event.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { ViewCommunityComponent } from './components/view-community/view-communi
     SearchedEventCardComponent,
     ModifyProfileComponent,
     ViewCommunityComponent,
+    ViewEventComponent,
   ],
   imports: [
     BrowserModule,
