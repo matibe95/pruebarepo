@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-searched-event-card',
@@ -7,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchedEventCardComponent {
   @Input() event!: any
+
+  constructor(private router: Router){}
+
+  openEvent(){
+    this.router.navigate([`/event/1`]);
+  }
 }
