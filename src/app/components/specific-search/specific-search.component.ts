@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ExplorePage_Icons } from 'src/app/constants/icons';
+import { SearchFilter } from 'src/app/models/searchfilter.model';
 import { IconService } from 'src/app/services/Icon.service';
 import { ComunidadService } from 'src/app/services/comunidad.service';
 import { EventosService } from 'src/app/services/eventos.service';
@@ -13,7 +14,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 
 export class SpecificSearchComponent {
-  searchFilter: SearchFilter = 'usuario';
+  searchFilter: SearchFilter = 'post';
 
   onItemChange(target:any ){
     this.searchFilter = target.value
@@ -56,5 +57,3 @@ export class SpecificSearchComponent {
     // }
   }
 }
-
-type SearchFilter = 'usuario' | 'comunidad' | 'evento' 
