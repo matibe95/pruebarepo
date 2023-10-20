@@ -1,0 +1,1 @@
+export type SearchFilter = 'post' | 'usuario' | 'comunidad' | 'evento' 
