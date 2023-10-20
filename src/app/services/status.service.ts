@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { SearchFilter } from '../models/searchfilter.model';
 
 
 @Injectable({
@@ -7,11 +8,7 @@ import { Injectable } from '@angular/core';
 export class StatusService {
 
   constructor() {
-    if(localStorage.getItem("accessToken") === null)
-      this.isLoggedIn = false;
-    else 
-      this.isLoggedIn = true;
    }
 
-  public isLoggedIn: boolean = false;
+  $feedFilter = new EventEmitter<SearchFilter>()
 }
