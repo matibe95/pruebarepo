@@ -16,6 +16,11 @@ export enum UserProfile_Icons {
   follow,
 }
 
+export enum ViewEvent_Icons {
+  follow,
+  location_white
+}
+
 export enum ExplorePage_Icons {
   userIcon,
   exploreEvents,
