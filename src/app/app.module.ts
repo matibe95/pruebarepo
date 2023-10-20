@@ -43,6 +43,7 @@ import { SearchedUserCardComponent } from './components/searched-user-card/searc
 import { SearchedCommunityCardComponent } from './components/searched-community-card/searched-community-card.component';
 import { SearchedEventCardComponent } from './components/searched-event-card/searched-event-card.component';
 import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
+import { ViewCommunityComponent } from './components/view-community/view-community.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { ModifyProfileComponent } from './components/modify-profile/modify-profi
     SearchedCommunityCardComponent,
     SearchedEventCardComponent,
     ModifyProfileComponent,
+    ViewCommunityComponent,
   ],
   imports: [
     BrowserModule,
