@@ -9,6 +9,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ExplorePageComponent } from './components/explore-page/explore-page.component';
 import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
 import { ViewCommunityComponent } from './components/view-community/view-community.component';
+import { ViewEventComponent } from './components/view-event/view-event.component';
 
 const routes: Routes = [
   { path:'welcome',
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'user/:id', component: UserProfileComponent, canActivate: [autenticacionGuard]},
   { path: 'profile', component: ModifyProfileComponent, canActivate: [autenticacionGuard]},
   { path: 'community/:id', component: ViewCommunityComponent, canActivate: [autenticacionGuard]},
+  { path: 'event/:id', component: ViewEventComponent, canActivate: [autenticacionGuard]},
 ];
 
 @NgModule({
