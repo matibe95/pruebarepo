@@ -45,6 +45,8 @@ import { SearchedEventCardComponent } from './components/searched-event-card/sea
 import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
 import { ViewCommunityComponent } from './components/view-community/view-community.component';
 import { ViewEventComponent } from './components/view-event/view-event.component';
+import { FeedComunityComponent } from './components/feed-comunity/feed-comunity.component';
+import { FeedEventsComponent } from './components/feed-events/feed-events.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { ViewEventComponent } from './components/view-event/view-event.component
     ModifyProfileComponent,
     ViewCommunityComponent,
     ViewEventComponent,
+    FeedComunityComponent,
+    FeedEventsComponent,
   ],
   imports: [
     BrowserModule,
