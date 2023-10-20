@@ -1,21 +1,82 @@
 <div *ngIf="mobile" class="bg-skin-fill-muted h-[100vh]">
   <app-header></app-header>
-  <main class="flex flex-col items-center gap-6 px-4 py-4 bg-skin-fill-muted w-full">
+  <main
+    class="flex flex-col items-center gap-6 px-4 py-4 bg-skin-fill-muted w-full"
+  >
     <!-- <app-toggle-theme-button></app-toggle-theme-button> -->
-    <section class="flex bg-skin-fill text-primary font-semibold px-2.5 py-[12px] justify-between items-center gap-2 rounded-2xl w-full text-lg">
-      <button class="selected_button w-[121px] h-[45px] rounded-xl justify-center items-center flex">Todo</button>
-      <button class="w-[121px] h-[45px] rounded-xl justify-center items-center flex">Seguidos</button>
-      <button class="w-[121px] h-[45px] rounded-xl justify-center items-center flex">Descubrir</button>
+    <section
+      class="flex bg-skin-fill text-primary font-semibold px-2.5 py-[12px] justify-between items-center gap-2 rounded-2xl w-full text-lg"
+    >
+      <button
+        class="selected_button w-[121px] h-[45px] rounded-xl justify-center items-center flex"
+      >
+        Todo
+      </button>
+      <button
+        class="w-[121px] h-[45px] rounded-xl justify-center items-center flex"
+      >
+        Seguidos
+      </button>
+      <button
+        class="w-[121px] h-[45px] rounded-xl justify-center items-center flex"
+      >
+        Descubrir
+      </button>
     </section>
-    <app-post class="w-full" [post]="post" *ngFor="let post of postsList"></app-post>
+    <app-post
+      class="w-full"
+      [post]="post"
+      *ngFor="let post of postsList"
+    ></app-post>
   </main>
   <main-navbar></main-navbar>
 </div>
 
-<div *ngIf="!mobile" class="sidebar-container bg-skin-fill-muted transition-all h-[100vh]">
-  <desktop-sidebar></desktop-sidebar>
-  <main class="flex flex-col">
-    <filters-header></filters-header>
-    <app-post class="w-full" [post]="post" *ngFor="let post of postsList"></app-post>
-  </main>
+<div *ngIf="!mobile" class="bg-skin-fill-muted h-[100%]">
+  <section
+    class="h-[10px] w-[10px] bg-red-500 rounded-full absolute right-0 top-0"
+  ></section>
+  <desktop-upload-modal></desktop-upload-modal>
+  <div class="sidebar-container h-[100%]">
+    <desktop-sidebar></desktop-sidebar>
+    <main class="flex flex-col px-[10%] ml-[92px]">
+      <filters-header></filters-header>
+      <section [ngSwitch]="feedFilter" class="flex flex-col gap-9">
+        <section *ngSwitchCase="'post'">
+          <app-post
+            class="w-full"
+            [post]="post"
+            *ngFor="let post of postsList"
+          ></app-post>
+        </section>
+        <section *ngSwitchCase="'comunidad'">
+          <div class="flex w-full justify-center py-6">
+            <mat-icon
+              class="customIconSize"
+              svgIcon="exploreCommunity"
+            ></mat-icon>
+          </div>
+          <app-feed-comunity>
+            [community]="community" *ngFor="let community of communities"
+          </app-feed-comunity>
+          <!-- <app-searched-community-card
+            [community]="community"
+            *ngFor="let community of communities"
+            ></app-searched-community-card> -->
+        </section>
+        <section *ngSwitchCase="'evento'">
+          <div class="flex w-full justify-center py-6">
+            <mat-icon class="customIconSize" svgIcon="exploreEvents"></mat-icon>
+          </div>
+          <app-feed-comunity>
+            [community]="community" *ngFor="let community of communities"
+          </app-feed-comunity>
+          <!-- <app-searched-event-card
+            [event]="event"
+            *ngFor="let event of events"
+          ></app-searched-event-card> -->
+        </section>
+      </section>
+    </main>
+  </div>
 </div>

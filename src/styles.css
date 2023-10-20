@@ -26,6 +26,7 @@
     --color-border: #2f2e2e;
     --color-button-hover-primary: #478ef2;
     --color-button-hover-alternative: #494747;
+    --color-button-muted: #3882EA;
   }
   .light-mode {
     --color-primary: #0053C8;
@@ -40,11 +41,22 @@
     --color-border: #d5d5d5;
     --color-button-hover-primary: #04a1e4;
     --color-button-hover-alternative: #d2d2d2;
+    --color-button-muted: #3882EA;
+  }
+}
+
+@media (max-width: 750px){
+  html {
+    overflow-y: scroll;
   }
 }
 
 .footerIcon {
   width: 18px;
+}
+
+body {
+  background-color: var(--color-background-fill-muted);
 }
 
 /* html,

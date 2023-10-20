@@ -8,6 +8,30 @@ export enum Landing_Icons {
   mobile_landing_background
 }
 
+export enum UserProfile_Icons {
+  settings,
+  heart_filled,
+  event_filled,
+  community_filled,
+  follow,
+}
+
+export enum ViewEvent_Icons {
+  follow,
+  location_white
+}
+
+export enum ExplorePage_Icons {
+  userIcon,
+  exploreEvents,
+  exploreCommunity
+}
+
+export enum SearchBar_Icons {
+  search,
+  refresh
+}
+
 export enum Modal_Account_Icons{
   cross
 }
@@ -30,7 +54,30 @@ export enum NavBar_Icons {
   fire,
   event,
   community,
-  post
+  post,
+  cross,
+  gallery,
+  location,
+  check,
+  previous,
+}
+
+export enum Desktop_Sidebar{
+  home,
+  explore,
+  fire,
+  event,
+  community,
+  post,
+  'origins-logo-blue',
+  add,
+  bell,
+  messages
+}
+
+export enum Desktop_Header {
+  filters,
+  refresh
 }
 
 

@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { ExplorePage_Icons } from 'src/app/constants/icons';
 import { Post } from 'src/app/models/Post';
+import { SearchFilter } from 'src/app/models/searchfilter.model';
+import { IconService } from 'src/app/services/Icon.service';
 import { PostsService } from 'src/app/services/posts.service';
+import { StatusService } from 'src/app/services/status.service';
 
 @Component({
   selector: 'app-main-page',
@@ -8,60 +12,37 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
-  // postsList: Post[] = [
-  //   {
-  //     id: 1,
-  //     profileFrom: 'el_caehom',
-  //     content: "",
-  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-  //     likesCount: 22.6,
-  //     commentsCount: 22.6,
-  //     location: 'Singapur, El alfa.',
-  //     createdAt: '1 hora'
-  //   },
-  //   {
-  //     id: 1,
-  //     profileFrom: 'el_caehom',
-  //     content: "",
-  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-  //     location: 'Singapur, El alfa.',
-  //     createdAt: '1 hora'
-  //   },
-  //   {
-  //     id: 1,
-  //     profileFrom: 'el_caehom',
-  //     content: "",
-  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-  //     likesCount: 22.6,
-  //     commentsCount: 22.6,
-  //     location: 'Singapur, El alfa.',
-  //     createdAt: '1 hora'
-  //   },
-  //   {
-  //     id: 1,
-  //     profileFrom: 'el_caehom',
-  //     content: "",
-  //     description: 'hoy fue un dia de mierda la verdad glu glu golden boy in the aii...',
-  //     likesCount: 22.6,
-  //     commentsCount: 22.6,
-  //     location: 'Singapur, El alfa.',
-  //     createdAt: '1 hora'
-  //   },
-  // ]
 
-  constructor(private postsService: PostsService){}
-
+  constructor(private postsService: PostsService, private statusSS: StatusService, private iconSS: IconService){
+    iconSS.registerIcons(ExplorePage_Icons,'main_icons')
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (event.target.innerWidth < 750) {
+      this.mobile = true
+      return
+    }
+    this.mobile = false
+  }
+  feedFilter: SearchFilter = 'post'
   postsList!: any[]
   mobile: Boolean = false;
 
   ngOnInit(){
-    if (window.innerWidth < 650) {
+    console.log(this.feedFilter)
+    if (window.innerWidth < 750) {
       this.mobile = true
+    } else {
+      this.mobile = false
     }
 
-    this.postsService.listarPosts().subscribe((res)=>{
-      this.postsList = res
-      this.postsList.reverse()
+    this.statusSS.$feedFilter.subscribe((value)=>{
+      this.feedFilter = value
+    })
+
+    this.postsService.ListarPostsUsuario().subscribe((res)=>{
+      this.postsList = res.data
+      // this.postsList.reverse()
     })
   }
 }

@@ -10,7 +10,7 @@ export class AuthService {
 
   private loginUrl = "http://localhost:8000/oauth/token";
   private logoutUrl = "http://localhost:8000/api/v1/logout";
-  private verificarUserUrl = "http://localhost:8000/api/v1/oauth/verificar";
+  private verificarUserUrl = "http://localhost:8000/api/v2/oauth/verificar";
 
   constructor(private http: HttpClient) { }
 

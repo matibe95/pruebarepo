@@ -1,0 +1,49 @@
+<section class="radio-toolbar mb-8">
+  <input
+    type="radio"
+    id="radioUsuario"
+    name="radioFruit"
+    value="usuario"
+    checked
+    (change)="onItemChange($event.target)"
+  />
+  <label for="radioUsuario">Usuario</label>
+
+  <input
+    type="radio"
+    id="radioComunidad"
+    name="radioFruit"
+    value="comunidad"
+    (change)="onItemChange($event.target)"
+  />
+  <label for="radioComunidad">Comunidad</label>
+
+  <input
+    type="radio"
+    id="radioEvento"
+    name="radioFruit"
+    value="evento"
+    (change)="onItemChange($event.target)"
+  />
+  <label for="radioEvento">Evento</label>
+</section>
+<div [ngSwitch]="searchFilter">
+  <section *ngSwitchCase="'usuario'">
+    <app-searched-user-card
+      [user]="user"
+      *ngFor="let user of users"
+    ></app-searched-user-card>
+  </section>
+  <section *ngSwitchCase="'comunidad'">
+    <app-searched-community-card
+      [community]="community"
+      *ngFor="let community of communities"
+    ></app-searched-community-card>
+  </section>
+  <section *ngSwitchCase="'evento'">
+    <app-searched-event-card
+      [event]="event"
+      *ngFor="let event of events"
+    ></app-searched-event-card>
+  </section>
+</div>

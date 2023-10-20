@@ -3,11 +3,12 @@
   background-color: var(--color-primary);
 }
 
+.customIconSize {
+  height: 75px ;
+  width: 75px ;
+}
+/* 
 .sidebar-container {
   display: grid;
-  grid-template-columns: auto auto;
-}
-
-.sidebar-container main {
-  max-width: 80%;
-}
+  grid-template-columns: auto 2fr;
+} */

@@ -1,0 +1,80 @@
+<div *ngIf="mobile" class="bg-skin-fill-muted h-[100vh]">
+  <app-header></app-header>
+  <main
+    class="flex flex-col items-center gap-6 px-4 py-4 bg-skin-fill-muted w-full"
+  >
+    <!-- <app-toggle-theme-button></app-toggle-theme-button> -->
+    <div class="w-full flex items-center gap-1 rounded-xl bg-skin-fill px-4">
+      <button class="flex items-center justify-center">
+        <mat-icon svgIcon="search"></mat-icon>
+      </button>
+      <input
+        autocomplete="off"
+        (input)="onChange($event.target)"
+        class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
+        placeholder="Buscar"
+        [(ngModel)]="filterName"
+        name="filterName"
+      />
+      <button (click)="cleanSearch()">
+        <p class="text-button-muted">Cancel</p>
+      </button>
+    </div>
+    <section class="masonryLayoutContainer {{ this.showPosts }}">
+      <app-explore-post
+        class="w-full"
+        [post]="post"
+        *ngFor="let post of postsList"
+      ></app-explore-post>
+    </section>
+    <div class="{{ showOptions }} w-full">
+      <app-specific-search></app-specific-search>
+    </div>
+  </main>
+  <main-navbar></main-navbar>
+</div>
+
+<div *ngIf="!mobile" class="bg-skin-fill-muted h-[100%]">
+  <desktop-upload-modal></desktop-upload-modal>
+  <div class="sidebar-container h-[100%]">
+    <desktop-sidebar></desktop-sidebar>
+    <main class="flex flex-col px-[10%] ml-[92px] py-6 gap-6">
+      <div class="flex gap-2 w-full">
+        <div
+          class="w-full flex items-center gap-1 rounded-xl bg-skin-fill px-4"
+        >
+          <button class="flex items-center justify-center">
+            <mat-icon svgIcon="search"></mat-icon>
+          </button>
+          <input
+            autocomplete="off"
+            (input)="onChange($event.target)"
+            [(ngModel)]="filterName"
+            name="filterName"
+            class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
+            placeholder="Buscar"
+          />
+          <button (click)="cleanSearch()">
+            <p class="text-button-muted">Cancel</p>
+          </button>
+        </div>
+        <button
+          class="flex gap-2 font-semibold text-button-muted px-2 py-3 bg-skin-fill rounded-xl"
+        >
+          Refresh
+          <mat-icon svgIcon="refresh"></mat-icon>
+        </button>
+      </div>
+      <section class="masonryLayoutContainer {{ this.showPosts }}">
+        <app-explore-post
+          class="w-full"
+          [post]="post"
+          *ngFor="let post of postsList"
+        ></app-explore-post>
+      </section>
+      <div class="{{ showOptions }} w-full">
+        <app-specific-search></app-specific-search>
+      </div>
+    </main>
+  </div>
+</div>

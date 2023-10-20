@@ -1,3 +1,40 @@
-<aside class="flex flex-col bg-red-400 h-full">
-    <h1>p</h1>
+<aside
+  class="flex flex-col px-4 py-6 gap-8 items-center bg-primary h-full fixed overflow-auto w-[92px]"
+>
+  <button
+    (click)="navigateTo('/home')"
+    class="p-3 rounded-xl flex items-center bg-skin-fill"
+  >
+    <mat-icon svgIcon="origins-logo-blue"></mat-icon>
+  </button>
+  <hr class="w-full bg-skin-fill h-[1px]" />
+  <div class="flex flex-col items-center justify-between h-full">
+    <app-sidebar-button
+      (click)="navigateTo('/home')"
+      route="/home"
+      icon="home"
+    ></app-sidebar-button>
+    <app-sidebar-button
+      (click)="navigateTo('/explore')"
+      route="/explore"
+      icon="explore"
+    ></app-sidebar-button>
+    <app-sidebar-button route="/match" icon="fire"></app-sidebar-button>
+    <app-sidebar-button
+      (click)="openUploadMenu()"
+      icon="add"
+    ></app-sidebar-button>
+    <app-sidebar-button route="/chats" icon="messages"></app-sidebar-button>
+    <app-sidebar-button route="/notifications" icon="bell"></app-sidebar-button>
+    <a
+      href="/user/{{ userId }}"
+      class="h-[35px] w-[35px] bg-skin-fill rounded-full"
+    >
+      <img
+        src="https://unavatar.io/github/matibe95"
+        class="h-[36px] w-[36px] rounded-full"
+        alt=""
+      />
+    </a>
+  </div>
 </aside>

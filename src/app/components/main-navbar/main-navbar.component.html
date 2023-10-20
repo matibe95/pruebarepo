@@ -1,22 +1,31 @@
-<nav class="mobile-navbar fixed bottom-0 w-full bg-primary overflow-clip px-[45px] py-[18px]">
-  <app-create-menu  
-    *ngIf="isUploadMenuActive">
-  </app-create-menu>
-  <section class="mobile-navbar-icons_container flex flex-row justify-between items-center">
-    <a routerLink='' class="flex items-center justify-center">
-      <mat-icon svgIcon="home"></mat-icon>
+<nav
+  class="mobile-navbar fixed bottom-0 w-full bg-primary overflow-clip px-[45px] py-[18px]"
+>
+  <app-create-menu *ngIf="isUploadMenuActive"> </app-create-menu>
+  <section
+    class="mobile-navbar-icons_container flex flex-row justify-between items-center"
+  >
+    <a routerLink="/home" class="flex items-center justify-center">
+      <mat-icon class="customIconSize" svgIcon="home"></mat-icon>
     </a>
-    <a routerLink='' class="flex items-center justify-center">
+    <a routerLink="/explore" class="flex items-center justify-center">
       <mat-icon svgIcon="explore"></mat-icon>
     </a>
-    <button (click)="openUploadPostMenu()" class="flex items-center justify-center">
+    <button
+      (click)="openUploadPostMenu()"
+      class="flex items-center justify-center"
+    >
       <mat-icon svgIcon="add"></mat-icon>
     </button>
-    <a routerLink='' class="flex items-center justify-center">
+    <a routerLink="/fire" class="flex items-center justify-center">
       <mat-icon svgIcon="fire"></mat-icon>
     </a>
-    <picture class="bg-gray-200 rounded-full h-[32px] w-[32px]">
-      <img src="" alt="">
-    </picture>
+    <a href="/user/{{ userId }}" class="bg-red-400 rounded-full">
+      <img
+        src="https://unavatar.io/github/matibe95"
+        class="h-[36px] w-[36px] rounded-full"
+        alt=""
+      />
+    </a>
   </section>
 </nav>

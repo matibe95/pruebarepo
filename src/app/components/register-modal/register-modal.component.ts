@@ -106,7 +106,6 @@ export class RegisterModalComponent {
     
     this.userService.registerUser(data).subscribe((res) => {
       console.log(res);
-      if (res.message !== 'Register Correctly executed') return this.showError()
       return this.loginUser(data)
     });
   }

@@ -30,6 +30,23 @@ import { PostMenuComponent } from './components/post-menu/post-menu.component';
 import { LoadingModalComponent } from './components/loading-modal/loading-modal.component';
 import { DesktopSidebarComponent } from './desktop-sidebar/desktop-sidebar.component';
 import { FiltersHeaderComponent } from './filters-header/filters-header.component';
+import { SidebarButtonComponent } from './sidebar-button/sidebar-button.component';
+import { DesktopUploadModalComponent } from './desktop-upload-modal/desktop-upload-modal.component';
+import { RulesButtonComponent } from './rules-button/rules-button.component';
+import { RuleNumberComponent } from './rule-number/rule-number.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ExplorePageComponent } from './components/explore-page/explore-page.component';
+import { ExplorePostComponent } from './components/explore-post/explore-post.component';
+import { DetectFocusDirective } from './directives/detect-focus.directive';
+import { SpecificSearchComponent } from './components/specific-search/specific-search.component';
+import { SearchedUserCardComponent } from './components/searched-user-card/searched-user-card.component';
+import { SearchedCommunityCardComponent } from './components/searched-community-card/searched-community-card.component';
+import { SearchedEventCardComponent } from './components/searched-event-card/searched-event-card.component';
+import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
+import { ViewCommunityComponent } from './components/view-community/view-community.component';
+import { ViewEventComponent } from './components/view-event/view-event.component';
+import { FeedComunityComponent } from './components/feed-comunity/feed-comunity.component';
+import { FeedEventsComponent } from './components/feed-events/feed-events.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +73,23 @@ import { FiltersHeaderComponent } from './filters-header/filters-header.componen
     LoadingModalComponent,
     DesktopSidebarComponent,
     FiltersHeaderComponent,
+    SidebarButtonComponent,
+    DesktopUploadModalComponent,
+    RulesButtonComponent,
+    RuleNumberComponent,
+    UserProfileComponent,
+    ExplorePageComponent,
+    ExplorePostComponent,
+    DetectFocusDirective,
+    SpecificSearchComponent,
+    SearchedUserCardComponent,
+    SearchedCommunityCardComponent,
+    SearchedEventCardComponent,
+    ModifyProfileComponent,
+    ViewCommunityComponent,
+    ViewEventComponent,
+    FeedComunityComponent,
+    FeedEventsComponent,
   ],
   imports: [
     BrowserModule,

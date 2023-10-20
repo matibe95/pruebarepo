@@ -24,10 +24,10 @@ export class ModalStepComponent {
     private router: Router
   ){}
   @HostListener ('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
-    if (event.key === "ArrowRight"){
-      if (this.content.step > 0) this.updateStep()
-    }
-    if (event.key === "ArrowLeft") this.changeStepEvent.emit(false);
+    // if (event.key === "ArrowRight"){
+    //   if (this.content.step > 0) this.updateStep()
+    // }
+    // if (event.key === "ArrowLeft") this.changeStepEvent.emit(false);
 
     if (event.key === "Enter"){
       if (this.content.step > 0) this.updateStep()
