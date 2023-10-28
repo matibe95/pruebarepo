@@ -39,7 +39,14 @@ export class MainPageComponent {
     this.statusSS.$feedFilter.subscribe((value)=>{
       this.feedFilter = value
     })
+    this.listarPosts()
 
+    this.statusSS.$posts.subscribe((value)=>{
+      this.listarPosts()
+    })
+  }
+
+  listarPosts(){
     this.postsService.ListarPostsUsuario().subscribe((res)=>{
       this.postsList = res.data
       // this.postsList.reverse()
