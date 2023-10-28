@@ -11,4 +11,6 @@ export class StatusService {
    }
 
   $feedFilter = new EventEmitter<SearchFilter>()
+
+  $posts = new EventEmitter<Boolean>()
 }
