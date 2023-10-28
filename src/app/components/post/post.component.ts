@@ -37,7 +37,6 @@ export class PostComponent {
       this.postService.LikePost(this.post.id)
       .subscribe({
         next: (data) => {
-          console.log(data)
           this.darLikeAnimation()
         },
         error: (e) => 
@@ -48,8 +47,15 @@ export class PostComponent {
   }
 
   deleteLike(){
-      this.postService.DeleteLike(this.post.id).subscribe((res)=>{
-        console.log(res)
+      this.postService.DeleteLike(this.post.id)
+      .subscribe({
+        next: (data) => {
+          this.removeLikeAnimation()
+        },
+        error: (e) => 
+        {
+          console.log(e)
+        }  
       })
   }
 
@@ -57,8 +63,13 @@ export class PostComponent {
     this.showOptions=!this.showOptions;
   }
 
+  removeLikeAnimation(){
+    this.post.like_count -= 1
+    this.isLiked = false
+  }
+
   darLikeAnimation(){
-    this.post.like_count =+ 1
+    this.post.like_count += 1
     this.isLiked = true
   }
 }
