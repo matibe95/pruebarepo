@@ -1,5 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,22 @@ export class PostsService {
     return this.http.get<any>(this.listarFeed, httpHeaders);
   }
   
+  DeleteLike(body: any){    
+    const httpHeaders = {
+      headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"),
+        'id_usuario' : this.userId
+      })
+    };
+  
+    return this.http.delete<any>(this.likePost + body, httpHeaders)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+  
+
   LikePost(body: any){    
     const httpHeaders = {
       headers: new HttpHeaders({ 
@@ -60,7 +77,17 @@ export class PostsService {
     };
   
     return this.http.post<any>(this.likePost + body, body, httpHeaders)
+    .pipe(
+      catchError(this.handleError)
+    )
   }
+  
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    }
+    return throwError(()=> error);
+  };
 
   createPost(body: any){
     const httpHeaders = {
@@ -71,5 +98,27 @@ export class PostsService {
     };
 
     return this.http.post<any>(this.crearPost, body, httpHeaders)
+  }
+
+  private getServerErrorMessage(error: HttpErrorResponse): string {
+    console.log(error)
+    switch (error.status) {
+        case 404: {
+            return `Not Found: ${error.message}`;
+        }
+        case 401: {
+            return `Ya le diste like: ${error.message}`;
+        }
+        case 403: {
+            return `Access Denied: ${error.message}`;
+        }
+        case 500: {
+            return `Internal Server Error: ${error.message}`;
+        }
+        default: {
+            return `Unknown Server Error: ${error.message}`;
+        }
+
+    }
   }
 }
