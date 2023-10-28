@@ -41,11 +41,20 @@
       <span class="text-center text-primary invisible font-semibold">0</span>
     </section>
     <section class="grid grid-rows-1 gap-2 items-center">
-      <button (click)="likePost()" class="options_post">
-        <mat-icon class="customIconSize" svgIcon="heart"></mat-icon>
+      <button (click)="likeAction()" class="options_post">
+        <mat-icon
+          *ngIf="!isLiked"
+          class="customIconSize"
+          svgIcon="heart"
+        ></mat-icon>
+        <mat-icon
+          *ngIf="isLiked"
+          class="customIconSize"
+          svgIcon="heart_liked"
+        ></mat-icon>
       </button>
       <span class="text-center text-primary font-semibold">{{
-        post.cantidad_likes
+        post.like_count
       }}</span>
     </section>
     <section class="grid grid-rows-1 gap-2 items-center">

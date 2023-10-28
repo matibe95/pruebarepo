@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { errorCodes } from 'src/app/constants/httpErrorCodes';
 import { Post_Icons } from 'src/app/constants/icons';
 import { IconService } from 'src/app/services/Icon.service';
 import { PostsService } from 'src/app/services/posts.service';
@@ -11,7 +12,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class PostComponent {
   @Input() post!: any
-
+  isLiked: boolean = false;
   
   constructor(private iconService: IconService, private userService: UsuarioService, private postService: PostsService) {
     this.iconService.registerIcons( Post_Icons ,'main_icons')
@@ -20,16 +21,44 @@ export class PostComponent {
   showOptions: boolean = true
 
   ngOnInit(){
-    // console.log(this.post)
+    this.post.like.map((item: any)=> {
+      if (item.id_usuario == localStorage.getItem('id_user')) this.isLiked = true
+    })
+  }
+
+  likeAction(){
+    if(!this.isLiked){
+      return this.likePost()
+    }
+    this.deleteLike()
   }
 
   likePost(){
-    this.postService.LikePost(this.post.id).subscribe((res)=>{
-      console.log(res)
-    })
+      this.postService.LikePost(this.post.id)
+      .subscribe({
+        next: (data) => {
+          console.log(data)
+          this.darLikeAnimation()
+        },
+        error: (e) => 
+        {
+          console.log(e)
+        }  
+      })
+  }
+
+  deleteLike(){
+      this.postService.DeleteLike(this.post.id).subscribe((res)=>{
+        console.log(res)
+      })
   }
 
   onToggleOptions(){
     this.showOptions=!this.showOptions;
+  }
+
+  darLikeAnimation(){
+    this.post.like_count =+ 1
+    this.isLiked = true
   }
 }
