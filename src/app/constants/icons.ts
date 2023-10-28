@@ -95,5 +95,6 @@ export enum Post_Icons {
   send,
   comments,
   heart,
-  backarrow
+  backarrow,
+  heart_liked
 }
