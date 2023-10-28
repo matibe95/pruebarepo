@@ -42,7 +42,7 @@
     <main class="flex flex-col px-[10%] ml-[92px]">
       <filters-header></filters-header>
       <section [ngSwitch]="feedFilter" class="flex flex-col gap-9">
-        <section *ngSwitchCase="'post'">
+        <section class="flex flex-col gap-6" *ngSwitchCase="'post'">
           <app-post
             class="w-full"
             [post]="post"
