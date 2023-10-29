@@ -14,7 +14,8 @@
 }
 
 .hiddenContainer {
-    animation: fade-out .5s forwards;
+    display: none;
+    /* animation: fade-out .5s forwards; */
 }
 
 .visibleContainer {
