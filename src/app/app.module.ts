@@ -47,6 +47,7 @@ import { ViewCommunityComponent } from './components/view-community/view-communi
 import { ViewEventComponent } from './components/view-event/view-event.component';
 import { FeedComunityComponent } from './components/feed-comunity/feed-comunity.component';
 import { FeedEventsComponent } from './components/feed-events/feed-events.component';
+import { PostUserCardComponent } from './components/post-user-card/post-user-card.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { FeedEventsComponent } from './components/feed-events/feed-events.compon
     ViewEventComponent,
     FeedComunityComponent,
     FeedEventsComponent,
+    PostUserCardComponent,
   ],
   imports: [
     BrowserModule,
