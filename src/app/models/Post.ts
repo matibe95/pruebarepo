@@ -15,3 +15,8 @@ export interface Post{
     }
   ]
 }
+
+export interface PostShowLikesService {
+  show: boolean,
+  likes: any[]
+}
