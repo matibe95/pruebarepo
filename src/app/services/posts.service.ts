@@ -12,6 +12,7 @@ export class PostsService {
   private listarFeed = `http://localhost:8001/api/v2/post`
   private crearPost = `http://localhost:8001/api/v2/post`
   private likePost = `http://localhost:8001/api/v2/post/like/`
+  private reportPost = `http://localhost:8001/api/v2/post/report/`
 
   constructor(private http: HttpClient) { }
   
@@ -66,6 +67,21 @@ export class PostsService {
     )
   }
   
+
+  ReportPost(body: any){    
+    const httpHeaders = {
+      headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"),
+        'id_usuario' : this.userId
+      })
+    };
+  
+    return this.http.post<any>(this.reportPost + body, body, httpHeaders)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
 
   LikePost(body: any){    
     const httpHeaders = {
