@@ -24,7 +24,9 @@ export enum ViewEvent_Icons {
 export enum ExplorePage_Icons {
   userIcon,
   exploreEvents,
-  exploreCommunity
+  exploreCommunity,
+  follow,
+  arrow_down
 }
 
 export enum SearchBar_Icons {
