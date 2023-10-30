@@ -28,8 +28,15 @@
     </p>
   </div>
   <footer class="post_footer flex justify-center gap-10 items-center">
-    <section class="grid grid-rows-1 gap-2 items-center">
-      <button class="options_post">
+    <section class="relative grid grid-rows-1 gap-2 items-center">
+      <button
+        (click)="reportPost()"
+        *ngIf="showOptions"
+        class="shadow-md absolute text-skin-dark-button bg-primary px-4 py-2 rounded-xl top-[-50px] left-[-20px]"
+      >
+        Reportar
+      </button>
+      <button (click)="onToggleOptions()" class="options_post">
         <mat-icon svgIcon="options"></mat-icon>
       </button>
       <span class="text-center text-primary invisible font-semibold">0</span>
@@ -53,17 +60,21 @@
           svgIcon="heart_liked"
         ></mat-icon>
       </button>
-      <span class="text-center text-primary font-semibold">{{
-        post.like_count
-      }}</span>
+      <button
+        (click)="showLikes()"
+        class="cursor-pointer hover:text-primary text-center text-skin-base font-semibold"
+      >
+        {{ post.like_count }}
+      </button>
     </section>
     <section class="grid grid-rows-1 gap-2 items-center">
       <button class="options_post">
         <mat-icon svgIcon="comments"></mat-icon>
       </button>
-      <span class="text-center text-primary font-semibold">{{
-        post.comment.length
-      }}</span>
+      <span
+        class="cursor-pointer hover:text-primary text-skin-base text-center font-semibold"
+        >{{ post.comment.length }}</span
+      >
     </section>
     <section class="grid grid-rows-1 gap-2 items-center">
       <button class="options_post">

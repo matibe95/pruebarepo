@@ -26,7 +26,9 @@ export class MainPageComponent {
   }
   feedFilter: SearchFilter = 'post'
   postsList!: any[]
-  mobile: Boolean = false;
+  mobile: boolean = false;
+  postLikes!: any[]
+  showLikes: boolean = false;
 
   ngOnInit(){
     console.log(this.feedFilter)
@@ -41,9 +43,17 @@ export class MainPageComponent {
     })
     this.listarPosts()
 
-    this.statusSS.$posts.subscribe((value)=>{
+    this.statusSS.$posts.subscribe(()=>{
       this.listarPosts()
     })
+
+    this.statusSS.$showLikes.subscribe((value)=>{
+      this.postLikes = value.likes
+      this.showLikes = value.show
+    })
+  }
+  cerrarLikes(){
+    this.showLikes = false
   }
 
   listarPosts(){
