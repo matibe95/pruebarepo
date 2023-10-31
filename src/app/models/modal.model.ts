@@ -13,5 +13,5 @@ export interface Modal_Option {
 }
 
 
-type OptionType = 'event' | 'community' | 'post' | 'main'
+export type OptionType = 'event' | 'community' | 'post' | 'main'
 type ModalType = 'login' | 'register'

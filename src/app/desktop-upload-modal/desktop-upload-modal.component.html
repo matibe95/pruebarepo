@@ -18,7 +18,7 @@
       <section class="flex gap-4 items-center justify-evenly">
         <div class="desktopModal_option">
           <button
-            (click)="openEventModal()"
+            (click)="openSectionModal('event')"
             class="rounded-xl w-20 h-20 flex items-center justify-center bg-skin-fill"
           >
             <mat-icon svgIcon="event"></mat-icon>
@@ -29,6 +29,7 @@
         </div>
         <div class="desktopModal_option">
           <button
+            (click)="openSectionModal('community')"
             class="rounded-xl w-20 h-20 flex items-center justify-center bg-skin-fill"
           >
             <mat-icon svgIcon="community"></mat-icon>
@@ -37,6 +38,7 @@
         </div>
         <div class="desktopModal_option">
           <button
+            (click)="openSectionModal('post')"
             class="rounded-xl w-20 h-20 flex items-center justify-center bg-skin-fill"
           >
             <mat-icon svgIcon="post"></mat-icon>
@@ -234,4 +236,7 @@
       </div>
     </form>
   </article>
+  <app-create-post-menu
+    *ngIf="optionSelected.type === 'post'"
+  ></app-create-post-menu>
 </div>
