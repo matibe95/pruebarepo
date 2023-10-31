@@ -109,10 +109,11 @@ export class PostsService {
     const httpHeaders = {
       headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
-        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken") 
+        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"), 
+        'id_usuario' : this.userId
       })
     };
-
+    console.log(body)
     return this.http.post<any>(this.crearPost, body, httpHeaders)
   }
 
