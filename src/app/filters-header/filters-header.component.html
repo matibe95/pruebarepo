@@ -2,12 +2,22 @@
   <section class="radio-toolbar bg-skin-fill">
     <input
       type="radio"
+      id="radioPost"
+      name="radioFruit"
+      value="post"
+      checked
+      (change)="onItemChange($event.target)"
+    />
+    <label for="radioPost">Posts</label>
+    <hr class="bg-button-muted w-[4px] h-5 rounded-full" />
+    <input
+      type="radio"
       id="radioComunidad"
       name="radioFruit"
       value="comunidad"
       (change)="onItemChange($event.target)"
     />
-    <label for="radioComunidad">Comunidad</label>
+    <label for="radioComunidad">Comunidades</label>
     <hr class="bg-button-muted w-[4px] h-5 rounded-full" />
     <input
       type="radio"
@@ -23,7 +33,7 @@
       <hr class="bg-primary w-[2px] h-5 rounded-full" />
       <button class="py-[8px] px-8">Eventos</button>
     </div> -->
-  <div
+  <!-- <div
     class="header-buttons-container font-semibold rounded-lg text-button-muted bg-skin-fill flex justify-between items-center"
   >
     <button
@@ -32,7 +42,7 @@
       Filtrar Posts
       <mat-icon svgIcon="filters"></mat-icon>
     </button>
-  </div>
+  </div> -->
   <div
     class="header-buttons-container font-semibold rounded-lg text-button-muted bg-skin-fill flex justify-between items-center"
   >
