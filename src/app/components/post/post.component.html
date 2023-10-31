@@ -12,13 +12,15 @@
         >
           <img src="{{ post?.user?.foto_perfil }}" />
         </div>
-        <p class="font-semibold">{{ post?.user?.nickname }}</p>
+        <p class="text-lg font-medium">{{ post?.user?.nickname }}</p>
       </a>
     </article>
   </section>
-  <h2 class="text-3xl font-extrabold tracking-tighter">
-    {{ post.text[0]?.titulo || "Titulo del Post" }}
-  </h2>
+  <div class="">
+    <h2 class="text-3xl break-words font-extrabold tracking-tighter">
+      {{ post.text[0]?.titulo }}
+    </h2>
+  </div>
   <div class="my-4 post_text_container">
     <p class="tracking-tighter">
       {{
