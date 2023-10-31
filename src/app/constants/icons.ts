@@ -60,8 +60,13 @@ export enum NavBar_Icons {
   cross,
   gallery,
   location,
+  location_white,
   check,
   previous,
+  done,
+  white_cross,
+  left_arrow,
+  text,
 }
 
 export enum Desktop_Sidebar{
