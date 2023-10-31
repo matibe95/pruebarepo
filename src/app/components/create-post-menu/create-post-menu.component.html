@@ -1,0 +1,129 @@
+<article
+  id="modal_account"
+  class="transition-all relative text-skin-base bg-primary rounded-3xl py-10 w-[602px] h-[815px] text-center px-16 flex flex-col gap-12 items-center"
+>
+  <header class="flex items-center w-full justify-center relative">
+    <h1 class="font-semibold text-4xl text-skin-dark-button">Crear Post</h1>
+    <button (click)="closeModal()" class="absolute right-0">
+      <mat-icon svgIcon="white_cross"></mat-icon>
+    </button>
+  </header>
+  <section class="flex items-center justify-center h-[80px] w-[160px]">
+    <button
+      (click)="selectText()"
+      class="transition-all rounded-full flex items-center justify-center bg-skin-fill h-[{{
+        selectedOption.text.iconSize
+      }}px] w-[{{ selectedOption.text.iconSize }}px]"
+    >
+      <mat-icon svgIcon="text"></mat-icon>
+    </button>
+    <hr class="text-skin-dark-button bg-skin-fill w-[20px] h-[2px]" />
+    <button
+      (click)="selectGallery()"
+      class="transition-all rounded-full flex items-center justify-center bg-skin-fill h-[{{
+        selectedOption.gallery.iconSize
+      }}px] w-[{{ selectedOption.gallery.iconSize }}px]"
+    >
+      <mat-icon svgIcon="gallery"></mat-icon>
+    </button>
+  </section>
+  <form
+    class="w-full flex flex-col items-center gap-6"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="checkoutForm"
+    action=""
+  >
+    <section
+      *ngIf="selectedOption.text.state"
+      class="w-full flex flex-col gap-4 h-[430px]"
+    >
+      <h2 class="font-semibold text-2xl text-skin-dark-button">Editar Texto</h2>
+      <div class="flex w-full flex-col">
+        <label
+          for="event_name"
+          class="block text-left mb-2 text-sm font-medium text-skin-dark-button"
+          >Titulo del post</label
+        >
+        <div class="flex flex-col bg-skin-fill bg-gray-50 rounded-xl">
+          <textarea
+            formControlName="title"
+            onkeydown="return (event.keyCode!=13)"
+            id="event_name"
+            rows="1"
+            #postTitleInput
+            maxlength="25"
+            class="block resize-none p-2.5 w-full text-sm rounded-xl text-gray-900 focus:outline-none"
+            placeholder="Ingrese el titulo del post."
+          ></textarea>
+          <span class="text-skin-muted font-medium self-end px-4 py-2 text-sm"
+            >{{ postTitleInput.value.length }}/25</span
+          >
+        </div>
+      </div>
+      <div class="flex w-full flex-col">
+        <label
+          for="event_name"
+          class="block text-left mb-2 text-sm font-medium text-skin-dark-button"
+          >Descripción del post</label
+        >
+        <div class="flex flex-col bg-skin-fill bg-gray-50 rounded-xl">
+          <textarea
+            formControlName="description"
+            id="event_name"
+            rows="6"
+            #postDescInput
+            maxlength="250"
+            class="block resize-none p-2.5 w-full text-sm rounded-xl text-gray-900 focus:outline-none"
+            placeholder="Ingrese la descripción del post."
+          ></textarea>
+          <span class="text-skin-muted font-medium self-end px-4 py-2 text-sm"
+            >{{ postDescInput.value.length }}/250</span
+          >
+        </div>
+      </div>
+    </section>
+    <section
+      *ngIf="selectedOption.gallery.state"
+      class="w-full flex flex-col items-center gap-4 h-[430px]"
+    >
+      <h2 class="font-semibold text-2xl text-skin-dark-button">
+        Editar Imagen
+      </h2>
+      <div
+        class="w-[392px] h-[352px] px-2.5 py-[9px] bg-skin-fill rounded-3xl flex-col justify-center items-start gap-3.5 inline-flex"
+      >
+        <input
+          (change)="onFileSelected($event)"
+          type="file"
+          hidden
+          id="uploadImageInput"
+          name="uploadImageInput"
+        />
+        <label class="cursor-pointer" for="uploadImageInput">
+          <img class="w-[372px] h-[257px] rounded-[20px]" [src]="imgUrl" />
+        </label>
+        <div
+          class="w-full h-[63px] px-4 bg-primary rounded-[20px] justify-center items-center gap-3.5 flex"
+        >
+          <button
+            class="flex items-center justify-center hover:bg-button-muted transition-all p-2 rounded-lg"
+          >
+            <mat-icon svgIcon="location_white"></mat-icon>
+          </button>
+          <input
+            placeholder="Seleccione su ubicación."
+            class="focus:outline-none placeholder:text-skin-dark-button bg-primary px-3 text-skin-dark-button h-full w-full"
+          />
+        </div>
+      </div>
+    </section>
+    <footer>
+      <button
+        class="w-fit text-skin-dark-button font-semibold text-lg flex items-center gap-4 px-6 py-3 rounded-xl bg-button-muted"
+      >
+        Subir Post
+        <mat-icon svgIcon="done"></mat-icon>
+      </button>
+    </footer>
+  </form>
+</article>
