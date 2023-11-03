@@ -9,6 +9,7 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./create-post-menu.component.css']
 })
 export class CreatePostMenuComponent {
+  imageFile!: {link: string, file: any, name: string};
   
   constructor(private fb: FormBuilder, private postSS: PostsService, private modalSS: ModalService){
 
@@ -32,6 +33,19 @@ export class CreatePostMenuComponent {
         this.imgUrl = event.target.result
        }
     }
+  //   if (event.target.files && event.target.files[0]) {
+  //     const reader = new FileReader();
+
+  //     reader.onload = (_event: any) => {
+  //         this.imageFile = {
+  //             link: _event.target.result,
+  //             file: event.srcElement.files[0],
+  //             name: event.srcElement.files[0].name
+  //         };
+  //         this.imgUrl = event.target.result
+  //     };
+  //     reader.readAsDataURL(event.target.files[0]);
+  // }
   }
 
 
@@ -54,37 +68,51 @@ export class CreatePostMenuComponent {
 
   onSubmit(){
     const {title, description} = this.checkoutForm.value
-    const formData = new FormData()
 
+    
+    
+    const newText = [{
+      titulo: title!,
+      descripcion: description!,
+      orden: 1!
+    }]
     
     // formData.append('imagen', this.selectedImage, this.selectedImage.name)
 
-
-    const newText = [{
-        titulo: title!,
-        descripcion: description!,
-        orden: 1!
-    }]
-
-    // formData.append('imagen', this.selectedImage, this.selectedImage.name)
-    // formData.append('texto', 'matibecrack')
+    // formData.append('imagen', this.selectedFile, this.selectedFile.name)
+    // formData.append('texto', JSON.stringify(newText))
+    // // formData.append('imagen', this.imageFile.file);
+    // formData.append('imagen', this.selectedFile);
     // formData.append('description', description!)
-
+    
     // formData.forEach((el, key)=>{
-    //   console.log(key)
+      //   console.log(key)
     //   console.log(el)
     // })
+
+    const newImage = [{
+      imagen: this.selectedFile,
+      orden: 1!
+    }]
+    
+    // formData.append('imagen', JSON.stringify))
+
+
     const newData = {
-      texto: [{
-        titulo: title!,
-        descripcion: description!,
-        orden: 1!
-      }],
-      // imagen: [{
-      //   imagen: this.selectedImage,
-      //   orden: 1!
-      // }]
+        texto: [{
+          titulo: title!,
+          descripcion: description!,
+        }],
+        imagen: this.selectedFile,
     }
+
+    // console.log(this.selectedFile)
+
+    // console.log(formData)
+
+    // formData.forEach((el, key)=>{
+    //   console.log(el, key)
+    // })
 
     this.postSS.createPost(newData).subscribe((res)=>{
       console.log(res)

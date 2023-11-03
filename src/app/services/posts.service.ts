@@ -106,15 +106,24 @@ export class PostsService {
   };
 
   createPost(body: any){
+
+    const fd = new FormData()
+
+    fd.append('imagen', body.imagen)
+
+    // for (let text of body.texto) {
+    //   fd.append('texto', text);
+    // }
+    fd.append('texto','matibeeeee')
+
     const httpHeaders = {
       headers: new HttpHeaders({ 
-        'Content-Type': 'application/json',
         'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"), 
         'id_usuario' : this.userId
       })
     };
-    console.log(body)
-    return this.http.post<any>(this.crearPost, body, httpHeaders)
+    // console.log(body)
+    return this.http.post<any>(this.crearPost, fd, httpHeaders)
   }
 
   private getServerErrorMessage(error: HttpErrorResponse): string {
