@@ -7,7 +7,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class PostsService {
 
-  private userId = localStorage.getItem('id_user') || 0
+  private userId = localStorage.getItem('id_user')!
   private listarPost = `http://localhost:8001/api/v2/post/${this.userId}`
   private listarFeed = `http://localhost:8001/api/v2/post`
   private crearPost = `http://localhost:8001/api/v2/post`

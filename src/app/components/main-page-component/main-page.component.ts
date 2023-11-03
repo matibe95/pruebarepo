@@ -3,6 +3,8 @@ import { ExplorePage_Icons } from 'src/app/constants/icons';
 import { Post } from 'src/app/models/Post';
 import { SearchFilter } from 'src/app/models/searchfilter.model';
 import { IconService } from 'src/app/services/Icon.service';
+import { ComunidadService } from 'src/app/services/comunidad.service';
+import { EventosService } from 'src/app/services/eventos.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { StatusService } from 'src/app/services/status.service';
 
@@ -13,7 +15,12 @@ import { StatusService } from 'src/app/services/status.service';
 })
 export class MainPageComponent {
 
-  constructor(private postsService: PostsService, private statusSS: StatusService, private iconSS: IconService){
+  constructor(
+    private postsService: PostsService,
+    private eventSS: EventosService,
+    private communitySS: ComunidadService,
+    private statusSS: StatusService,
+    private iconSS: IconService){
     iconSS.registerIcons(ExplorePage_Icons,'main_icons')
   }
   @HostListener('window:resize', ['$event'])
@@ -31,7 +38,6 @@ export class MainPageComponent {
   showLikes: boolean = false;
 
   ngOnInit(){
-    console.log(this.feedFilter)
     if (window.innerWidth < 750) {
       this.mobile = true
     } else {
@@ -45,6 +51,10 @@ export class MainPageComponent {
 
     this.statusSS.$posts.subscribe(()=>{
       this.listarPosts()
+    })
+
+    this.communitySS.ListarMisComunidades().subscribe((res)=>{
+      console.log(res)
     })
 
     this.statusSS.$showLikes.subscribe((value)=>{
