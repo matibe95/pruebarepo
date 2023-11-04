@@ -86,9 +86,7 @@
       *ngIf="selectedOption.gallery.state"
       class="w-full flex flex-col items-center gap-4 h-[430px]"
     >
-      <h2 class="font-semibold text-2xl text-skin-dark-button">
-        Editar Imagen
-      </h2>
+      <h2 class="font-semibold text-2xl text-skin-dark-button">Subir Imagen</h2>
       <div
         class="w-[392px] h-[352px] px-2.5 py-[9px] bg-skin-fill rounded-3xl flex-col justify-center items-start gap-3.5 inline-flex"
       >
@@ -100,20 +98,25 @@
           name="uploadImageInput"
         />
         <label class="cursor-pointer" for="uploadImageInput">
-          <img class="w-[372px] h-[257px] rounded-[20px]" [src]="imgUrl" />
+          <img
+            class="w-[372px] h-[257px] rounded-[20px] object-cover"
+            [src]="imgUrl"
+          />
         </label>
         <div
           class="w-full h-[63px] px-4 bg-primary rounded-[20px] justify-center items-center gap-3.5 flex"
         >
-          <button
+          <!-- <button
             class="flex items-center justify-center hover:bg-button-muted transition-all p-2 rounded-lg"
           >
             <mat-icon svgIcon="location_white"></mat-icon>
-          </button>
-          <input
-            placeholder="Seleccione su ubicación."
-            class="focus:outline-none placeholder:text-skin-dark-button bg-primary px-3 text-skin-dark-button h-full w-full"
-          />
+          </button> -->
+          <label
+            for="uploadImageInput"
+            class="cursor-pointer focus:outline-none placeholder:text-skin-dark-button bg-primary px-3 text-skin-dark-button h-full w-full flex items-center"
+          >
+            Click para subir imagen.
+          </label>
         </div>
       </div>
     </section>

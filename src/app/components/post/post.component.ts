@@ -16,7 +16,26 @@ export class PostComponent {
   isLiked: boolean = false;
   showOptions: boolean = false;
   postLikes!: any[];
-  
+
+  selectedOption = {
+    text: {
+      state: false,
+      iconSize: 50,
+    },
+    gallery: {
+      state: true,
+      iconSize: 65,
+    },
+  }
+
+  postContent = {
+    text: true,
+    picture: true,
+  }
+
+  profilePictureUrl = ''
+  postImageUrl = `http://localhost:8001/images/1699126978.jpg`
+
   constructor(private iconService: IconService, private userService: UsuarioService, private postService: PostsService, private statusSS: StatusService) {
     this.iconService.registerIcons( Post_Icons ,'main_icons')
   }
@@ -24,10 +43,56 @@ export class PostComponent {
 
   ngOnInit(){
     console.log(this.post)
+    this.postImageUrl = `http://localhost:8001/images/${ this.post?.image[0]?.imagen}`
     this.postLikes = this.post.like
+    this.profilePictureUrl = this.post?.user?.user_info?.foto_perfil
+    // this.postImageName = this.post?.image[0]?.imagen
+    
+    
+    if (this.post?.image.length === 0){
+      this.selectedOption.gallery.state = false
+      this.postContent.picture = false
+      this.selectText()
+      this.postContent.text = true
+    }
+    
+    if (this.post?.text.length === 0){
+      this.selectImage()
+      this.selectedOption.text.state = false
+      this.postContent.text = false
+      this.selectedOption.gallery.state = true
+      this.postContent.picture = true
+    }
+    
     this.post.like.map((item: any)=> {
       if (item.id_usuario == localStorage.getItem('id_user')) this.isLiked = true
     })
+  }
+
+  selectImage(){
+    this.selectedOption = {
+      text: {
+        state: false,
+        iconSize: 50,
+      },
+      gallery: {
+        state: true,
+        iconSize: 65,
+      }
+    } 
+  }
+
+  selectText(){
+    this.selectedOption = {
+      text: {
+        state: true,
+        iconSize: 65,
+      },
+      gallery: {
+        state: false,
+        iconSize: 50,
+      }
+    } 
   }
 
   likeAction(){

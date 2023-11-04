@@ -33,7 +33,7 @@ export class PostsService {
       headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
         'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"),
-        'id_usuario' : this.userId
+        'id_usuario' : this.userId,
       })
     };
     
@@ -106,23 +106,22 @@ export class PostsService {
   };
 
   createPost(body: any){
-
+    
     const fd = new FormData()
+    const {imagen, titulo, descripcion} = body
 
-    fd.append('imagen', body.imagen)
-
-    // for (let text of body.texto) {
-    //   fd.append('texto', text);
-    // }
-    fd.append('texto','matibeeeee')
+    fd.append('imagen', imagen)
+    fd.append('titulo', titulo)
+    fd.append('descripcion', descripcion)
 
     const httpHeaders = {
       headers: new HttpHeaders({ 
         'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"), 
         'id_usuario' : this.userId
       })
+      
     };
-    // console.log(body)
+
     return this.http.post<any>(this.crearPost, fd, httpHeaders)
   }
 

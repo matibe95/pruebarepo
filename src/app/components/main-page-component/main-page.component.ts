@@ -67,9 +67,10 @@ export class MainPageComponent {
   }
 
   listarPosts(){
-    this.postsService.ListarPostsUsuario().subscribe((res)=>{
-      this.postsList = res.data
-      // this.postsList.reverse()
+    this.postsService.ListarPostsUsuario().subscribe({
+      next: (res: any) => {
+        this.postsList = res.data
+      }
     })
   }
 }

@@ -1,35 +1,78 @@
 <article
-  class="flex flex-col gap-4 justify-between h-[540px] bg-skin-fill py-6 px-7 rounded-2xl"
+  class="flex flex-col gap-4 justify-between h-[733px] bg-skin-fill py-6 px-7 rounded-2xl"
 >
   <section class="flex w-full">
-    <article class="post_types_scroller gap-3">
-      <a
-        class="flex gap-4 items-center justify-center"
-        [routerLink]="['/user', post?.user?.id]"
-      >
-        <div
-          class="scroller-item h-14 w-14 bg-primary rounded-full flex justify-center items-center"
+    <header class="flex justify-between w-full">
+      <section class="flex items-center">
+        <a
+          [routerLink]="['/user', post?.user?.id]"
+          class="transition-all rounded-full flex flex-col items-center justify-center bg-primary h-[50px] w-[50px]"
         >
-          <img src="{{ post?.user?.foto_perfil }}" />
+          <img class="rounded-full" src="{{ profilePictureUrl }}" alt="" />
+        </a>
+      </section>
+      <section class="flex items-center h-[80px] w-full">
+        <div *ngIf="postContent.picture" class="flex items-center">
+          <hr class="text-skin-dark-button bg-primary w-[20px] h-[4px]" />
+          <button
+            (click)="selectImage()"
+            class="transition-all rounded-full flex items-center justify-center bg-primary h-[{{
+              selectedOption.gallery.iconSize
+            }}px] w-[{{ selectedOption.gallery.iconSize }}px]"
+          >
+            <mat-icon svgIcon="gallery_white"></mat-icon>
+          </button>
         </div>
-        <p class="text-lg font-medium">{{ post?.user?.nickname }}</p>
-      </a>
-    </article>
+        <div *ngIf="postContent.text" class="flex items-center">
+          <hr class="text-skin-dark-button bg-primary w-[20px] h-[4px]" />
+          <button
+            (click)="selectText()"
+            class="transition-all rounded-full flex items-center justify-center bg-primary h-[{{
+              selectedOption.text.iconSize
+            }}px] w-[{{ selectedOption.text.iconSize }}px]"
+          >
+            <mat-icon svgIcon="text_white"></mat-icon>
+          </button>
+        </div>
+      </section>
+    </header>
   </section>
-  <div class="">
-    <h2 class="text-3xl break-words font-extrabold tracking-tighter">
-      {{ post.text[0]?.titulo }}
-    </h2>
+  <div *ngIf="selectedOption.text.state">
+    <div class="">
+      <h2 class="text-3xl break-words font-extrabold tracking-tighter">
+        {{ post.text[0]?.titulo }}
+      </h2>
+    </div>
+    <div class="my-4 post_text_container">
+      <p class="tracking-tighter break-words">
+        {{
+          post.text[0]?.descripcion ||
+            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem magnam eius voluptatibus, quos, quam fugit voluptatum id repellendus placeat ipsam dolore enim quaerat saepe ab, mollitia necessitatibus est repellat natus."
+        }}
+      </p>
+    </div>
   </div>
-  <div class="my-4 post_text_container">
-    <p class="tracking-tighter">
-      {{
-        post.text[0]?.descripcion ||
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem magnam eius voluptatibus, quos, quam fugit voluptatum id repellendus placeat ipsam dolore enim quaerat saepe ab, mollitia necessitatibus est repellat natus."
-      }}
-    </p>
+  <div class="flex gap-2" *ngIf="selectedOption.gallery.state">
+    <div
+      class="bg-cover bg-center bg-no-repeat overflow-hidden bg-skin-fill-muted h-[473px] flex justify-center items-center rounded-3xl w-full"
+      style="background-image: url({{ postImageUrl }});"
+    >
+      <!-- <img
+        class="object-contain w-full"
+        src="http://localhost:8001/images/{{ postImageName }}"
+        alt=""
+      /> -->
+    </div>
+    <!-- <div
+      class="rounded-3xl bg-skin-fill-muted flex flex-col gap-4 items-center justify-center px-8"
+    >
+      <mat-icon class="customLocationSize" svgIcon="location"></mat-icon>
+      <p class="font-medium text-center text-primary text-lg">
+        Barcelona España
+      </p>
+    </div> -->
   </div>
-  <footer class="post_footer flex justify-center gap-10 items-center">
+  <footer class="post_footer flex justify-center gap-8 pt-3 items-center">
     <section class="relative grid grid-rows-1 gap-2 items-center">
       <button
         (click)="reportPost()"

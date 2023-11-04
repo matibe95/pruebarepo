@@ -67,6 +67,8 @@ export enum NavBar_Icons {
   white_cross,
   left_arrow,
   text,
+  text_white,
+  gallery_white,
 }
 
 export enum Desktop_Sidebar{
