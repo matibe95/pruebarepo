@@ -16,10 +16,10 @@
         </div>
       </section>
       <section class="flex flex-col items-center gap-4 px-7 py-7">
-        <h1 class="font-bold text-center text-3xl">
+        <h1 class="font-bold text-center text-3xl text-skin-base">
           {{ user?.nickname }}
         </h1>
-        <p class="text-center">
+        <p class="text-center text-skin-base">
           {{ user?.user_info?.biografia }}
         </p>
         <button
@@ -38,7 +38,7 @@
         </button>
       </section>
       <footer class="flex justify-center gap-8 pb-7">
-        <div class="flex gap-3 justify-between items-center">
+        <div class="flex gap-3 text-skin-base justify-between items-center">
           <mat-icon svgIcon="community_filled"></mat-icon>
           <p>{{ user?.seguidor_count }}</p>
         </div>
@@ -72,6 +72,7 @@
     </section>
     <section class="flex flex-col gap-6">
       <app-post
+        [postImageUrl]="profilePicture"
         class="w-full"
         [post]="post"
         *ngFor="let post of post?.data"
@@ -97,11 +98,13 @@
             <img class="rounded-full" src="{{ profilePicture }}" alt="" />
           </div>
         </section>
-        <section class="flex flex-col items-center gap-4 px-7 py-7">
-          <h1 class="font-bold text-center text-3xl">
+        <section
+          class="flex text-skin-base flex-col items-center gap-4 px-7 py-7"
+        >
+          <h1 class="font-bold text-skin-base text-center text-3xl">
             {{ user?.nickname }}
           </h1>
-          <p class="text-left w-full">
+          <p class="text-left text-skin-base w-full">
             {{ user?.user_info?.biografia }}
           </p>
           <section class="w-full text-left">
@@ -135,7 +138,7 @@
             <mat-icon svgIcon="follow"></mat-icon>
           </button>
         </section>
-        <footer class="flex justify-center gap-8 pb-7">
+        <footer class="text-skin-base flex justify-center gap-8 pb-7">
           <div class="flex gap-3 justify-between items-center">
             <mat-icon svgIcon="community_filled"></mat-icon>
             <p>{{ user?.seguidor_count }}</p>

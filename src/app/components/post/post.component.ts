@@ -36,7 +36,7 @@ export class PostComponent {
   }
 
   imageName = ``
-  postImageUrl = ``
+  @Input() postImageUrl!: any
 
   constructor(private iconService: IconService, private userService: UsuarioService, private postService: PostsService, private statusSS: StatusService) {
     this.iconService.registerIcons( Post_Icons ,'main_icons')
@@ -44,7 +44,10 @@ export class PostComponent {
 
   ngOnInit(){
     console.log(this.post)
-    this.postImageUrl = `http://localhost:8001/images/${ this.post?.image[0]?.imagen}`
+    if (this.postImageUrl == null || this.postImageUrl == undefined || this.postImageUrl == ''){
+      console.log('matibe')
+      this.postImageUrl = `http://localhost:8001/images/${ this.post?.image[0]?.imagen}`
+    }
     this.imageName =  this.post?.user?.user_info.foto_perfil
     this.postLikes = this.post.like
     

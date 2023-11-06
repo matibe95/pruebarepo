@@ -57,6 +57,7 @@ export enum NavBar_Icons {
   event,
   community,
   post,
+  options_blue,
   cross,
   gallery,
   location,

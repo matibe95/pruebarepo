@@ -1,5 +1,5 @@
 <article
-  class="flex flex-col gap-4 justify-between h-[733px] bg-skin-fill py-6 px-7 rounded-2xl"
+  class="flex flex-col gap-4 h-[733px] bg-skin-fill py-6 px-7 rounded-2xl"
 >
   <section class="flex w-full">
     <header class="flex justify-between w-full">
@@ -9,7 +9,7 @@
           class="transition-all rounded-full flex flex-col items-center justify-center bg-primary h-[50px] w-[50px]"
         >
           <img
-            class="rounded-full"
+            class="rounded-full w-[50px] h-[50px]"
             src="http://localhost:8000/images/{{ imageName }}"
             alt=""
           />
@@ -17,7 +17,7 @@
       </section>
       <section class="flex items-center h-[80px] w-full">
         <div *ngIf="postContent.picture" class="flex items-center">
-          <hr class="text-skin-dark-button bg-primary w-[20px] h-[4px]" />
+          <hr class="bg-primary w-[20px] h-[4px]" />
           <button
             (click)="selectImage()"
             class="transition-all rounded-full flex items-center justify-center bg-primary {{
@@ -28,7 +28,7 @@
           </button>
         </div>
         <div *ngIf="postContent.text" class="flex items-center">
-          <hr class="text-skin-dark-button bg-primary w-[20px] h-[4px]" />
+          <hr class="bg-primary w-[20px] h-[4px]" />
           <button
             (click)="selectText()"
             class="transition-all rounded-full flex items-center justify-center bg-primary {{
@@ -41,18 +41,17 @@
       </section>
     </header>
   </section>
-  <div *ngIf="selectedOption.text.state">
+  <div *ngIf="selectedOption.text.state" class="h-[473px]">
     <div class="">
-      <h2 class="text-3xl break-words font-extrabold tracking-tighter">
+      <h2
+        class="text-4xl text-skin-base break-words font-extrabold tracking-tighter"
+      >
         {{ post.text[0]?.titulo }}
       </h2>
     </div>
     <div class="my-4 post_text_container">
-      <p class="tracking-tighter break-words">
-        {{
-          post.text[0]?.descripcion ||
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem magnam eius voluptatibus, quos, quam fugit voluptatum id repellendus placeat ipsam dolore enim quaerat saepe ab, mollitia necessitatibus est repellat natus."
-        }}
+      <p class="text-skin-base text-xl tracking-tighter break-words">
+        {{ post.text[0]?.descripcion }}
       </p>
     </div>
   </div>

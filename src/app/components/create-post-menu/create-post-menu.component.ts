@@ -38,12 +38,16 @@ export class CreatePostMenuComponent {
 
   selectedOption = {
     text: {
-      state: true,
-      iconSize: 80,
+      state: false,
+      iconSize: 'w-[80px] h-[80px]',
     },
     gallery: {
       state: false,
-      iconSize: 60,
+      iconSize: 'w-[60px] h-[60px]',
+    },
+    options: {
+      state: true,
+      iconSize: 'w-[60px] h-[60px]',
     },
   }
 
@@ -66,7 +70,6 @@ export class CreatePostMenuComponent {
       next: (res: any) => {
         this.closeModal()
         location.reload()
-        console.log(res)
       }
     })
   }
@@ -75,25 +78,49 @@ export class CreatePostMenuComponent {
     this.selectedOption = {
       text: {
         state: false,
-        iconSize: 60,
+        iconSize: 'w-[60px] h-[60px]',
       },
       gallery: {
         state: true,
-        iconSize: 80,
-      }
+        iconSize: 'w-[80px] h-[80px]',
+      },
+      options: {
+        state: false,
+        iconSize: 'w-[60px] h-[60px]',
+      },
     } 
   }
 
+  selectOptions(){
+    this.selectedOption = {
+      text: {
+        state: false,
+        iconSize: 'w-[60px] h-[60px]',
+      },
+      gallery: {
+        state: false,
+        iconSize: 'w-[60px] h-[60px]',
+      },
+      options: {
+        state: true,
+        iconSize: 'w-[80px] h-[80px]',
+      },
+    } 
+  }
   selectText(){
     this.selectedOption = {
       text: {
         state: true,
-        iconSize: 80,
+        iconSize: 'w-[80px] h-[80px]',
       },
       gallery: {
         state: false,
-        iconSize: 60,
-      }
+        iconSize: 'w-[60px] h-[60px]',
+      },
+      options: {
+        state: false,
+        iconSize: 'w-[60px] h-[60px]',
+      },
     } 
   }
 }

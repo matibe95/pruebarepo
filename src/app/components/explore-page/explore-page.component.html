@@ -11,7 +11,7 @@
       <input
         autocomplete="off"
         (input)="onChange($event.target)"
-        class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
+        class="rounded-xl px-4 bg-skin-fill py-3 transition-all w-full outline-none text-gray-800"
         placeholder="Buscar"
         [(ngModel)]="filterName"
         name="filterName"
@@ -51,7 +51,7 @@
             (input)="onChange($event.target)"
             [(ngModel)]="filterName"
             name="filterName"
-            class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
+            class="rounded-xl px-4 py-3 bg-skin-fill transition-all w-full outline-none text-skin-base"
             placeholder="Buscar"
           />
           <button (click)="cleanSearch()">

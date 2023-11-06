@@ -8,23 +8,32 @@
       <mat-icon svgIcon="white_cross"></mat-icon>
     </button>
   </header>
-  <section class="flex items-center justify-center h-[80px] w-[160px]">
+  <section class="flex items-center justify-center h-[80px]">
     <button
       (click)="selectText()"
-      class="transition-all rounded-full flex items-center justify-center bg-skin-fill h-[{{
+      class="transition-all rounded-full flex items-center justify-center bg-skin-fill {{
         selectedOption.text.iconSize
-      }}px] w-[{{ selectedOption.text.iconSize }}px]"
+      }}"
     >
       <mat-icon svgIcon="text"></mat-icon>
     </button>
-    <hr class="text-skin-dark-button bg-skin-fill w-[20px] h-[2px]" />
+    <hr class="text-skin-dark-button bg-skin-fill w-[20px] h-[4px]" />
     <button
       (click)="selectGallery()"
-      class="transition-all rounded-full flex items-center justify-center bg-skin-fill h-[{{
+      class="transition-all rounded-full flex items-center justify-center bg-skin-fill {{
         selectedOption.gallery.iconSize
-      }}px] w-[{{ selectedOption.gallery.iconSize }}px]"
+      }}"
     >
       <mat-icon svgIcon="gallery"></mat-icon>
+    </button>
+    <hr class="text-skin-dark-button bg-skin-fill w-[20px] h-[4px]" />
+    <button
+      (click)="selectOptions()"
+      class="transition-all rounded-full flex items-center justify-center bg-skin-fill {{
+        selectedOption.options.iconSize
+      }}"
+    >
+      <mat-icon svgIcon="options_blue"></mat-icon>
     </button>
   </section>
   <form
@@ -52,7 +61,7 @@
             rows="1"
             #postTitleInput
             maxlength="50"
-            class="block resize-none p-2.5 w-full text-sm rounded-xl text-gray-900 focus:outline-none"
+            class="block resize-none p-2.5 w-full text-sm rounded-xl text-skin-base focus:outline-none bg-skin-fill"
             placeholder="Ingrese el titulo del post."
           ></textarea>
           <span class="text-skin-muted font-medium self-end px-4 py-2 text-sm"
@@ -73,7 +82,7 @@
             rows="6"
             #postDescInput
             maxlength="255"
-            class="block resize-none p-2.5 w-full text-sm rounded-xl text-gray-900 focus:outline-none"
+            class="block resize-none p-2.5 w-full text-sm rounded-xl text-skin-base bg-skin-fill focus:outline-none"
             placeholder="Ingrese la descripción del post."
           ></textarea>
           <span class="text-skin-muted font-medium self-end px-4 py-2 text-sm"
@@ -119,6 +128,50 @@
           </label>
         </div>
       </div>
+    </section>
+    <section
+      *ngIf="selectedOption.options.state"
+      class="w-full flex flex-col items-center gap-4 h-[430px]"
+    >
+      <h2 class="font-semibold text-2xl text-skin-dark-button">
+        Seleccionar comunidad
+      </h2>
+      <select
+        formControlName=""
+        class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
+        name=""
+        id=""
+      >
+        <option selected disabled>Seleccione una opción</option>
+        <option value="Masculino">Masculino</option>
+      </select>
+      <!-- <div
+        class="w-[392px] h-[352px] px-2.5 py-[9px] bg-skin-fill rounded-3xl flex-col justify-center items-start gap-3.5 inline-flex"
+      >
+        <input
+          (change)="onFileSelected($event)"
+          type="file"
+          hidden
+          id="uploadImageInput"
+          name="uploadImageInput"
+        />
+        <label class="cursor-pointer" for="uploadImageInput">
+          <img
+            class="w-[372px] h-[257px] rounded-[20px] object-cover"
+            [src]="imgUrl"
+          />
+        </label>
+        <div
+          class="w-full h-[63px] px-4 bg-primary rounded-[20px] justify-center items-center gap-3.5 flex"
+        >
+          <label
+            for="uploadImageInput"
+            class="cursor-pointer focus:outline-none placeholder:text-skin-dark-button bg-primary px-3 text-skin-dark-button h-full w-full flex items-center"
+          >
+            Click para subir imagen.
+          </label>
+        </div>
+      </div> -->
     </section>
     <footer>
       <button

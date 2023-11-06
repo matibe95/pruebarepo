@@ -8,7 +8,7 @@
       checked
       (change)="onItemChange($event.target)"
     />
-    <label for="radioPost">Posts</label>
+    <label for="radioPost" class="text-skin-base">Posts</label>
     <hr class="bg-button-muted w-[4px] h-5 rounded-full" />
     <input
       type="radio"
@@ -17,7 +17,7 @@
       value="comunidad"
       (change)="onItemChange($event.target)"
     />
-    <label for="radioComunidad">Comunidades</label>
+    <label for="radioComunidad" class="text-skin-base">Comunidades</label>
     <hr class="bg-button-muted w-[4px] h-5 rounded-full" />
     <input
       type="radio"
@@ -26,7 +26,7 @@
       value="evento"
       (change)="onItemChange($event.target)"
     />
-    <label for="radioEventos">Eventos</label>
+    <label for="radioEventos" class="text-skin-base">Eventos</label>
   </section>
   <!-- <div class="header-buttons-container font-semibold rounded-lg text-primary bg-skin-fill flex justify-between items-center">
       <button class="py-[8px] px-8">Comunidad</button>
@@ -48,7 +48,7 @@
   >
     <button
       (click)="refreshPosts()"
-      class="py-[10px] px-5 flex justify-between gap-2 items-center w-full"
+      class="py-[10px] text-skin-base px-5 flex justify-between gap-2 items-center w-full"
     >
       Refrescar
       <mat-icon svgIcon="refresh"></mat-icon>

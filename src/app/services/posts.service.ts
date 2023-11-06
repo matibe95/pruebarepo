@@ -108,11 +108,12 @@ export class PostsService {
   createPost(body: any){
     
     const fd = new FormData()
-    const {imagen, titulo, descripcion} = body
 
-    fd.append('imagen', imagen)
-    fd.append('titulo', titulo)
-    fd.append('descripcion', descripcion)
+    Object.keys(body).forEach((key)=>{
+      if (body[key] !== undefined && body[key] !== null && body[key] !== ''){
+        fd.append(key, body[key])
+      }
+    })
 
     const httpHeaders = {
       headers: new HttpHeaders({ 
