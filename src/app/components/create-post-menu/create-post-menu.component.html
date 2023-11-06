@@ -133,19 +133,55 @@
       *ngIf="selectedOption.options.state"
       class="w-full flex flex-col items-center gap-4 h-[430px]"
     >
-      <h2 class="font-semibold text-2xl text-skin-dark-button">
-        Seleccionar comunidad
-      </h2>
-      <select
-        formControlName=""
-        class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
-        name=""
-        id=""
-      >
-        <option selected disabled>Seleccione una opción</option>
-        <option value="Masculino">Masculino</option>
-      </select>
-      <!-- <div
+      <form [formGroup]="liarForm" action="">
+        <div class="w-full flex flex-col gap-2 pb-8 text-left">
+          <h2 class="font-semibold text-3xl text-skin-dark-button">
+            Opciones:
+          </h2>
+          <p class="text-skin-dark-button text-sm">
+            Recuerda, puedes asociar tu post a una comunidad o a un evento, pero
+            <span class="font-semibold text-base">
+              no a los dos al mismo tiempo.
+            </span>
+          </p>
+        </div>
+        <div class="w-full text-left">
+          <h2 class="font-semibold text-xl text-skin-dark-button">
+            Seleccionar comunidad
+          </h2>
+          <select
+            formControlName="community_id"
+            (change)="onChangeCommunity()"
+            #community_id
+            class="w-full rounded-xl outline-none bg-skin-fill px-4 py-3 my-4"
+            name=""
+            id=""
+          >
+            <option value="" class="italic" selected>Sin comunidad</option>
+            <option *ngFor="let com of communitiesList" value="{{ com.id }}">
+              {{ com.nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="w-full text-left">
+          <h2 class="font-semibold text-xl text-skin-dark-button">
+            Seleccionar Evento
+          </h2>
+          <select
+            formControlName="event_id"
+            (change)="onChangeEvent()"
+            #event_id
+            class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3 my-4"
+            name=""
+            id=""
+          >
+            <option value="" class="italic" selected>Sin evento</option>
+            <option *ngFor="let ev of eventsList" value="{{ ev.id }}">
+              {{ ev.nombre }}
+            </option>
+          </select>
+        </div>
+        <!-- <div
         class="w-[392px] h-[352px] px-2.5 py-[9px] bg-skin-fill rounded-3xl flex-col justify-center items-start gap-3.5 inline-flex"
       >
         <input
@@ -172,6 +208,7 @@
           </label>
         </div>
       </div> -->
+      </form>
     </section>
     <footer>
       <button

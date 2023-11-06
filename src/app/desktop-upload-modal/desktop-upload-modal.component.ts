@@ -54,8 +54,8 @@ export class DesktopUploadModalComponent {
   ]
 
   optionSelected: Modal_Option = {
-    state: true,
-    type: 'post'
+    state: false,
+    type: 'main'
   }
 
   currentRule: any = {

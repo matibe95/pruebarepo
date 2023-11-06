@@ -82,13 +82,12 @@
                 svgIcon="exploreCommunity"
               ></mat-icon>
             </div>
-            <app-feed-comunity>
-              [community]="community" *ngFor="let community of communities"
-            </app-feed-comunity>
-            <!-- <app-searched-community-card
-            [community]="community"
-            *ngFor="let community of communities"
-            ></app-searched-community-card> -->
+            <div class="flex flex-col gap-8">
+              <app-feed-comunity
+                [community]="com"
+                *ngFor="let com of communitiesList"
+              ></app-feed-comunity>
+            </div>
           </section>
           <section *ngSwitchCase="'evento'">
             <div class="flex w-full justify-center py-6">
@@ -97,13 +96,14 @@
                 svgIcon="exploreEvents"
               ></mat-icon>
             </div>
-            <app-feed-comunity>
-              [community]="community" *ngFor="let community of communities"
-            </app-feed-comunity>
-            <!-- <app-searched-event-card
-            [event]="event"
-            *ngFor="let event of events"
-          ></app-searched-event-card> -->
+            <h2
+              *ngIf="eventsList?.length"
+              class="text-center font-medium text-2xl"
+            >
+              Aun no hay eventos
+            </h2>
+            <app-feed-events [event]="ev" *ngFor="let ev of eventsList">
+            </app-feed-events>
           </section>
         </section>
       </div>

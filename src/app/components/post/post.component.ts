@@ -43,9 +43,9 @@ export class PostComponent {
   }
 
   ngOnInit(){
-    console.log(this.post)
+    // console.log(this.post)
     if (this.postImageUrl == null || this.postImageUrl == undefined || this.postImageUrl == ''){
-      console.log('matibe')
+      // console.log('matibe')
       this.postImageUrl = `http://localhost:8001/images/${ this.post?.image[0]?.imagen}`
     }
     this.imageName =  this.post?.user?.user_info.foto_perfil

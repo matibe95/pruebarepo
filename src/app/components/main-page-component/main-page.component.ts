@@ -33,11 +33,14 @@ export class MainPageComponent {
   }
   feedFilter: SearchFilter = 'post'
   postsList!: any[]
+  eventsList!: any[]
+  communitiesList!: any[]
   mobile: boolean = false;
   postLikes!: any[]
   showLikes: boolean = false;
 
   ngOnInit(){
+
     if (window.innerWidth < 750) {
       this.mobile = true
     } else {
@@ -54,7 +57,7 @@ export class MainPageComponent {
     })
 
     this.communitySS.ListarMisComunidades().subscribe((res)=>{
-      console.log(res)
+      this.communitiesList = res
     })
 
     this.statusSS.$showLikes.subscribe((value)=>{

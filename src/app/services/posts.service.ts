@@ -111,6 +111,7 @@ export class PostsService {
 
     Object.keys(body).forEach((key)=>{
       if (body[key] !== undefined && body[key] !== null && body[key] !== ''){
+        console.log(body[key])
         fd.append(key, body[key])
       }
     })

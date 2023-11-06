@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ComunidadService } from 'src/app/services/comunidad.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -10,6 +10,8 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./create-post-menu.component.css']
 })
 export class CreatePostMenuComponent {
+
+  
   imageFile!: {link: string, file: any, name: string};
   
   constructor(
@@ -18,12 +20,16 @@ export class CreatePostMenuComponent {
     private modalSS: ModalService,
     private comunidadSS: ComunidadService,
   ){
-
   }
+
+  @ViewChild('event_id') event_id !:ElementRef;
+  @ViewChild('community_id') community_id !:ElementRef;
 
   selectedFile!: File;
   selectedImage!: File;
   imgUrl = '/assets/upload_image.png'
+  communitiesList!: any[]
+  eventsList!: any[]
 
   closeModal(){
     this.modalSS.$modal_option.emit({state: false, type: 'main'})
@@ -44,7 +50,7 @@ export class CreatePostMenuComponent {
 
   selectedOption = {
     text: {
-      state: false,
+      state: true,
       iconSize: 'w-[80px] h-[80px]',
     },
     gallery: {
@@ -52,7 +58,7 @@ export class CreatePostMenuComponent {
       iconSize: 'w-[60px] h-[60px]',
     },
     options: {
-      state: true,
+      state: false,
       iconSize: 'w-[60px] h-[60px]',
     },
   }
@@ -61,12 +67,21 @@ export class CreatePostMenuComponent {
     title: '',
     description: '',
   });
+
+  liarForm = this.fb.group({
+    event_id: '',
+    community_id: '',
+  });
+  
   
 
   onSubmit(){
+
     const {title, description} = this.checkoutForm.value
 
     const newData = {
+        event_id: this.event_id?.nativeElement?.value,
+        community_id: this.community_id?.nativeElement?.value,
         titulo: title!,
         descripcion: description!,
         imagen: this.selectedFile,
@@ -80,10 +95,19 @@ export class CreatePostMenuComponent {
     })
   }
 
+  onChangeCommunity(){
+    this.event_id.nativeElement.value = ''
+  }
+  onChangeEvent(){
+    this.community_id.nativeElement.value = ''
+    
+  }
+
   ngOnInit(){
     this.comunidadSS.ListarMisComunidades().subscribe({
       next: (value: any)=>{
         console.log(value)
+        this.communitiesList = value
       }
     })
   }

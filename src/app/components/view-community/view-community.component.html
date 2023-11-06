@@ -10,9 +10,9 @@
       <section class="flex flex-col gap-7 px-7 py-3">
         <div class="flex gap-4 items-center text-primary">
           <h1 class="font-bold text-3xl">
-            c/{{ community?.title }}
+            c/{{ community?.nombre }}
             <span class="text-lg px-2 font-medium"
-              >{{ community.miembros }} miembros</span
+              >{{ community?.pertenece?.length }} miembros</span
             >
           </h1>
         </div>
@@ -82,15 +82,17 @@
         ></header>
         <section class="relative px-[5%] py-7 flex">
           <div
-            class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
-          ></div>
+            class="rounded-full h-28 w-28 top-[-60px] overflow-hidden bg-skin-button-hover-primary absolute"
+          >
+            <img src="{{ communityPicture }}" alt="" />
+          </div>
         </section>
         <section class="flex flex-col gap-7 px-7 py-3">
           <div class="flex gap-4 items-center text-primary">
             <h1 class="font-bold text-3xl">
-              c/{{ community?.title }}
+              c/{{ community?.nombre }}
               <span class="text-lg px-2 font-medium"
-                >{{ community.miembros }} miembros</span
+                >{{ community?.pertenece?.length }} {{ miembrosWord }}</span
               >
             </h1>
           </div>
@@ -99,6 +101,7 @@
           </p>
           <div class="flex gap-3">
             <button
+              (click)="joinCommunity()"
               class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
             >
               Unirse
@@ -113,7 +116,7 @@
         </section>
         <footer class="flex justify-center gap-8 pb-7"></footer>
       </article>
-      <section class="radio-toolbar mb-8">
+      <!-- <section class="radio-toolbar mb-8">
         <input
           type="radio"
           id="radioRecientes"
@@ -144,6 +147,13 @@
           value="archivados"
         />
         <label for="radioArchivados">Archivados</label>
+      </section> -->
+      <section class="flex flex-col gap-6">
+        <app-post
+          class="w-full"
+          [post]="post"
+          *ngFor="let post of communityPosts"
+        ></app-post>
       </section>
     </main>
   </div>
