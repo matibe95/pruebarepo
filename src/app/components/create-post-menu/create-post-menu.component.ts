@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ComunidadService } from 'src/app/services/comunidad.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { PostsService } from 'src/app/services/posts.service';
 
@@ -11,7 +12,12 @@ import { PostsService } from 'src/app/services/posts.service';
 export class CreatePostMenuComponent {
   imageFile!: {link: string, file: any, name: string};
   
-  constructor(private fb: FormBuilder, private postSS: PostsService, private modalSS: ModalService){
+  constructor(
+    private fb: FormBuilder,
+    private postSS: PostsService,
+    private modalSS: ModalService,
+    private comunidadSS: ComunidadService,
+  ){
 
   }
 
@@ -70,6 +76,14 @@ export class CreatePostMenuComponent {
       next: (res: any) => {
         this.closeModal()
         location.reload()
+      }
+    })
+  }
+
+  ngOnInit(){
+    this.comunidadSS.ListarMisComunidades().subscribe({
+      next: (value: any)=>{
+        console.log(value)
       }
     })
   }
