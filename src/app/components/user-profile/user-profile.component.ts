@@ -1,9 +1,8 @@
 import { Component, HostListener, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserProfile_Icons } from 'src/app/constants/icons';
-import { User } from 'src/app/models/user.model';
+import { IMAGES_URL } from 'src/app/constants/imagesUrl';
 import { IconService } from 'src/app/services/Icon.service';
-import { PostsService } from 'src/app/services/posts.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -25,6 +24,7 @@ export class UserProfileComponent {
   showOptions: String ='hiddenContainer';
   filterName: String = '';
   myProfile: Boolean = false;
+  profilePicture = ""
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -43,15 +43,13 @@ export class UserProfileComponent {
       this.mobile = false
     }
     this.userService.getUser(this.userId).subscribe((res: any)=>{
-      // this.postsList = res
+      console.log(res)
       if (this.userId === localStorage.getItem('id_user')){
         this.myProfile = true
       }
       this.user = res.user
       this.post = res.post
-      
-      console.log(res)
-      // this.postsList.reverse()
+      this.profilePicture = IMAGES_URL.user + this.user.user_info.foto_perfil
     })
   }
 }

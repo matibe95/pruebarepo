@@ -1,2 +1,2 @@
-export const CLIENT_ID = 102
-export const CLIENT_SECRET = 'VBSWFP5FQCbrjoF0BsY9g8XL5jCzwqrNPQFGoMjx'
+export const CLIENT_ID = 3
+export const CLIENT_SECRET = 'Fsq3a6XIWYt8Pup98pg45AuKeNGrw0qkRnFoVQo2'

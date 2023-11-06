@@ -81,7 +81,8 @@ export enum Desktop_Sidebar{
   'origins-logo-blue',
   add,
   bell,
-  messages
+  messages,
+  backarrow_blue
 }
 
 export enum Desktop_Header {

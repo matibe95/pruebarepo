@@ -20,33 +20,33 @@ export class PostComponent {
   selectedOption = {
     text: {
       state: false,
-      iconSize: 50,
+      iconSize:'w-[50px] h-[50px]',
     },
     gallery: {
       state: true,
-      iconSize: 65,
+      iconSize: 'w-[65px] h-[65px]',
     },
   }
 
+  profilePictureAuthor = ''
+  
   postContent = {
     text: true,
     picture: true,
   }
 
-  profilePictureUrl = ''
-  postImageUrl = `http://localhost:8001/images/1699126978.jpg`
+  imageName = ``
+  postImageUrl = ``
 
   constructor(private iconService: IconService, private userService: UsuarioService, private postService: PostsService, private statusSS: StatusService) {
     this.iconService.registerIcons( Post_Icons ,'main_icons')
   }
 
-
   ngOnInit(){
     console.log(this.post)
     this.postImageUrl = `http://localhost:8001/images/${ this.post?.image[0]?.imagen}`
+    this.imageName =  this.post?.user?.user_info.foto_perfil
     this.postLikes = this.post.like
-    this.profilePictureUrl = this.post?.user?.user_info?.foto_perfil
-    // this.postImageName = this.post?.image[0]?.imagen
     
     
     if (this.post?.image.length === 0){
@@ -73,11 +73,11 @@ export class PostComponent {
     this.selectedOption = {
       text: {
         state: false,
-        iconSize: 50,
+        iconSize:'w-[50px] h-[50px]',
       },
       gallery: {
         state: true,
-        iconSize: 65,
+        iconSize: 'w-[65px] h-[65px]',
       }
     } 
   }
@@ -86,11 +86,11 @@ export class PostComponent {
     this.selectedOption = {
       text: {
         state: true,
-        iconSize: 65,
+        iconSize: 'w-[65px] h-[65px]',
       },
       gallery: {
         state: false,
-        iconSize: 50,
+        iconSize: 'w-[50px] h-[50px]',
       }
     } 
   }

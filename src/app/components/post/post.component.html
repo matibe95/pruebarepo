@@ -8,7 +8,11 @@
           [routerLink]="['/user', post?.user?.id]"
           class="transition-all rounded-full flex flex-col items-center justify-center bg-primary h-[50px] w-[50px]"
         >
-          <img class="rounded-full" src="{{ profilePictureUrl }}" alt="" />
+          <img
+            class="rounded-full"
+            src="http://localhost:8000/images/{{ imageName }}"
+            alt=""
+          />
         </a>
       </section>
       <section class="flex items-center h-[80px] w-full">
@@ -16,9 +20,9 @@
           <hr class="text-skin-dark-button bg-primary w-[20px] h-[4px]" />
           <button
             (click)="selectImage()"
-            class="transition-all rounded-full flex items-center justify-center bg-primary h-[{{
+            class="transition-all rounded-full flex items-center justify-center bg-primary {{
               selectedOption.gallery.iconSize
-            }}px] w-[{{ selectedOption.gallery.iconSize }}px]"
+            }}"
           >
             <mat-icon svgIcon="gallery_white"></mat-icon>
           </button>
@@ -27,9 +31,9 @@
           <hr class="text-skin-dark-button bg-primary w-[20px] h-[4px]" />
           <button
             (click)="selectText()"
-            class="transition-all rounded-full flex items-center justify-center bg-primary h-[{{
+            class="transition-all rounded-full flex items-center justify-center bg-primary {{
               selectedOption.text.iconSize
-            }}px] w-[{{ selectedOption.text.iconSize }}px]"
+            }}"
           >
             <mat-icon svgIcon="text_white"></mat-icon>
           </button>

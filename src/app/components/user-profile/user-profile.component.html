@@ -11,7 +11,9 @@
       <section class="relative px-[5%] py-5 flex justify-center">
         <div
           class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
-        ></div>
+        >
+          <img src="{{ profilePicture }}" alt="" />
+        </div>
       </section>
       <section class="flex flex-col items-center gap-4 px-7 py-7">
         <h1 class="font-bold text-center text-3xl">
@@ -90,16 +92,33 @@
         ></header>
         <section class="relative px-[5%] py-5 flex justify-center">
           <div
-            class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
-          ></div>
+            class="rounded-full overflow-hidden h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
+          >
+            <img class="rounded-full" src="{{ profilePicture }}" alt="" />
+          </div>
         </section>
         <section class="flex flex-col items-center gap-4 px-7 py-7">
           <h1 class="font-bold text-center text-3xl">
             {{ user?.nickname }}
           </h1>
-          <p class="text-center">
+          <p class="text-left w-full">
             {{ user?.user_info?.biografia }}
           </p>
+          <section class="w-full text-left">
+            <p *ngIf="user?.user_info?.sexo">Sexo: {{ user.user_info.sexo }}</p>
+            <p *ngIf="user?.user_info?.telefono">
+              Telefono: {{ user.user_info.telefono }}
+            </p>
+            <p *ngIf="user?.user_info?.ubicacion">
+              Ubicación: {{ user.user_info.ubicacion }}
+            </p>
+            <p *ngIf="user?.user_info?.estudios">
+              Estudios: {{ user.user_info.estudios }}
+            </p>
+            <p *ngIf="user?.user_info?.trabajo">
+              Trabajo: {{ user.user_info.trabajo }}
+            </p>
+          </section>
           <a
             routerLink="/profile"
             *ngIf="myProfile === true"
