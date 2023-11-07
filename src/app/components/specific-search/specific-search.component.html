@@ -34,7 +34,7 @@
       *ngFor="let user of users"
     ></app-searched-user-card>
   </section>
-  <section *ngSwitchCase="'comunidad'">
+  <section *ngSwitchCase="'comunidad'" class="flex flex-col gap-5">
     <app-searched-community-card
       [community]="community"
       *ngFor="let community of communities"

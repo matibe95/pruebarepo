@@ -1,5 +1,9 @@
 .box img {
-    margin-bottom: 10px;
     width: 100%;
     object-fit: contain;
+}
+
+.box {
+    margin-bottom: 20px;
+    background-color: var(--color-background-fill);
 }

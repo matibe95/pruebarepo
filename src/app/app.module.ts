@@ -49,6 +49,8 @@ import { FeedComunityComponent } from './components/feed-comunity/feed-comunity.
 import { FeedEventsComponent } from './components/feed-events/feed-events.component';
 import { PostUserCardComponent } from './components/post-user-card/post-user-card.component';
 import { CreatePostMenuComponent } from './components/create-post-menu/create-post-menu.component';
+import { CreateCommunityComponent } from './components/create-community/create-community.component';
+import { CreateEventMenuComponent } from './components/create-event-menu/create-event-menu.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +96,8 @@ import { CreatePostMenuComponent } from './components/create-post-menu/create-po
     FeedEventsComponent,
     PostUserCardComponent,
     CreatePostMenuComponent,
+    CreateCommunityComponent,
+    CreateEventMenuComponent,
   ],
   imports: [
     BrowserModule,

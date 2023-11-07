@@ -1,7 +1,7 @@
 .masonryLayoutContainer {
     padding: 20px 0;
     columns: 4;
-    column-gap: 10px;
+    column-gap: 15px;
     width: 100%;
 }
 
@@ -10,6 +10,13 @@
     .masonryLayoutContainer {
         padding: 0;
         columns: 2;
+    }
+}
+
+@media (max-width: 900px){
+    .masonryLayoutContainer {
+        padding: 0;
+        columns: 3;
     }
 }
 

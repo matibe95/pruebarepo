@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { IMAGES_URL } from 'src/app/constants/imagesUrl';
 
 @Component({
   selector: 'app-searched-community-card',
@@ -11,6 +12,21 @@ export class SearchedCommunityCardComponent {
 
   constructor(private router: Router){
 
+  }
+
+  imgUrl = 'assets/default.jpg'
+
+  ngOnInit(){
+    if(this.endsWithImageExtension(this.community?.imagen)){
+      this.imgUrl = IMAGES_URL.comunidad + this.community?.imagen 
+    }
+  }
+
+  endsWithImageExtension(filename: string) {
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+    const lowercasedFilename = filename.toLowerCase();
+  
+    return imageExtensions.some(extension => lowercasedFilename.endsWith(extension));
   }
 
   openCommunity(){

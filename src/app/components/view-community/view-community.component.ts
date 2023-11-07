@@ -41,6 +41,7 @@ export class ViewCommunityComponent {
 
   private activatedRoute = inject(ActivatedRoute)
   communityId: any = this.activatedRoute.snapshot.params['id']
+  belongsToCommunity: boolean = false;
 
   ngOnInit(){
     if (window.innerWidth < 750) {
@@ -54,8 +55,12 @@ export class ViewCommunityComponent {
         console.log(res)
         this.communityPosts = res.post.data
         this.community = res.comunidad
-        this.miembrosWord = this.community?.pertenece?.length > 1 ? 'miembros' : 'miembro'
+        this.miembrosWord = this.community?.pertenece?.length === 1 ? 'miembro' : 'miembros'
         this.communityPicture = IMAGES_URL.comunidad + this.community.imagen
+        
+        this.belongsToCommunity = this.community.pertenece.some((user:any) => {
+          return user.id == localStorage.getItem('id_user')
+        })
       }
     })
   }
@@ -63,9 +68,17 @@ export class ViewCommunityComponent {
   joinCommunity(){
     this._comunidadSS.UnirseAComunidad(this.community.id).subscribe({
       next: (res:any )=>{
+        location.reload()
         console.log(res)
       }
     })
   }
-
+  leaveCommunity(){
+    this._comunidadSS.SalirDeComunidad(this.community.id).subscribe({
+      next: (res:any )=>{
+        alert('Has abandonado la comunidad correctamente')
+        location.reload()
+      }
+    })
+  }
 }

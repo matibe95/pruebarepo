@@ -22,7 +22,7 @@ export class SpecificSearchComponent {
 
   users: any = [1]
   events: any = [1]
-  communities: any = [1]
+  communities: any = []
 
   constructor(
     private iconService: IconService,
@@ -36,15 +36,13 @@ export class SpecificSearchComponent {
 
   ngOnInit(){
     this.searchService.$searchedData.subscribe((data)=>{
-      this.makeSearch(data)  
+      this.makeSearch(data)
     })
   }
 
-  // ngOnDestroy(){
-  //   this.searchService.$searchedData.unsubscribe()
-  // }
 
   makeSearch(data: string){
+
     // console.log(this.searchFilter)
     // if (this.searchFilter == "evento"){
     //   this.eventSS.searchEvent(data)
@@ -52,8 +50,13 @@ export class SpecificSearchComponent {
     // if (this.searchFilter == "usuario"){
     //   this.userSS.searchCommunity(data)
     // }
-    // if (this.searchFilter == "comunidad"){
-    //   this.communitySS.searchCommunity(data)
-    // }
+    if (this.searchFilter == "comunidad"){
+      this.communitySS.BuscarComunidad(data).subscribe({
+        next: (res:any)=>{
+          console.log(res)
+          this.communities = res.data
+        }
+      })
+    }
   }
 }

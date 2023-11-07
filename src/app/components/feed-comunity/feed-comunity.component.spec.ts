@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FeedComunityComponent } from './feed-comunity.component';
+import { FeedComunityComponent } from './FeedComunityComponent';
 
 describe('FeedComunityComponent', () => {
   let component: FeedComunityComponent;

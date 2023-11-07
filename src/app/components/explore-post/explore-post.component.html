@@ -1,11 +1,17 @@
-<div class="box">
+<div class="box flex items-center justify-center rounded-xl">
   <img
+    *ngIf="imgUrl !== ''"
     class="h-auto max-w-full rounded-xl"
-    [src]="
-      'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-' +
-      number +
-      '.jpg'
-    "
     alt=""
+    src="{{ imgUrl }}"
   />
+  <p *ngIf="imgUrl === ''" class="px-4 py-12 truncate">
+    {{ post?.text[0].titulo }}
+  </p>
 </div>
+
+<!-- [src]="
+    'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-' +
+    number +
+    '.jpg'
+  " -->

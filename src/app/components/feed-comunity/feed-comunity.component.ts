@@ -18,6 +18,7 @@ export class FeedComunityComponent {
   }
 
   ngOnInit(){
+    console.log(this.community)
   }
 
   goToCommunity(){
@@ -25,8 +26,12 @@ export class FeedComunityComponent {
   }
 
   onClick(){
-    this._communitySS.UnirseAComunidad(this.community.id).subscribe(res=>{
-      console.log(res)
+    this._communitySS.SalirDeComunidad(this.community.id).subscribe(res=>{
+      next: (res:any)=>{
+        alert('Has abandonado la comunidad con exito')
+        location.reload()
+
+      }
     })
   }
 }

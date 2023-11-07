@@ -15,7 +15,10 @@
     >
       {{ community.nombre }}
     </h3>
-    <p (click)="goToCommunity()" class="w-fit cursor-pointer text-button-muted">
+    <p
+      (click)="goToCommunity()"
+      class="line-clamp-1 w-fit cursor-pointer text-button-muted"
+    >
       {{ community.descripcion }}
     </p>
   </div>
@@ -23,6 +26,6 @@
     (click)="onClick()"
     class="text-lg px-8 ml-6 bg-primary rounded-full py-2 text-skin-dark-button"
   >
-    Unirse
+    Salir
   </button>
 </article>
