@@ -17,6 +17,7 @@ export class SearchedCommunityCardComponent {
   imgUrl = 'assets/default.jpg'
 
   ngOnInit(){
+    console.log(this.community)
     if(this.endsWithImageExtension(this.community?.imagen)){
       this.imgUrl = IMAGES_URL.comunidad + this.community?.imagen 
     }

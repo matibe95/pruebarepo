@@ -12,10 +12,25 @@ export class ComunidadService {
   private UNIRSE_COMUNIDAD = 'http://localhost:8003/api/v1/community/join/'
   private LISTAR_COMUNIDADES = 'http://localhost:8003/api/v1/community/all'
   private LISTAR_MIS_COMUNIDADES = 'http://localhost:8003/api/v1/community/belong'
+  private LISTAR_COMUNIDADES_OWNER = 'http://localhost:8003/api/v1/community/own'
   private CREAR_COMUNIDAD = 'http://localhost:8003/api/v1/community/'
   private BUSCAR_COMUNIDAD = 'http://localhost:8003/api/v1/community/search/'
 
   constructor(private http: HttpClient) { }
+
+  
+
+   ListarComunidadesOwn(idDelUsuario: any){
+    const httpHeaders = {
+      headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"),
+        'id_usuario' : idDelUsuario
+      })
+    };
+    
+    return this.http.get<any>(this.LISTAR_COMUNIDADES_OWNER, httpHeaders);
+  }
 
    ListarMisComunidades(){
     const httpHeaders = {

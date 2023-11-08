@@ -22,9 +22,17 @@
     </p>
   </div>
   <button
+    *ngIf="isMember"
     (click)="onClick()"
     class="text-lg px-8 ml-6 bg-primary rounded-full py-2 text-skin-dark-button"
   >
     Salir
+  </button>
+  <button
+    *ngIf="!isMember"
+    (click)="onClick()"
+    class="text-lg px-8 ml-6 bg-primary rounded-full py-2 text-skin-dark-button"
+  >
+    Unirse
   </button>
 </article>
