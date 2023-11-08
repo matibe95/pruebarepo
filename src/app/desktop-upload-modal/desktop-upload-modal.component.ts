@@ -58,6 +58,8 @@ export class DesktopUploadModalComponent {
     type: 'main'
   }
 
+  dataToModify!: any
+
   currentRule: any = {
     number: 0,
     name: null,
@@ -102,6 +104,7 @@ export class DesktopUploadModalComponent {
     this.modalSS.$modal_option.subscribe((value)=>{
       const {state, type} = value
       this.optionSelected = {state, type}
+      this.dataToModify = value?.data
     })
   }
 

@@ -7,3 +7,8 @@
     margin-bottom: 20px;
     background-color: var(--color-background-fill);
 }
+
+.customTextIconSize{
+    width: 16px;
+    height: 16px;
+}

@@ -55,6 +55,7 @@
     *ngIf="optionSelected.type === 'community'"
   ></app-create-community>
   <app-create-post-menu
+    [dataToModify]="dataToModify"
     *ngIf="optionSelected.type === 'post'"
   ></app-create-post-menu>
 </div>

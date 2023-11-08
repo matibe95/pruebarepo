@@ -26,8 +26,12 @@
     >
       <mat-icon svgIcon="gallery"></mat-icon>
     </button>
-    <hr class="text-skin-dark-button bg-skin-fill w-[20px] h-[4px]" />
+    <hr
+      *ngIf="dataToModify === undefined"
+      class="text-skin-dark-button bg-skin-fill w-[20px] h-[4px]"
+    />
     <button
+      *ngIf="dataToModify === undefined"
       (click)="selectOptions()"
       class="transition-all rounded-full flex items-center justify-center bg-skin-fill {{
         selectedOption.options.iconSize

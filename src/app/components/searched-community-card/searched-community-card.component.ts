@@ -30,6 +30,6 @@ export class SearchedCommunityCardComponent {
   }
 
   openCommunity(){
-    this.router.navigate([`/community/1`]);
+    this.router.navigate([`/community/${this.community.id}`]);
   }
 }

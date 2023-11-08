@@ -10,7 +10,7 @@
         >
           <img
             class="rounded-full w-[50px] h-[50px]"
-            src="http://localhost:8000/images/{{ imageName }}"
+            src="{{ imageName }}"
             alt=""
           />
         </a>
@@ -50,7 +50,7 @@
       </h2>
     </div>
     <div class="my-4 post_text_container">
-      <p class="text-skin-base text-xl tracking-tighter break-words">
+      <p class="text-skin-base text-[1.37rem] tracking-tighter break-words">
         {{ post.text[0]?.descripcion }}
       </p>
     </div>
@@ -59,13 +59,7 @@
     <div
       class="bg-cover bg-center bg-no-repeat overflow-hidden bg-skin-fill-muted h-[473px] flex justify-center items-center rounded-3xl w-full"
       style="background-image: url({{ postImageUrl }});"
-    >
-      <!-- <img
-        class="object-contain w-full"
-        src="http://localhost:8001/images/{{ postImageName }}"
-        alt=""
-      /> -->
-    </div>
+    ></div>
     <!-- <div
       class="rounded-3xl bg-skin-fill-muted flex flex-col gap-4 items-center justify-center px-8"
     >
@@ -77,13 +71,33 @@
   </div>
   <footer class="post_footer flex justify-center gap-8 pt-3 items-center">
     <section class="relative grid grid-rows-1 gap-2 items-center">
-      <button
-        (click)="reportPost()"
+      <section
         *ngIf="showOptions"
-        class="shadow-md absolute text-skin-dark-button bg-primary px-4 py-2 rounded-xl top-[-50px] left-[-20px]"
+        class="absolute bottom-[100px] bg-button-muted py-2 px-2 rounded-xl left-[-30px]"
       >
-        Reportar
-      </button>
+        <div class="flex flex-col gap-2">
+          <button
+            *ngIf="postAuthor"
+            (click)="deletePost()"
+            class="text-skin-dark-button hover:scale-105 hover:bg-skin-button-hover-primary transition-all bg-primary px-4 py-2 rounded-lg"
+          >
+            Borrar
+          </button>
+          <button
+            *ngIf="postAuthor"
+            (click)="modifyPost()"
+            class="text-skin-dark-button hover:scale-105 hover:bg-skin-button-hover-primary transition-all bg-primary px-4 py-2 rounded-lg"
+          >
+            Modificar
+          </button>
+          <button
+            (click)="reportPost()"
+            class="text-skin-dark-button hover:scale-105 hover:bg-skin-button-hover-primary transition-all bg-primary px-4 py-2 rounded-lg"
+          >
+            Reportar
+          </button>
+        </div>
+      </section>
       <button (click)="onToggleOptions()" class="options_post">
         <mat-icon svgIcon="options"></mat-icon>
       </button>

@@ -10,6 +10,7 @@ export interface Modal_Account {
 export interface Modal_Option {
   type?: OptionType
   state?: boolean
+  data?: any
 }
 
 

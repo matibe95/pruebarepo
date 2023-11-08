@@ -16,4 +16,11 @@ export class StatusService {
   $posts = new EventEmitter<Boolean>()
 
   $showLikes = new EventEmitter<PostShowLikesService>()
+
+  $showSelectedPost = new EventEmitter<showSelectedPost>()
+}
+
+type showSelectedPost = {
+  state : boolean;
+  data ?: any;
 }

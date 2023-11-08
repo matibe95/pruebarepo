@@ -1,13 +1,29 @@
-<div class="box flex items-center justify-center rounded-xl">
-  <img
-    *ngIf="imgUrl !== ''"
-    class="h-auto max-w-full rounded-xl"
-    alt=""
-    src="{{ imgUrl }}"
-  />
-  <p *ngIf="imgUrl === ''" class="px-4 py-12 truncate">
-    {{ post?.text[0].titulo }}
-  </p>
+<div
+  (click)="showSelectedPost()"
+  *ngIf="imgUrl !== ''"
+  class="box transition-all cursor-pointer flex items-center justify-center rounded-xl"
+>
+  <img class="h-auto max-w-full rounded-xl" alt="" src="{{ imgUrl }}" />
+</div>
+
+<div
+  (click)="showSelectedPost()"
+  *ngIf="imgUrl === ''"
+  class="box transition-all cursor-pointer flex flex-col rounded-xl"
+>
+  <header
+    class="flex bg-primary rounded-t-xl py-4 px-4 justify-between items-center"
+  >
+    <h3 class="text-skin-dark-button font-semibold">
+      {{ post?.user?.nickname }}
+    </h3>
+    <mat-icon class="customTextIconSize" svgIcon="text_white"></mat-icon>
+  </header>
+  <div class="overflow-hidden">
+    <p class="px-4 py-6 text-skin-base break-words font-bold">
+      {{ post?.text[0].titulo }}
+    </p>
+  </div>
 </div>
 
 <!-- [src]="

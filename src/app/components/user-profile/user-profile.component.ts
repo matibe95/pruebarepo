@@ -17,7 +17,7 @@ export class UserProfileComponent {
 
   private activatedRoute = inject(ActivatedRoute)
   userId: any = this.activatedRoute.snapshot.params['id']
-  post!: any
+  postList!: any
   user!: any
   mobile: Boolean = false;
   showPosts: String = 'visibleContainer';
@@ -48,7 +48,7 @@ export class UserProfileComponent {
         this.myProfile = true
       }
       this.user = res.user
-      this.post = res.post
+      this.postList = res.post.data.reverse()
       this.profilePicture = IMAGES_URL.user + this.user.user_info.foto_perfil
     })
   }

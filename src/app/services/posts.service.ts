@@ -13,6 +13,8 @@ export class PostsService {
   private crearPost = `http://localhost:8001/api/v2/post`
   private likePost = `http://localhost:8001/api/v2/post/like/`
   private reportPost = `http://localhost:8001/api/v2/post/report/`
+  private MODIFICAR_POST = `http://localhost:8001/api/v2/post/`
+  private BORRAR_POST = `http://localhost:8001/api/v2/post/`
 
   constructor(private http: HttpClient) { }
   
@@ -105,13 +107,45 @@ export class PostsService {
     return throwError(()=> error);
   };
 
+  ModifyPost(body: any, idPost: any){
+    
+    const fd = new FormData()
+    fd.append('_method', 'PUT');
+    Object.keys(body).forEach((key)=>{
+      if (body[key] !== undefined && body[key] !== null && body[key] !== ''){
+        fd.append(key, body[key])
+      }
+    })
+
+    const httpHeaders = {
+      headers: new HttpHeaders({ 
+        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"), 
+        'id_usuario' : this.userId
+      })
+      
+    };
+
+    return this.http.post<any>(this.MODIFICAR_POST + idPost, fd, httpHeaders)
+  }
+
+  DeletePost(idPost: any){
+    const httpHeaders = {
+      headers: new HttpHeaders({ 
+        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken"), 
+        'id_usuario' : this.userId
+      })
+      
+    };
+
+    return this.http.delete<any>(this.BORRAR_POST + idPost, httpHeaders)
+  }
+
   createPost(body: any){
     
     const fd = new FormData()
 
     Object.keys(body).forEach((key)=>{
       if (body[key] !== undefined && body[key] !== null && body[key] !== ''){
-        console.log(body[key])
         fd.append(key, body[key])
       }
     })

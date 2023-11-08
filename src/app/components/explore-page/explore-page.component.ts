@@ -3,6 +3,7 @@ import { SearchBar_Icons } from 'src/app/constants/icons';
 import { IconService } from 'src/app/services/Icon.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { SearchInputService } from 'src/app/services/search-input.service';
+import { StatusService } from 'src/app/services/status.service';
 
 @Component({
   selector: 'app-explore-page',
@@ -15,6 +16,8 @@ export class ExplorePageComponent {
   showPosts: String = 'visibleContainer';
   showOptions: String ='hiddenContainer';
   filterName: String = '';
+  selectedPost!: any;
+  showSelectedPost!: boolean;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -27,7 +30,8 @@ export class ExplorePageComponent {
   constructor(
     private iconService: IconService,
     private postsService: PostsService,
-    private _searchInput: SearchInputService
+    private _searchInput: SearchInputService,
+    private _statusSS: StatusService
   ){
     this.iconService.registerIcons(SearchBar_Icons, 'main_icons')
   }
@@ -52,8 +56,17 @@ export class ExplorePageComponent {
     }
     this.postsService.ListarFeed().subscribe((res)=>{
       this.postsList = res.data
-      console.log(this.postsList)
       // this.postsList.reverse()
     })
+
+    this._statusSS.$showSelectedPost.subscribe((res)=>{
+      console.log(res)
+      this.selectedPost = res.data
+      this.showSelectedPost = res.state
+    })
+  }
+
+  closePostModal(){
+    this._statusSS.$showSelectedPost.emit({state: false})
   }
 }

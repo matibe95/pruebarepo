@@ -34,7 +34,6 @@ export class CreateCommunityComponent {
       ...this.checkoutForm.value,
       imagen: this.selectedFile,
     }
-    console.log(newData)
 
     this._comunidadSS.CrearComunidad(newData).subscribe(res=>{
       next: (res: any) =>{

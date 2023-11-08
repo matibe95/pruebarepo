@@ -1,5 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { IMAGES_URL } from 'src/app/constants/imagesUrl';
 import { ComunidadService } from 'src/app/services/comunidad.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { PostsService } from 'src/app/services/posts.service';
@@ -11,6 +12,7 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class CreatePostMenuComponent {
 
+  @Input() dataToModify: any
   
   imageFile!: {link: string, file: any, name: string};
   
@@ -73,20 +75,116 @@ export class CreatePostMenuComponent {
     community_id: '',
   });
   
-  
+  onChangeCommunity(){
+    this.event_id.nativeElement.value = ''
+  }
+  onChangeEvent(){
+    this.community_id.nativeElement.value = ''
+  }
+
+  detectWhichOptionHasToBeChoose(){
+    if (this.dataToModify?.image[0]?.length === 0){
+      console.log('no tiene imagen')
+      return this.selectText()
+    }
+    if (this.dataToModify?.text[0]?.length === 0){
+      console.log('no tiene texto')
+      return this.selectGallery()
+    }
+  }
+
+  ngOnInit(){
+    this.comunidadSS.ListarMisComunidades().subscribe({
+      next: (value: any)=>{
+        this.communitiesList = value
+      }
+    })
+
+    if (this.dataToModify){
+      const titulo = '' + this.dataToModify?.text[0]?.titulo
+      const descripcion = '' + this.dataToModify?.text[0]?.descripcion
+
+      if ( this.dataToModify.image[0]) this.imgUrl = IMAGES_URL.post + this.dataToModify.image[0].imagen
+
+      this.checkoutForm = this.fb.group({
+        title: titulo,
+        description: descripcion,
+      });
+
+      const event_id = '' + this.dataToModify.id_evento
+      const community_id = '' + this.dataToModify.id_comunidad
+
+      if (community_id != 'null'){ 
+        if (this.community_id?.nativeElement.value) this.community_id.nativeElement.value = community_id
+      }
+
+      if (event_id != 'null'){
+        if (this.event_id?.nativeElement.value) this.event_id.nativeElement.value = event_id
+      }
+      
+      this.liarForm = this.fb.group({
+        event_id: event_id,
+        community_id: community_id,
+      });
+    }
+
+    this.detectWhichOptionHasToBeChoose()
+
+    // if (this.dataToModify.image[0].length === undefined) {
+    //   this.selectText()
+    // } else {
+    //   this.selectGallery()
+    // }
+  }
 
   onSubmit(){
-
     const {title, description} = this.checkoutForm.value
 
-    const newData = {
-        event_id: this.event_id?.nativeElement?.value,
-        community_id: this.community_id?.nativeElement?.value,
+    let id_evento, id_comunidad;
+
+    if (this.dataToModify){
+      id_comunidad = this.dataToModify.id_comunidad
+      id_evento = this.dataToModify.id_evento
+    } else {
+      id_evento = this.event_id?.nativeElement?.value
+      id_comunidad = this.community_id?.nativeElement?.value
+    }
+
+    let newData: any = {
+        id_evento,
+        id_comunidad,
         titulo: title!,
         descripcion: description!,
         imagen: this.selectedFile,
     }
 
+    if (this.dataToModify){
+      if (this.dataToModify?.text[0]?.id){
+        newData = {
+          ...newData,
+          id_texto: this.dataToModify?.text[0]?.id,
+        }
+      }
+      if (this.dataToModify?.image[0]?.id){
+        newData = {
+          ...newData,
+          id_imagen: this.dataToModify?.image[0]?.id,
+        }
+      }
+    }
+    
+    console.log(newData)
+
+    if (this.dataToModify){
+      this.postSS.ModifyPost(newData, this.dataToModify.id).subscribe({
+        next: (res: any) => {
+          console.log(res)
+          // this.closeModal()
+          location.reload()
+        }
+      })
+      return;
+    }
     this.postSS.createPost(newData).subscribe({
       next: (res: any) => {
         this.closeModal()
@@ -95,22 +193,7 @@ export class CreatePostMenuComponent {
     })
   }
 
-  onChangeCommunity(){
-    this.event_id.nativeElement.value = ''
-  }
-  onChangeEvent(){
-    this.community_id.nativeElement.value = ''
-    
-  }
 
-  ngOnInit(){
-    this.comunidadSS.ListarMisComunidades().subscribe({
-      next: (value: any)=>{
-        console.log(value)
-        this.communitiesList = value
-      }
-    })
-  }
 
   selectGallery(){
     this.selectedOption = {

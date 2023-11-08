@@ -48,7 +48,7 @@
         </div>
         <div class="flex gap-3 justify-between items-center">
           <mat-icon svgIcon="event_filled"></mat-icon>
-          <p>{{ post?.data?.length }}</p>
+          <p>{{ postList?.length }}</p>
         </div>
       </footer>
     </article>
@@ -72,10 +72,10 @@
     </section>
     <section class="flex flex-col gap-6">
       <app-post
-        [postImageUrl]="profilePicture"
+        [profilePictureImage]="profilePicture"
         class="w-full"
         [post]="post"
-        *ngFor="let post of post?.data"
+        *ngFor="let post of postList"
       ></app-post>
     </section>
   </main>
@@ -149,7 +149,7 @@
           </div>
           <div class="flex gap-3 justify-between items-center">
             <mat-icon svgIcon="event_filled"></mat-icon>
-            <p>{{ post?.data?.length }}</p>
+            <p>{{ postList?.length }}</p>
           </div>
         </footer>
       </article>
@@ -173,9 +173,10 @@
       </section>
       <section class="flex flex-col gap-6">
         <app-post
+          [profilePictureImage]="profilePicture"
           class="w-full"
           [post]="post"
-          *ngFor="let post of post?.data"
+          *ngFor="let post of postList"
         ></app-post>
       </section>
     </main>

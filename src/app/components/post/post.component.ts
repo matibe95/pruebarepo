@@ -1,7 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { errorCodes } from 'src/app/constants/httpErrorCodes';
 import { Post_Icons } from 'src/app/constants/icons';
+import { IMAGES_URL } from 'src/app/constants/imagesUrl';
+import { Modal_Option } from 'src/app/models/modal.model';
 import { IconService } from 'src/app/services/Icon.service';
+import { ModalService } from 'src/app/services/modal.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { StatusService } from 'src/app/services/status.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -28,27 +31,41 @@ export class PostComponent {
     },
   }
 
-  profilePictureAuthor = ''
+  postAuthor!: boolean
+
   
   postContent = {
     text: true,
     picture: true,
   }
 
-  imageName = ``
-  @Input() postImageUrl!: any
+  imageName = ''
+  @Input() profilePictureImage!: any
+  postImageUrl!: any
 
-  constructor(private iconService: IconService, private userService: UsuarioService, private postService: PostsService, private statusSS: StatusService) {
+  constructor(
+    private iconService: IconService,
+    private userService: UsuarioService,
+    private postService: PostsService,
+    private statusSS: StatusService,
+    private _modalOptionSS: ModalService,
+  ) {
     this.iconService.registerIcons( Post_Icons ,'main_icons')
   }
 
+
   ngOnInit(){
-    // console.log(this.post)
-    if (this.postImageUrl == null || this.postImageUrl == undefined || this.postImageUrl == ''){
-      // console.log('matibe')
-      this.postImageUrl = `http://localhost:8001/images/${ this.post?.image[0]?.imagen}`
+    this.postImageUrl = IMAGES_URL.post + this.post?.image[0]?.imagen
+
+    this.postAuthor = this.checkIfPostIsFromUser(this.post.id_usuario)
+    if(this.profilePictureImage){
+      this.imageName = this.profilePictureImage
+    } else {
+      if (this.post?.user?.user_info.foto_perfil !== null){
+        this.imageName =  IMAGES_URL.user + this.post?.user?.user_info.foto_perfil
+      }
     }
-    this.imageName =  this.post?.user?.user_info.foto_perfil
+
     this.postLikes = this.post.like
     
     
@@ -69,6 +86,24 @@ export class PostComponent {
     
     this.post.like.map((item: any)=> {
       if (item.id_usuario == localStorage.getItem('id_user')) this.isLiked = true
+    })
+  }
+
+  checkIfPostIsFromUser(idUser: any){
+    if (idUser == localStorage.getItem('id_user')) return true
+    return false
+  }
+
+  modifyPost(){
+    this._modalOptionSS.$modal_option.emit({state:true, type:'post', data: this.post})
+  }
+  
+  deletePost(){
+    this.postService.DeletePost(this.post.id).subscribe({
+      next: (res:any)=>{
+        alert('post eliminado correctamente')
+        location.reload()
+      }
     })
   }
 

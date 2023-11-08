@@ -13,7 +13,7 @@
     }
 }
 
-@media (max-width: 900px){
+@media (max-width: 1110px){
     .masonryLayoutContainer {
         padding: 0;
         columns: 3;
