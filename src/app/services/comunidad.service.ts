@@ -19,8 +19,8 @@ export class ComunidadService {
   constructor(private http: HttpClient) { }
 
   
-
-   ListarComunidadesOwn(idDelUsuario: any){
+  ListarComunidadesOwn(idDelUsuario: any){
+     console.log('hola esta es una pruebita')
     const httpHeaders = {
       headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
