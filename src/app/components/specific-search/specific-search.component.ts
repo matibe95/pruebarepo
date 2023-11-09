@@ -14,20 +14,17 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 
 export class SpecificSearchComponent {
-  searchFilter: SearchFilter = 'post';
+  searchFilter: SearchFilter = 'usuario';
 
-  onItemChange(target:any ){
-    this.searchFilter = target.value
-  }
-
-  users: any = [1]
-  events: any = [1]
+  users: any = []
+  events: any = []
   communities: any = []
+  searchedData!: any
 
   constructor(
     private iconService: IconService,
     private searchService: SearchInputService,
-    private eventSS: EventosService,
+    private _eventSS: EventosService,
     private userSS: UsuarioService,
     private communitySS: ComunidadService,
   ){
@@ -36,24 +33,37 @@ export class SpecificSearchComponent {
 
   ngOnInit(){
     this.searchService.$searchedData.subscribe((data)=>{
-      this.makeSearch(data)
+      this.searchedData = data
+      this.makeSearch(this.searchedData)
     })
   }
+
+  onItemChange(target:any ){
+    this.searchFilter = target.value
+    this.makeSearch(this.searchedData)
+  }
+
 
 
   makeSearch(data: string){
 
-    // console.log(this.searchFilter)
-    // if (this.searchFilter == "evento"){
-    //   this.eventSS.searchEvent(data)
-    // }
-    // if (this.searchFilter == "usuario"){
-    //   this.userSS.searchCommunity(data)
-    // }
+    if (this.searchFilter == "evento"){
+      this._eventSS.searchEvent(data).subscribe({
+        next:(res: any) => {
+          this.events = res.data;
+        }
+      })
+    }
+    if (this.searchFilter == "usuario"){
+      this.userSS.SearchUser(data).subscribe({
+        next: (res:any)=>{
+          this.users = res.data
+        }
+      })
+    }
     if (this.searchFilter == "comunidad"){
       this.communitySS.BuscarComunidad(data).subscribe({
         next: (res:any)=>{
-          console.log(res)
           this.communities = res.data
         }
       })

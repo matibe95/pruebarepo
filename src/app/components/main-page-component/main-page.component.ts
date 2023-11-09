@@ -60,6 +60,12 @@ export class MainPageComponent {
       this.communitiesList = res
     })
 
+    this.eventSS.ListarMisEventos().subscribe((res)=>{
+      this.eventsList = res
+    })
+
+console.log(this.eventsList)
+
     this.statusSS.$showLikes.subscribe((value)=>{
       this.postLikes = value.likes
       this.showLikes = value.show

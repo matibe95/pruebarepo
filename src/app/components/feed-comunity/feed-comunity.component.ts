@@ -31,7 +31,7 @@ export class FeedComunityComponent {
   }
 
   onClick(){
-    this._communitySS.SalirDeComunidad(this.community.id).subscribe(res=>{
+    this._communitySS.SalirDeComunidad(this.community.id).subscribe({
       next: (res:any)=>{
         alert('Has abandonado la comunidad con exito')
         location.reload()

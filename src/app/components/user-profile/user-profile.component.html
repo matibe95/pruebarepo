@@ -131,7 +131,16 @@
             <mat-icon svgIcon="settings"></mat-icon>
           </a>
           <button
-            *ngIf="myProfile === false"
+            (click)="unfollowUser()"
+            *ngIf="myProfile === false && followingUser === true"
+            class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
+          >
+            Dejar de seguir
+            <mat-icon svgIcon="follow"></mat-icon>
+          </button>
+          <button
+            (click)="followUser()"
+            *ngIf="myProfile === false && followingUser === false"
             class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
           >
             Seguir

@@ -25,6 +25,7 @@ export class UserProfileComponent {
   filterName: String = '';
   myProfile: Boolean = false;
   profilePicture = ""
+  followingUser!: boolean
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -48,8 +49,32 @@ export class UserProfileComponent {
         this.myProfile = true
       }
       this.user = res.user
+      this.followingUser = res.sigue
+
       this.postList = res.post.data.reverse()
       this.profilePicture = IMAGES_URL.user + this.user.user_info.foto_perfil
+    })
+  }
+
+  followUser(){
+    this.userService.FollowUser(this.userId).subscribe({
+      next(value) {
+        location.reload()
+      },
+      error(err) {
+        console.log(err)
+      },
+    })
+  }
+  unfollowUser(){
+    this.userService.UnfollowUser(this.userId).subscribe({
+      next(value) {
+        location.reload()
+        console.log(value)
+      },
+      error(err) {
+        console.log(err)
+      },
     })
   }
 }

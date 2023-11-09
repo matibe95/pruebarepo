@@ -96,14 +96,13 @@
                 svgIcon="exploreEvents"
               ></mat-icon>
             </div>
-            <h2
-              *ngIf="eventsList?.length"
-              class="text-center font-medium text-2xl"
-            >
+            <h2 *ngIf="!eventsList" class="text-center font-medium text-2xl">
               Aun no hay eventos
             </h2>
-            <app-feed-events [event]="ev" *ngFor="let ev of eventsList">
-            </app-feed-events>
+            <div class="flex flex-col gap-8">
+              <app-feed-events [event]="ev" *ngFor="let ev of eventsList">
+              </app-feed-events>
+            </div>
           </section>
         </section>
       </div>
