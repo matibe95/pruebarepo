@@ -28,19 +28,19 @@
   <label for="radioEvento">Evento</label>
 </section>
 <div [ngSwitch]="searchFilter">
-  <section *ngSwitchCase="'usuario'">
+  <section *ngSwitchCase="'usuario'" class="flex flex-col gap-5">
     <app-searched-user-card
       [user]="user"
       *ngFor="let user of users"
     ></app-searched-user-card>
   </section>
-  <section *ngSwitchCase="'comunidad'">
+  <section *ngSwitchCase="'comunidad'" class="flex flex-col gap-5">
     <app-searched-community-card
       [community]="community"
       *ngFor="let community of communities"
     ></app-searched-community-card>
   </section>
-  <section *ngSwitchCase="'evento'">
+  <section *ngSwitchCase="'evento'" class="flex flex-col gap-5">
     <app-searched-event-card
       [event]="event"
       *ngFor="let event of events"

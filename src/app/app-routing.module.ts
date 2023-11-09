@@ -10,6 +10,7 @@ import { ExplorePageComponent } from './components/explore-page/explore-page.com
 import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
 import { ViewCommunityComponent } from './components/view-community/view-community.component';
 import { ViewEventComponent } from './components/view-event/view-event.component';
+import { emptyIdGuard } from './guards/empty-id.guard';
 
 const routes: Routes = [
   { path:'welcome',
@@ -28,7 +29,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'home', component: MainPageComponent, canActivate: [autenticacionGuard]},
   { path: 'explore', component: ExplorePageComponent, canActivate: [autenticacionGuard]},
-  { path: 'user/:id', component: UserProfileComponent, canActivate: [autenticacionGuard]},
+  { path: 'user/:id', component: UserProfileComponent, canActivate: [autenticacionGuard, emptyIdGuard]},
   { path: 'profile', component: ModifyProfileComponent, canActivate: [autenticacionGuard]},
   { path: 'community/:id', component: ViewCommunityComponent, canActivate: [autenticacionGuard]},
   { path: 'event/:id', component: ViewEventComponent, canActivate: [autenticacionGuard]},

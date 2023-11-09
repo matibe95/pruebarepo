@@ -1,1 +1,30 @@
-<p>feed-events works!</p>
+<article
+  class="rounded-full flex justify-between bg-skin-fill pl-2 pr-4 py-2 items-center"
+>
+  <img
+    (click)="goToEvent()"
+    class="cursor-pointer rounded-full object-cover min-h-[70px] min-w-[70px] max-w-[70px] max-h-[70px]"
+    src="{{ imgUrl }}"
+    width="70"
+  />
+  <div class="w-full mx-4">
+    <h3
+      (click)="goToEvent()"
+      class="font-semibold text-xl cursor-pointer w-fit text-button-muted"
+    >
+      {{ event.nombre }}
+    </h3>
+    <p
+      (click)="goToEvent()"
+      class="line-clamp-1 w-fit cursor-pointer text-button-muted"
+    >
+      {{ event.descripcion }}
+    </p>
+  </div>
+  <button
+    (click)="onClick()"
+    class="text-lg px-8 ml-6 bg-primary rounded-full py-2 text-skin-dark-button"
+  >
+    Salir
+  </button>
+</article>

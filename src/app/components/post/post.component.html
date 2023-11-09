@@ -1,35 +1,104 @@
 <article
-  class="flex flex-col gap-4 justify-between h-[540px] bg-skin-fill py-6 px-7 rounded-2xl"
+  class="flex flex-col gap-4 h-[733px] bg-skin-fill py-6 px-7 rounded-2xl"
 >
   <section class="flex w-full">
-    <article class="post_types_scroller gap-3">
-      <a
-        class="flex gap-4 items-center justify-center"
-        [routerLink]="['/user', post?.user?.id]"
-      >
-        <div
-          class="scroller-item h-14 w-14 bg-primary rounded-full flex justify-center items-center"
+    <header class="flex justify-between w-full">
+      <section class="flex items-center">
+        <a
+          [routerLink]="['/user', post?.user?.id]"
+          class="transition-all rounded-full flex flex-col items-center justify-center bg-primary h-[50px] w-[50px]"
         >
-          <img src="{{ post?.user?.foto_perfil }}" />
+          <img
+            class="rounded-full w-[50px] h-[50px]"
+            src="{{ imageName }}"
+            alt=""
+          />
+        </a>
+      </section>
+      <section class="flex items-center h-[80px] w-full">
+        <div *ngIf="postContent.picture" class="flex items-center">
+          <hr class="bg-primary w-[20px] h-[4px]" />
+          <button
+            (click)="selectImage()"
+            class="transition-all rounded-full flex items-center justify-center bg-primary {{
+              selectedOption.gallery.iconSize
+            }}"
+          >
+            <mat-icon svgIcon="gallery_white"></mat-icon>
+          </button>
         </div>
-        <p class="font-semibold">{{ post?.user?.nickname }}</p>
-      </a>
-    </article>
+        <div *ngIf="postContent.text" class="flex items-center">
+          <hr class="bg-primary w-[20px] h-[4px]" />
+          <button
+            (click)="selectText()"
+            class="transition-all rounded-full flex items-center justify-center bg-primary {{
+              selectedOption.text.iconSize
+            }}"
+          >
+            <mat-icon svgIcon="text_white"></mat-icon>
+          </button>
+        </div>
+      </section>
+    </header>
   </section>
-  <h2 class="text-3xl font-extrabold tracking-tighter">
-    {{ post.text[0]?.titulo || "Titulo del Post" }}
-  </h2>
-  <div class="my-4 post_text_container">
-    <p class="tracking-tighter">
-      {{
-        post.text[0]?.descripcion ||
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem magnam eius voluptatibus, quos, quam fugit voluptatum id repellendus placeat ipsam dolore enim quaerat saepe ab, mollitia necessitatibus est repellat natus."
-      }}
-    </p>
+  <div *ngIf="selectedOption.text.state" class="h-[473px]">
+    <div class="">
+      <h2
+        class="text-4xl text-skin-base break-words font-extrabold tracking-tighter"
+      >
+        {{ post.text[0]?.titulo }}
+      </h2>
+    </div>
+    <div class="my-4 post_text_container">
+      <p class="text-skin-base text-[1.37rem] tracking-tighter break-words">
+        {{ post.text[0]?.descripcion }}
+      </p>
+    </div>
   </div>
-  <footer class="post_footer flex justify-center gap-10 items-center">
-    <section class="grid grid-rows-1 gap-2 items-center">
-      <button class="options_post">
+  <div class="flex gap-2" *ngIf="selectedOption.gallery.state">
+    <div
+      class="bg-cover bg-center bg-no-repeat overflow-hidden bg-skin-fill-muted h-[473px] flex justify-center items-center rounded-3xl w-full"
+      style="background-image: url({{ postImageUrl }});"
+    ></div>
+    <!-- <div
+      class="rounded-3xl bg-skin-fill-muted flex flex-col gap-4 items-center justify-center px-8"
+    >
+      <mat-icon class="customLocationSize" svgIcon="location"></mat-icon>
+      <p class="font-medium text-center text-primary text-lg">
+        Barcelona España
+      </p>
+    </div> -->
+  </div>
+  <footer class="post_footer flex justify-center gap-8 pt-3 items-center">
+    <section class="relative grid grid-rows-1 gap-2 items-center">
+      <section
+        *ngIf="showOptions"
+        class="absolute bottom-[100px] bg-button-muted py-2 px-2 rounded-xl left-[-30px]"
+      >
+        <div class="flex flex-col gap-2">
+          <button
+            *ngIf="postAuthor"
+            (click)="deletePost()"
+            class="text-skin-dark-button hover:scale-105 hover:bg-skin-button-hover-primary transition-all bg-primary px-4 py-2 rounded-lg"
+          >
+            Borrar
+          </button>
+          <button
+            *ngIf="postAuthor"
+            (click)="modifyPost()"
+            class="text-skin-dark-button hover:scale-105 hover:bg-skin-button-hover-primary transition-all bg-primary px-4 py-2 rounded-lg"
+          >
+            Modificar
+          </button>
+          <button
+            (click)="reportPost()"
+            class="text-skin-dark-button hover:scale-105 hover:bg-skin-button-hover-primary transition-all bg-primary px-4 py-2 rounded-lg"
+          >
+            Reportar
+          </button>
+        </div>
+      </section>
+      <button (click)="onToggleOptions()" class="options_post">
         <mat-icon svgIcon="options"></mat-icon>
       </button>
       <span class="text-center text-primary invisible font-semibold">0</span>
@@ -41,20 +110,33 @@
       <span class="text-center text-primary invisible font-semibold">0</span>
     </section>
     <section class="grid grid-rows-1 gap-2 items-center">
-      <button (click)="likePost()" class="options_post">
-        <mat-icon class="customIconSize" svgIcon="heart"></mat-icon>
+      <button (click)="likeAction()" class="options_post">
+        <mat-icon
+          *ngIf="!isLiked"
+          class="customIconSize"
+          svgIcon="heart"
+        ></mat-icon>
+        <mat-icon
+          *ngIf="isLiked"
+          class="customIconSize"
+          svgIcon="heart_liked"
+        ></mat-icon>
       </button>
-      <span class="text-center text-primary font-semibold">{{
-        post.cantidad_likes
-      }}</span>
+      <button
+        (click)="showLikes()"
+        class="cursor-pointer hover:text-primary text-center text-skin-base font-semibold"
+      >
+        {{ post.like_count }}
+      </button>
     </section>
     <section class="grid grid-rows-1 gap-2 items-center">
       <button class="options_post">
         <mat-icon svgIcon="comments"></mat-icon>
       </button>
-      <span class="text-center text-primary font-semibold">{{
-        post.comment.length
-      }}</span>
+      <span
+        class="cursor-pointer hover:text-primary text-skin-base text-center font-semibold"
+        >{{ post.comment.length }}</span
+      >
     </section>
     <section class="grid grid-rows-1 gap-2 items-center">
       <button class="options_post">

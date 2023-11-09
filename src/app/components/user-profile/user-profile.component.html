@@ -11,13 +11,15 @@
       <section class="relative px-[5%] py-5 flex justify-center">
         <div
           class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
-        ></div>
+        >
+          <img src="{{ profilePicture }}" alt="" />
+        </div>
       </section>
       <section class="flex flex-col items-center gap-4 px-7 py-7">
-        <h1 class="font-bold text-center text-3xl">
+        <h1 class="font-bold text-center text-3xl text-skin-base">
           {{ user?.nickname }}
         </h1>
-        <p class="text-center">
+        <p class="text-center text-skin-base">
           {{ user?.user_info?.biografia }}
         </p>
         <button
@@ -36,7 +38,7 @@
         </button>
       </section>
       <footer class="flex justify-center gap-8 pb-7">
-        <div class="flex gap-3 justify-between items-center">
+        <div class="flex gap-3 text-skin-base justify-between items-center">
           <mat-icon svgIcon="community_filled"></mat-icon>
           <p>{{ user?.seguidor_count }}</p>
         </div>
@@ -46,7 +48,7 @@
         </div>
         <div class="flex gap-3 justify-between items-center">
           <mat-icon svgIcon="event_filled"></mat-icon>
-          <p>{{ post?.data?.length }}</p>
+          <p>{{ postList?.length }}</p>
         </div>
       </footer>
     </article>
@@ -70,9 +72,10 @@
     </section>
     <section class="flex flex-col gap-6">
       <app-post
+        [profilePictureImage]="profilePicture"
         class="w-full"
         [post]="post"
-        *ngFor="let post of post?.data"
+        *ngFor="let post of postList"
       ></app-post>
     </section>
   </main>
@@ -86,20 +89,39 @@
     <main class="flex flex-col px-[10%] ml-[92px] py-6 gap-6">
       <article class="w-full bg-skin-fill rounded-3xl">
         <header
-          class="h-[145px] relative bg-primary w-full rounded-t-3xl"
+          class="h-[145px] header_container relative bg-primary w-full rounded-t-3xl"
         ></header>
         <section class="relative px-[5%] py-5 flex justify-center">
           <div
-            class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
-          ></div>
+            class="rounded-full overflow-hidden h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
+          >
+            <img class="rounded-full" src="{{ profilePicture }}" alt="" />
+          </div>
         </section>
-        <section class="flex flex-col items-center gap-4 px-7 py-7">
-          <h1 class="font-bold text-center text-3xl">
+        <section
+          class="flex text-skin-base flex-col items-center gap-4 px-7 py-7"
+        >
+          <h1 class="font-bold text-skin-base text-center text-3xl">
             {{ user?.nickname }}
           </h1>
-          <p class="text-center">
+          <p class="text-left text-skin-base w-full">
             {{ user?.user_info?.biografia }}
           </p>
+          <section class="w-full text-left">
+            <p *ngIf="user?.user_info?.sexo">Sexo: {{ user.user_info.sexo }}</p>
+            <p *ngIf="user?.user_info?.telefono">
+              Telefono: {{ user.user_info.telefono }}
+            </p>
+            <p *ngIf="user?.user_info?.ubicacion">
+              Ubicación: {{ user.user_info.ubicacion }}
+            </p>
+            <p *ngIf="user?.user_info?.estudios">
+              Estudios: {{ user.user_info.estudios }}
+            </p>
+            <p *ngIf="user?.user_info?.trabajo">
+              Trabajo: {{ user.user_info.trabajo }}
+            </p>
+          </section>
           <a
             routerLink="/profile"
             *ngIf="myProfile === true"
@@ -109,14 +131,23 @@
             <mat-icon svgIcon="settings"></mat-icon>
           </a>
           <button
-            *ngIf="myProfile === false"
+            (click)="unfollowUser()"
+            *ngIf="myProfile === false && followingUser === true"
+            class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
+          >
+            Dejar de seguir
+            <mat-icon svgIcon="follow"></mat-icon>
+          </button>
+          <button
+            (click)="followUser()"
+            *ngIf="myProfile === false && followingUser === false"
             class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
           >
             Seguir
             <mat-icon svgIcon="follow"></mat-icon>
           </button>
         </section>
-        <footer class="flex justify-center gap-8 pb-7">
+        <footer class="text-skin-base flex justify-center gap-8 pb-7">
           <div class="flex gap-3 justify-between items-center">
             <mat-icon svgIcon="community_filled"></mat-icon>
             <p>{{ user?.seguidor_count }}</p>
@@ -127,7 +158,7 @@
           </div>
           <div class="flex gap-3 justify-between items-center">
             <mat-icon svgIcon="event_filled"></mat-icon>
-            <p>{{ post?.data?.length }}</p>
+            <p>{{ postList?.length }}</p>
           </div>
         </footer>
       </article>
@@ -151,9 +182,10 @@
       </section>
       <section class="flex flex-col gap-6">
         <app-post
+          [profilePictureImage]="profilePicture"
           class="w-full"
           [post]="post"
-          *ngFor="let post of post?.data"
+          *ngFor="let post of postList"
         ></app-post>
       </section>
     </main>

@@ -1,6 +1,9 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserProfile_Icons } from 'src/app/constants/icons';
+import { IMAGES_URL } from 'src/app/constants/imagesUrl';
 import { IconService } from 'src/app/services/Icon.service';
+import { ComunidadService } from 'src/app/services/comunidad.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { SearchInputService } from 'src/app/services/search-input.service';
 
@@ -12,6 +15,9 @@ import { SearchInputService } from 'src/app/services/search-input.service';
 export class ViewCommunityComponent {
   mobile: Boolean = false;
   @HostListener('window:resize', ['$event'])
+
+
+
   onResize(event: any) {
     if (event.target.innerWidth < 750) {
       this.mobile = true
@@ -19,15 +25,23 @@ export class ViewCommunityComponent {
     }
     this.mobile = false
   }
+
+  communityPosts!: any[]
   community!: any
+  miembrosWord = ''
+  communityPicture = ''
 
   constructor(
     private iconService: IconService,
-    private postsService: PostsService,
+    private _comunidadSS: ComunidadService,
     private _searchInput: SearchInputService
   ){
     this.iconService.registerIcons(UserProfile_Icons, 'main_icons')
   }
+
+  private activatedRoute = inject(ActivatedRoute)
+  communityId: any = this.activatedRoute.snapshot.params['id']
+  belongsToCommunity: boolean = false;
 
   ngOnInit(){
     if (window.innerWidth < 750) {
@@ -35,11 +49,36 @@ export class ViewCommunityComponent {
     } else {
       this.mobile = false
     }
-    this.community = {
-      title: 'Japon',
-      descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra sit amet aliquam id diam Aliquet porttitor lacus luctus accumsan tortor posuere ac ut. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Fringilla urna porttitor rhoncus dolor. Aliquet bibendum enim facilisis gravida. Erat imperdiet sed euismod nisi. Ut aliquam purus sit amet luctus venenatis.",
-      miembros: 250,
-    }
+
+    this._comunidadSS.ListarComunidad(this.communityId).subscribe({
+      next: (res:any)=> {
+        console.log(res)
+        this.communityPosts = res.post.data
+        this.community = res.comunidad
+        this.miembrosWord = this.community?.pertenece?.length === 1 ? 'miembro' : 'miembros'
+        this.communityPicture = IMAGES_URL.comunidad + this.community.imagen
+        
+        this.belongsToCommunity = this.community.pertenece.some((user:any) => {
+          return user.id == localStorage.getItem('id_user')
+        })
+      }
+    })
   }
 
+  joinCommunity(){
+    this._comunidadSS.UnirseAComunidad(this.community.id).subscribe({
+      next: (res:any )=>{
+        location.reload()
+        console.log(res)
+      }
+    })
+  }
+  leaveCommunity(){
+    this._comunidadSS.SalirDeComunidad(this.community.id).subscribe({
+      next: (res:any )=>{
+        alert('Has abandonado la comunidad correctamente')
+        location.reload()
+      }
+    })
+  }
 }

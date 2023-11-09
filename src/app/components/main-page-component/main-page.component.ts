@@ -3,6 +3,8 @@ import { ExplorePage_Icons } from 'src/app/constants/icons';
 import { Post } from 'src/app/models/Post';
 import { SearchFilter } from 'src/app/models/searchfilter.model';
 import { IconService } from 'src/app/services/Icon.service';
+import { ComunidadService } from 'src/app/services/comunidad.service';
+import { EventosService } from 'src/app/services/eventos.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { StatusService } from 'src/app/services/status.service';
 
@@ -13,7 +15,12 @@ import { StatusService } from 'src/app/services/status.service';
 })
 export class MainPageComponent {
 
-  constructor(private postsService: PostsService, private statusSS: StatusService, private iconSS: IconService){
+  constructor(
+    private postsService: PostsService,
+    private eventSS: EventosService,
+    private communitySS: ComunidadService,
+    private statusSS: StatusService,
+    private iconSS: IconService){
     iconSS.registerIcons(ExplorePage_Icons,'main_icons')
   }
   @HostListener('window:resize', ['$event'])
@@ -26,10 +33,14 @@ export class MainPageComponent {
   }
   feedFilter: SearchFilter = 'post'
   postsList!: any[]
-  mobile: Boolean = false;
+  eventsList!: any[]
+  communitiesList!: any[]
+  mobile: boolean = false;
+  postLikes!: any[]
+  showLikes: boolean = false;
 
   ngOnInit(){
-    console.log(this.feedFilter)
+
     if (window.innerWidth < 750) {
       this.mobile = true
     } else {
@@ -39,10 +50,36 @@ export class MainPageComponent {
     this.statusSS.$feedFilter.subscribe((value)=>{
       this.feedFilter = value
     })
+    this.listarPosts()
 
-    this.postsService.ListarPostsUsuario().subscribe((res)=>{
-      this.postsList = res.data
-      // this.postsList.reverse()
+    this.statusSS.$posts.subscribe(()=>{
+      this.listarPosts()
+    })
+
+    this.communitySS.ListarMisComunidades().subscribe((res)=>{
+      this.communitiesList = res
+    })
+
+    this.eventSS.ListarMisEventos().subscribe((res)=>{
+      this.eventsList = res
+    })
+
+console.log(this.eventsList)
+
+    this.statusSS.$showLikes.subscribe((value)=>{
+      this.postLikes = value.likes
+      this.showLikes = value.show
+    })
+  }
+  cerrarLikes(){
+    this.showLikes = false
+  }
+
+  listarPosts(){
+    this.postsService.ListarPostsUsuario().subscribe({
+      next: (res: any) => {
+        this.postsList = res.data
+      }
     })
   }
 }

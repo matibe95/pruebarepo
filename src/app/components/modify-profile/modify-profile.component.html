@@ -1,10 +1,10 @@
 <div *ngIf="mobile" class="bg-skin-fill-muted h-[100vh]">
   <app-header></app-header>
-  <main
-    class="flex flex-col items-center gap-1 px-4 py-4 bg-skin-fill-muted w-full"
-  >
+  <main class="flex flex-col gap-1 px-4 py-4 bg-skin-fill-muted w-full">
     <header class="relative flex justify-center w-full">
-      <button class="absolute top-0 left-0 text-primary text-xl">&#60;</button>
+      <button class="absolute top-0 left-0 text-primary text-xl">
+        <mat-icon svgIcon="backarrow_blue"></mat-icon>
+      </button>
       <h1 class="text-button-muted font-semibold text-3xl">Configuracion</h1>
     </header>
     <section class="flex flex-col w-full items-center py-6">
@@ -15,16 +15,16 @@
     <section class="flex flex-col w-full items-center py-2 gap-4">
       <p class="font-semibold text-xl text-button-muted">Cambiar Nickname</p>
       <input
-        class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
+        class="w-full text-skin-base rounded-2xl outline-none bg-skin-fill px-4 py-3"
         placeholder="Ingrese su nickname"
         type="text"
       />
     </section>
     <section class="flex flex-col w-full items-center py-2 gap-4">
-      <p class="font-semibold text-xl text-button-muted">Cambiar Descripción</p>
+      <p class="font-semibold text-xl text-button-muted">Cambiar Descripcion</p>
       <textarea
-        class="w-full resize-none rounded-2xl outline-none bg-skin-fill px-4 py-3"
-        placeholder="Ingrese su descripción"
+        class="w-full resize-none text-skin-base rounded-2xl outline-none bg-skin-fill px-4 py-3"
+        placeholder="Ingrese su biografia"
         name=""
         id=""
         cols="30"
@@ -48,44 +48,120 @@
     <desktop-sidebar></desktop-sidebar>
     <main class="flex flex-col px-[10%] ml-[92px] py-8 gap-6">
       <header class="relative flex justify-center">
-        <button class="absolute top-0 left-0 text-primary text-xl">
-          &#60;
+        <button
+          (click)="goBack()"
+          class="absolute top-0 left-0 text-primary text-xl"
+        >
+          <mat-icon svgIcon="backarrow_blue"></mat-icon>
         </button>
         <h1 class="text-button-muted font-semibold text-3xl">Configuracion</h1>
       </header>
-      <section class="flex flex-col w-full items-center py-6 gap-8">
+      <section class="flex flex-col w-full items-center py-6 gap-2">
         <div
-          class="rounded-full bg-gray-200 outline outline-button-muted h-[70px] w-[70px]"
-        ></div>
-      </section>
-      <section class="flex flex-col w-full items-center py-6 gap-8">
-        <p class="font-semibold text-xl text-button-muted">Cambiar Nickname</p>
-        <input
-          class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
-          placeholder="Ingrese su nickname"
-          type="text"
-        />
-      </section>
-      <section class="flex flex-col w-full items-center py-6 gap-8">
-        <p class="font-semibold text-xl text-button-muted">
-          Cambiar Descripción
-        </p>
-        <textarea
-          class="w-full resize-none rounded-2xl outline-none bg-skin-fill px-4 py-3"
-          placeholder="Ingrese su descripción"
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-        ></textarea>
-      </section>
-      <footer class="flex justify-center w-full">
-        <button
-          class="bg-button-muted px-6 py-3 font-semibold rounded-2xl text-skin-dark-button"
+          class="rounded-full bg-skin-fill outline overflow-hidden outline-button-muted h-[70px] w-[70px]"
         >
-          Guardar
-        </button>
-      </footer>
+          <input
+            (change)="onFileSelected($event)"
+            type="file"
+            hidden
+            id="uploadImageInput"
+            name="uploadImageInput"
+          />
+          <label class="cursor-pointer" for="uploadImageInput">
+            <img
+              class="w-[70px] h-[70px] rounded-full object-cover"
+              [src]="imgUrl"
+            />
+          </label>
+        </div>
+        <label
+          for="uploadImageInput"
+          class="cursor-pointer text-button-muted font-medium"
+          >Subir imagen</label
+        >
+      </section>
+      <form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="checkoutForm"
+        action=""
+        class="flex flex-col gap-5 text-skin-base"
+      >
+        <section class="flex flex-col w-full gap-4">
+          <p class="font-semibold text-xl text-button-muted">Biografía</p>
+          <textarea
+            formControlName="biografia"
+            class="w-full resize-none text-skin-base rounded-2xl outline-none bg-skin-fill px-4 py-3"
+            placeholder="Ingrese su biografia"
+            name=""
+            id=""
+            maxlength="255"
+            [value]="userInfo?.biografia"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </section>
+        <section class="flex flex-col w-full gap-4">
+          <p class="font-semibold text-xl text-button-muted">Telefono</p>
+          <input
+            value="{{ telefonoParseado }}"
+            formControlName="telefono"
+            class="w-full rounded-2xl text-skin-base outline-none bg-skin-fill px-4 py-3"
+            placeholder="Ingrese su telefono"
+            type="number"
+          />
+        </section>
+        <section class="flex flex-col w-full gap-4">
+          <p class="font-semibold text-xl text-button-muted">Estudios</p>
+          <input
+            [value]="userInfo?.estudios"
+            formControlName="estudios"
+            class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
+            placeholder="Ingrese sus estudios"
+            type="text"
+          />
+        </section>
+        <section class="flex flex-col w-full gap-4">
+          <p class="font-semibold text-xl text-button-muted">Trabajo</p>
+          <input
+            [value]="userInfo?.trabajo"
+            formControlName="trabajo"
+            class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
+            placeholder="Ingrese su trabajo"
+            type="text"
+          />
+        </section>
+        <section class="flex flex-col w-full gap-4">
+          <p class="font-semibold text-xl text-button-muted">Ubicación</p>
+          <input
+            [value]="userInfo?.ubicacion"
+            formControlName="ubicacion"
+            class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
+            placeholder="Ingrese su ubicación"
+            type="text"
+          />
+        </section>
+        <section class="flex flex-col w-full py-2 gap-2">
+          <p class="font-semibold text-xl text-button-muted">Sexo</p>
+          <select
+            [value]="userInfo?.sexo"
+            formControlName="sexo"
+            class="w-full rounded-2xl outline-none bg-skin-fill px-4 py-3"
+            name=""
+            id=""
+          >
+            <option selected disabled>Seleccione una opción</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+        </section>
+        <footer class="flex justify-center w-full">
+          <button
+            class="bg-button-muted px-6 py-3 font-semibold rounded-2xl text-skin-dark-button"
+          >
+            Guardar
+          </button>
+        </footer>
+      </form>
     </main>
   </div>
 </div>

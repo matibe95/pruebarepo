@@ -11,7 +11,7 @@
       <input
         autocomplete="off"
         (input)="onChange($event.target)"
-        class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
+        class="rounded-xl px-4 bg-skin-fill py-3 transition-all w-full outline-none text-gray-800"
         placeholder="Buscar"
         [(ngModel)]="filterName"
         name="filterName"
@@ -38,43 +38,58 @@
   <desktop-upload-modal></desktop-upload-modal>
   <div class="sidebar-container h-[100%]">
     <desktop-sidebar></desktop-sidebar>
-    <main class="flex flex-col px-[10%] ml-[92px] py-6 gap-6">
-      <div class="flex gap-2 w-full">
-        <div
-          class="w-full flex items-center gap-1 rounded-xl bg-skin-fill px-4"
-        >
-          <button class="flex items-center justify-center">
-            <mat-icon svgIcon="search"></mat-icon>
-          </button>
-          <input
-            autocomplete="off"
-            (input)="onChange($event.target)"
-            [(ngModel)]="filterName"
-            name="filterName"
-            class="rounded-xl px-4 py-3 transition-all w-full outline-none text-gray-800"
-            placeholder="Buscar"
-          />
-          <button (click)="cleanSearch()">
-            <p class="text-button-muted">Cancel</p>
-          </button>
+    <section class="relative">
+      <div
+        *ngIf="showSelectedPost"
+        class="fixed top-0 z-40 h-[100vh] w-[100vw] bg-opacity-70 bg-black flex items-center justify-center"
+      >
+        <div class="w-full px-[10%] ml-[92px] relative">
+          <div class="absolute top-5 right-[120px]">
+            <button (click)="closePostModal()">
+              <mat-icon svgIcon="cross"></mat-icon>
+            </button>
+          </div>
+          <app-post [post]="selectedPost"></app-post>
         </div>
-        <button
-          class="flex gap-2 font-semibold text-button-muted px-2 py-3 bg-skin-fill rounded-xl"
-        >
-          Refresh
-          <mat-icon svgIcon="refresh"></mat-icon>
-        </button>
       </div>
-      <section class="masonryLayoutContainer {{ this.showPosts }}">
-        <app-explore-post
-          class="w-full"
-          [post]="post"
-          *ngFor="let post of postsList"
-        ></app-explore-post>
-      </section>
-      <div class="{{ showOptions }} w-full">
-        <app-specific-search></app-specific-search>
-      </div>
-    </main>
+      <main class="flex flex-col px-[10%] ml-[92px] py-6 gap-6 relative">
+        <div class="flex gap-2 w-full">
+          <div
+            class="w-full flex items-center gap-1 rounded-xl bg-skin-fill px-4"
+          >
+            <button class="flex items-center justify-center">
+              <mat-icon svgIcon="search"></mat-icon>
+            </button>
+            <input
+              autocomplete="off"
+              (input)="onChange($event.target)"
+              [(ngModel)]="filterName"
+              name="filterName"
+              class="rounded-xl px-4 py-3 bg-skin-fill transition-all w-full outline-none text-skin-base"
+              placeholder="Buscar"
+            />
+            <button (click)="cleanSearch()">
+              <p class="text-button-muted">Cancel</p>
+            </button>
+          </div>
+          <!-- <button
+            class="flex gap-2 font-semibold text-button-muted px-2 py-3 bg-skin-fill rounded-xl"
+          >
+            Refresh
+            <mat-icon svgIcon="refresh"></mat-icon>
+          </button> -->
+        </div>
+        <section class="masonryLayoutContainer {{ this.showPosts }}">
+          <app-explore-post
+            class="w-full"
+            [post]="post"
+            *ngFor="let post of postsList"
+          ></app-explore-post>
+        </section>
+        <div class="{{ showOptions }} w-full">
+          <app-specific-search></app-specific-search>
+        </div>
+      </main>
+    </section>
   </div>
 </div>

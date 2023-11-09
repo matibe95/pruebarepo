@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IconService } from '../services/Icon.service';
 import { NavBar_Icons } from '../constants/icons';
 import { ModalService } from '../services/modal.service';
-import { Modal_Option } from '../models/modal.model';
+import { Modal_Option, OptionType } from '../models/modal.model';
 import { FormBuilder } from '@angular/forms';
 import { RULES_STEPS, ModalRules } from '../constants/modal_steps';
 import { EventosService } from '../services/eventos.service';
@@ -58,6 +58,8 @@ export class DesktopUploadModalComponent {
     type: 'main'
   }
 
+  dataToModify!: any
+
   currentRule: any = {
     number: 0,
     name: null,
@@ -102,6 +104,7 @@ export class DesktopUploadModalComponent {
     this.modalSS.$modal_option.subscribe((value)=>{
       const {state, type} = value
       this.optionSelected = {state, type}
+      this.dataToModify = value?.data
     })
   }
 
@@ -109,13 +112,14 @@ export class DesktopUploadModalComponent {
     this.modalSS.$modal_option.emit({state: false})
   }
 
-  ngOnDestroy(){
-    this.modalSS.$modal_option.unsubscribe()
+  // ngOnDestroy(){
+  //   this.modalSS.$modal_option.unsubscribe()
+  // }
+
+  openSectionModal(option: OptionType){
+    this.modalSS.$modal_option.emit({state: true, type: option})
   }
 
-  openEventModal(){
-    this.modalSS.$modal_option.emit({state: true, type:"event"})
-  }
 
   onSubmitEvent(){
     console.log(this.checkoutForm.value)

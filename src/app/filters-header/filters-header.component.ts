@@ -21,4 +21,8 @@ export class FiltersHeaderComponent {
     this.feedOption = target.value
     this.statusSS.$feedFilter.emit(this.feedOption)
   }
+
+  refreshPosts(){
+    this.statusSS.$posts.emit(true)
+  }
 }

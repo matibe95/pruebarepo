@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { SearchFilter } from '../models/searchfilter.model';
+import { PostShowLikesService } from '../models/Post';
 
 
 @Injectable({
@@ -11,4 +12,15 @@ export class StatusService {
    }
 
   $feedFilter = new EventEmitter<SearchFilter>()
+
+  $posts = new EventEmitter<Boolean>()
+
+  $showLikes = new EventEmitter<PostShowLikesService>()
+
+  $showSelectedPost = new EventEmitter<showSelectedPost>()
+}
+
+type showSelectedPost = {
+  state : boolean;
+  data ?: any;
 }

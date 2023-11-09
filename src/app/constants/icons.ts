@@ -24,7 +24,9 @@ export enum ViewEvent_Icons {
 export enum ExplorePage_Icons {
   userIcon,
   exploreEvents,
-  exploreCommunity
+  exploreCommunity,
+  follow,
+  arrow_down
 }
 
 export enum SearchBar_Icons {
@@ -55,11 +57,19 @@ export enum NavBar_Icons {
   event,
   community,
   post,
+  options_blue,
   cross,
   gallery,
   location,
+  location_white,
   check,
   previous,
+  done,
+  white_cross,
+  left_arrow,
+  text,
+  text_white,
+  gallery_white,
 }
 
 export enum Desktop_Sidebar{
@@ -72,7 +82,8 @@ export enum Desktop_Sidebar{
   'origins-logo-blue',
   add,
   bell,
-  messages
+  messages,
+  backarrow_blue
 }
 
 export enum Desktop_Header {
@@ -95,5 +106,6 @@ export enum Post_Icons {
   send,
   comments,
   heart,
-  backarrow
+  backarrow,
+  heart_liked
 }

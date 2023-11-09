@@ -1,7 +1,7 @@
 .masonryLayoutContainer {
     padding: 20px 0;
     columns: 4;
-    column-gap: 10px;
+    column-gap: 15px;
     width: 100%;
 }
 
@@ -13,8 +13,16 @@
     }
 }
 
+@media (max-width: 1110px){
+    .masonryLayoutContainer {
+        padding: 0;
+        columns: 3;
+    }
+}
+
 .hiddenContainer {
-    animation: fade-out .5s forwards;
+    display: none;
+    /* animation: fade-out .5s forwards; */
 }
 
 .visibleContainer {

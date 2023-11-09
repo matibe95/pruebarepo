@@ -1,0 +1,79 @@
+<article
+  id="modal_account"
+  class="transition-all relative text-skin-base bg-primary rounded-3xl gap-1 py-10 w-[602px] h-[815px] text-center px-8 flex flex-col items-center"
+>
+  <button
+    (click)="closeModal()"
+    class="absolute top-4 right-5 self-end scale-75"
+  >
+    <mat-icon svgIcon="cross"></mat-icon>
+  </button>
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="checkoutForm"
+    class="w-full h-full"
+  >
+    <div class="flex flex-col items-center w-full gap-20">
+      <div class="w-full flex flex-col items-center gap-10">
+        <h2 class="text-skin-dark-button font-bold text-4xl">
+          Crea tu Comunidad
+        </h2>
+        <section
+          class="overflow-hidden rounded-full h-20 w-20 bg-skin-fill flex items-center justify-center"
+        >
+          <label
+            for="fileupload"
+            class="cursor-pointer flex items-center justify-center"
+          >
+            <img src="{{ imgUrl }}" class="rounded-lg" alt="" />
+          </label>
+          <input
+            id="fileupload"
+            (change)="onFileSelected($event)"
+            type="file"
+            class="hidden"
+          />
+        </section>
+      </div>
+      <div class="flex w-full h-[270px] flex-col gap-4">
+        <div class="flex w-full flex-col">
+          <label
+            for="event_name"
+            class="block text-left mb-2 text-sm font-medium text-skin-dark-button"
+            >Nombre de la comunidad</label
+          >
+          <textarea
+            onkeydown="return (event.keyCode!=13)"
+            formControlName="nombre"
+            id="event_name"
+            rows="1"
+            maxlength="20"
+            class="block resize-none p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-xl border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Ingrese el nombre de la comunidad..."
+          ></textarea>
+        </div>
+        <div class="flex w-full flex-col">
+          <label
+            for="event_description"
+            class="block text-left mb-2 text-sm font-medium text-skin-dark-button"
+            >Descripción de la comunidad</label
+          >
+          <textarea
+            formControlName="descripcion"
+            id="event_description"
+            rows="6"
+            maxlength="255"
+            class="block resize-none p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-xl border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Ingrese la descripción de la comunidad.."
+          ></textarea>
+        </div>
+      </div>
+      <button
+        class="rounded-xl mt-20 px-4 h-14 flex gap-4 items-center justify-center bg-button-muted"
+      >
+        <span class="text-skin-dark-button font-semibold">Crear comunidad</span>
+        <mat-icon svgIcon="check"></mat-icon>
+      </button>
+    </div>
+  </form>
+</article>

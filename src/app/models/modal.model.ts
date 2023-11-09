@@ -10,8 +10,9 @@ export interface Modal_Account {
 export interface Modal_Option {
   type?: OptionType
   state?: boolean
+  data?: any
 }
 
 
-type OptionType = 'event' | 'community' | 'post' | 'main'
+export type OptionType = 'event' | 'community' | 'post' | 'main'
 type ModalType = 'login' | 'register'

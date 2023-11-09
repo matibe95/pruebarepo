@@ -43,6 +43,10 @@
   position: relative;
 }
 
+.customLocationSize {
+  height: 60px ;
+  width: 60px ;
+}
 
 @media (max-width: 395px) {
   .options_post mat-icon {
@@ -61,6 +65,12 @@
   .options_post:nth-child(3) mat-icon {
     height: 35px ;
     width: 35px ;
+  }
+}
+
+@media (max-width: 510px){
+  .post_footer {
+    @apply justify-between gap-2;
   }
 }
 
