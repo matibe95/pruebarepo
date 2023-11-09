@@ -12,7 +12,8 @@ export class FeedComunityComponent {
   @Input() community : any
 
   imgUrl = 'assets/default_community.png'
-
+  isMember!: boolean
+  
   constructor(
     private _communitySS: ComunidadService,
     private router: Router,
@@ -24,6 +25,7 @@ export class FeedComunityComponent {
     if (this.community.imagen){
       this.imgUrl = IMAGES_URL.comunidad + this.community.imagen
     }
+    console.log(this.community)
   }
 
   goToCommunity(){

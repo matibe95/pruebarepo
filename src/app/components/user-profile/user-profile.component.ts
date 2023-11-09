@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserProfile_Icons } from 'src/app/constants/icons';
 import { IMAGES_URL } from 'src/app/constants/imagesUrl';
 import { IconService } from 'src/app/services/Icon.service';
+import { ComunidadService } from 'src/app/services/comunidad.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -11,7 +12,11 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
-  constructor(private userService: UsuarioService, private iconSS: IconService){
+  constructor(
+    private userService: UsuarioService,
+    private iconSS: IconService,
+    private _comunidadSS: ComunidadService
+    ){
     iconSS.registerIcons(UserProfile_Icons,'main_icons')
   }
 
@@ -44,7 +49,7 @@ export class UserProfileComponent {
       this.mobile = false
     }
     this.userService.getUser(this.userId).subscribe((res: any)=>{
-      console.log(res)
+      // console.log(res)
       if (this.userId === localStorage.getItem('id_user')){
         this.myProfile = true
       }
@@ -53,6 +58,9 @@ export class UserProfileComponent {
 
       this.postList = res.post.data.reverse()
       this.profilePicture = IMAGES_URL.user + this.user.user_info.foto_perfil
+    })
+    this._comunidadSS.ListarComunidadesOwn(this.userId).subscribe((res)=>{
+      console.log(res)
     })
   }
 

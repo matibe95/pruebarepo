@@ -27,6 +27,9 @@ export class CreatePostMenuComponent {
   @ViewChild('event_id') event_id !:ElementRef;
   @ViewChild('community_id') community_id !:ElementRef;
 
+  eventos_id = ''
+  comunidad_id = ''
+
   selectedFile!: File;
   selectedImage!: File;
   imgUrl = '/assets/upload_image.png'
@@ -76,6 +79,8 @@ export class CreatePostMenuComponent {
   });
   
   onChangeCommunity(){
+    // console.log(this.community_id.nativeElement.value)
+    this.comunidad_id = this.community_id.nativeElement.value
     this.event_id.nativeElement.value = ''
   }
   onChangeEvent(){
@@ -143,7 +148,7 @@ export class CreatePostMenuComponent {
     let id_evento, id_comunidad;
 
     if (this.dataToModify){
-      id_comunidad = this.dataToModify.id_comunidad
+      id_comunidad = this.comunidad_id
       id_evento = this.dataToModify.id_evento
     } else {
       id_evento = this.event_id?.nativeElement?.value
@@ -175,22 +180,22 @@ export class CreatePostMenuComponent {
     
     console.log(newData)
 
-    if (this.dataToModify){
-      this.postSS.ModifyPost(newData, this.dataToModify.id).subscribe({
-        next: (res: any) => {
-          console.log(res)
-          // this.closeModal()
-          location.reload()
-        }
-      })
-      return;
-    }
-    this.postSS.createPost(newData).subscribe({
-      next: (res: any) => {
-        this.closeModal()
-        location.reload()
-      }
-    })
+    // if (this.dataToModify){
+    //   this.postSS.ModifyPost(newData, this.dataToModify.id).subscribe({
+    //     next: (res: any) => {
+    //       console.log(res)
+    //       // this.closeModal()
+    //       location.reload()
+    //     }
+    //   })
+    //   return;
+    // }
+    // this.postSS.createPost(newData).subscribe({
+    //   next: (res: any) => {
+    //     this.closeModal()
+    //     location.reload()
+    //   }
+    // })
   }
 
 
