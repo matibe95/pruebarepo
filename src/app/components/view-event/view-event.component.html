@@ -1,0 +1,100 @@
+<div *ngIf="mobile" class="bg-skin-fill-muted h-[100vh]">
+  <main class="flex flex-col items-center gap-6 bg-skin-fill-muted w-full">
+    <article class="w-full bg-skin-fill">
+      <header class="h-[145px] relative bg-primary w-full"></header>
+      <section class="relative px-[5%] py-7 flex justify-center">
+        <div
+          class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
+        ></div>
+      </section>
+      <section class="flex flex-col gap-7 px-7 py-3">
+        <div class="flex flex-col gap-2 text-center text-primary">
+          <h1 class="font-bold text-3xl text-center">c/{{ event?.title }}</h1>
+          <p class="font-semibold">
+            {{ event.asistentes }} Asistentes - {{ event.fecha }}
+          </p>
+        </div>
+        <p class="text-center">
+          {{ event?.descripcion }}
+        </p>
+        <div class="flex justify-center gap-3">
+          <button
+            class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
+          >
+            Asistir
+            <mat-icon svgIcon="follow"></mat-icon>
+          </button>
+          <button
+            class="flex w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
+          >
+            <mat-icon svgIcon="location_white"></mat-icon>
+          </button>
+          <button
+            class="flex text-primary font-medium w-fit justify-between gap-3 rounded-2xl px-3 py-3"
+          >
+            Ver Reglas
+          </button>
+        </div>
+      </section>
+    </article>
+    <section>
+      <h1 class="text-3xl text-primary font-semibold text-center py-6">
+        Post habilitados a partir del <br />{{ event.fecha }}
+      </h1>
+    </section>
+  </main>
+  <main-navbar></main-navbar>
+</div>
+
+<div *ngIf="!mobile" class="bg-skin-fill-muted h-[100%]">
+  <desktop-upload-modal></desktop-upload-modal>
+  <div class="sidebar-container h-[100%]">
+    <desktop-sidebar></desktop-sidebar>
+    <main class="flex flex-col px-[10%] ml-[92px] py-6 gap-6">
+      <article class="w-full bg-skin-fill rounded-3xl">
+        <header
+          class="h-[145px] relative bg-primary w-full rounded-t-3xl"
+        ></header>
+        <section class="relative px-[5%] py-7 flex justify-center">
+          <div
+            class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
+          ></div>
+        </section>
+        <section class="flex flex-col gap-7 px-7 py-3">
+          <div class="flex flex-col gap-2 text-center text-primary">
+            <h1 class="font-bold text-3xl text-center">c/{{ event?.title }}</h1>
+            <p class="font-semibold">
+              {{ event.asistentes }} Asistentes - {{ event.fecha }}
+            </p>
+          </div>
+          <p class="text-center">
+            {{ event?.descripcion }}
+          </p>
+          <div class="flex justify-center gap-3">
+            <button
+              class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
+            >
+              Asistir
+              <mat-icon svgIcon="follow"></mat-icon>
+            </button>
+            <button
+              class="flex w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
+            >
+              <mat-icon svgIcon="location_white"></mat-icon>
+            </button>
+            <button
+              class="flex text-primary font-medium w-fit justify-between gap-3 rounded-2xl px-3 py-3"
+            >
+              Ver Reglas
+            </button>
+          </div>
+        </section>
+      </article>
+      <section>
+        <h1 class="text-3xl text-primary font-semibold text-center py-6">
+          Post habilitados a partir del <br />{{ event.fecha }}
+        </h1>
+      </section>
+    </main>
+  </div>
+</div>

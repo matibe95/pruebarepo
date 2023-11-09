@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+  letter-spacing: -0.05em;
+}
+
+@layer base {
+  .dark-mode {
+    --color-primary: #0053C8;
+    --color-secondary: #e81cff;
+    --color-background-fill: #1a1a1a;
+    --color-background-fill-muted: #1e1e1e;
+    --color-text-base: #eaeaea;
+    --color-text-muted: #8c8c8c;
+    --color-dark-button: #ffffff;
+    --color-modal-button: #2f2e2e;
+    --color-button-fill: #2f2e2e;
+    --color-border: #2f2e2e;
+    --color-button-hover-primary: #478ef2;
+    --color-button-hover-alternative: #494747;
+    --color-button-muted: #3882EA;
+  }
+  .light-mode {
+    --color-primary: #0053C8;
+    --color-secondary: #e81cff;
+    --color-background-fill: #ffffff;
+    --color-background-fill-muted: #f3f1f7;
+    --color-text-base: #213547;
+    --color-text-muted: #8f99a2;
+    --color-dark-button: #ffffff;
+    --color-button-fill: #213547;
+    --color-modal-button: #f2f2f3;
+    --color-border: #d5d5d5;
+    --color-button-hover-primary: #04a1e4;
+    --color-button-hover-alternative: #d2d2d2;
+    --color-button-muted: #3882EA;
+  }
+}
+
+@media (max-width: 750px){
+  html {
+    overflow-y: scroll;
+  }
+}
+
+.footerIcon {
+  width: 18px;
+}
+
+body {
+  background-color: var(--color-background-fill-muted);
+}
+
+/* html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+} */

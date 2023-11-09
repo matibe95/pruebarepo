@@ -1,0 +1,17 @@
+.buttons_section {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  justify-content: center;
+}
+
+.customImg {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+/* 
+.fileupload_container {
+  background-image: url("https://cdn.iconscout.com/icon/free/png-512/free-react-1-282599.png?f=avif&w=256");
+} */

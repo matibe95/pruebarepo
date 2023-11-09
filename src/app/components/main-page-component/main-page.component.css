@@ -1,0 +1,14 @@
+.selected_button {
+  color: var(--color-dark-button);
+  background-color: var(--color-primary);
+}
+
+.customIconSize {
+  height: 75px ;
+  width: 75px ;
+}
+/* 
+.sidebar-container {
+  display: grid;
+  grid-template-columns: auto 2fr;
+} */

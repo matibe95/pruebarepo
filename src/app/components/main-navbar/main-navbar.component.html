@@ -1,0 +1,31 @@
+<nav
+  class="mobile-navbar fixed bottom-0 w-full bg-primary overflow-clip px-[45px] py-[18px]"
+>
+  <app-create-menu *ngIf="isUploadMenuActive"> </app-create-menu>
+  <section
+    class="mobile-navbar-icons_container flex flex-row justify-between items-center"
+  >
+    <a routerLink="/home" class="flex items-center justify-center">
+      <mat-icon class="customIconSize" svgIcon="home"></mat-icon>
+    </a>
+    <a routerLink="/explore" class="flex items-center justify-center">
+      <mat-icon svgIcon="explore"></mat-icon>
+    </a>
+    <button
+      (click)="openUploadPostMenu()"
+      class="flex items-center justify-center"
+    >
+      <mat-icon svgIcon="add"></mat-icon>
+    </button>
+    <a routerLink="/fire" class="flex items-center justify-center">
+      <mat-icon svgIcon="fire"></mat-icon>
+    </a>
+    <a href="/user/{{ userId }}" class="bg-red-400 rounded-full">
+      <img
+        src="https://unavatar.io/github/matibe95"
+        class="h-[36px] w-[36px] rounded-full"
+        alt=""
+      />
+    </a>
+  </section>
+</nav>

@@ -1,0 +1,150 @@
+<div *ngIf="mobile" class="bg-skin-fill-muted h-[100vh]">
+  <main class="flex flex-col items-center gap-6 bg-skin-fill-muted w-full">
+    <article class="w-full bg-skin-fill">
+      <header class="h-[145px] relative bg-primary w-full"></header>
+      <section class="relative px-[5%] py-7 flex">
+        <div
+          class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
+        ></div>
+      </section>
+      <section class="flex flex-col gap-7 px-7 py-3">
+        <div class="flex gap-4 items-center text-primary">
+          <h1 class="font-bold text-3xl">
+            c/{{ community?.title }}
+            <span class="text-lg px-2 font-medium"
+              >{{ community.miembros }} miembros</span
+            >
+          </h1>
+        </div>
+        <p>
+          {{ community?.descripcion }}
+        </p>
+        <div class="flex gap-3">
+          <button
+            class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
+          >
+            Unirse
+            <mat-icon svgIcon="follow"></mat-icon>
+          </button>
+          <button
+            class="flex text-primary font-medium w-fit justify-between gap-3 rounded-2xl px-3 py-3"
+          >
+            Ver Reglas
+          </button>
+        </div>
+      </section>
+      <footer class="flex justify-center gap-8 pb-7"></footer>
+    </article>
+    <section class="radio-toolbar px-2">
+      <input
+        type="radio"
+        id="radioRecientes"
+        name="radioFruit"
+        value="recientes"
+        checked
+      />
+      <label for="radioRecientes">Recientes</label>
+
+      <input
+        type="radio"
+        id="radioPopulares"
+        name="radioFruit"
+        value="populares"
+      />
+      <label for="radioPopulares">Populares</label>
+      <input
+        type="radio"
+        id="radioTendencia"
+        name="radioFruit"
+        value="tendencia"
+      />
+      <label for="radioTendencia">Tendencia</label>
+      <input
+        type="radio"
+        id="radioArchivados"
+        name="radioFruit"
+        value="archivados"
+      />
+      <label for="radioArchivados">Archivados</label>
+    </section>
+  </main>
+  <main-navbar></main-navbar>
+</div>
+
+<div *ngIf="!mobile" class="bg-skin-fill-muted h-[100%]">
+  <desktop-upload-modal></desktop-upload-modal>
+  <div class="sidebar-container h-[100%]">
+    <desktop-sidebar></desktop-sidebar>
+    <main class="flex flex-col px-[10%] ml-[92px] py-6 gap-6">
+      <article class="w-full bg-skin-fill rounded-3xl">
+        <header
+          class="h-[145px] relative bg-primary w-full rounded-t-3xl"
+        ></header>
+        <section class="relative px-[5%] py-7 flex">
+          <div
+            class="rounded-full h-28 w-28 top-[-60px] bg-skin-button-hover-primary absolute"
+          ></div>
+        </section>
+        <section class="flex flex-col gap-7 px-7 py-3">
+          <div class="flex gap-4 items-center text-primary">
+            <h1 class="font-bold text-3xl">
+              c/{{ community?.title }}
+              <span class="text-lg px-2 font-medium"
+                >{{ community.miembros }} miembros</span
+              >
+            </h1>
+          </div>
+          <p>
+            {{ community?.descripcion }}
+          </p>
+          <div class="flex gap-3">
+            <button
+              class="flex text-skin-dark-button w-fit justify-between gap-3 bg-primary rounded-2xl px-3 py-3"
+            >
+              Unirse
+              <mat-icon svgIcon="follow"></mat-icon>
+            </button>
+            <button
+              class="flex text-primary font-medium w-fit justify-between gap-3 rounded-2xl px-3 py-3"
+            >
+              Ver Reglas
+            </button>
+          </div>
+        </section>
+        <footer class="flex justify-center gap-8 pb-7"></footer>
+      </article>
+      <section class="radio-toolbar mb-8">
+        <input
+          type="radio"
+          id="radioRecientes"
+          name="radioFruit"
+          value="recientes"
+          checked
+        />
+        <label for="radioRecientes">Recientes</label>
+
+        <input
+          type="radio"
+          id="radioPopulares"
+          name="radioFruit"
+          value="populares"
+        />
+        <label for="radioPopulares">Populares</label>
+        <input
+          type="radio"
+          id="radioTendencia"
+          name="radioFruit"
+          value="tendencia"
+        />
+        <label for="radioTendencia">Tendencia</label>
+        <input
+          type="radio"
+          id="radioArchivados"
+          name="radioFruit"
+          value="archivados"
+        />
+        <label for="radioArchivados">Archivados</label>
+      </section>
+    </main>
+  </div>
+</div>

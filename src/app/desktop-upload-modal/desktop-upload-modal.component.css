@@ -1,0 +1,33 @@
+.desktopModal_option button mat-icon{
+    width: 40px;
+    height: 40px;
+}
+
+.customImg {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+  
+
+#location_icon_container button mat-icon{
+    width: 30px;
+    height: 30px;
+}
+
+.desktopModal_option {
+    @apply flex items-center flex-col gap-4;
+}
+
+.image_selector_container {
+    @apply flex justify-center items-center bg-skin-fill rounded-full w-[104px] h-[104px];
+}
+.image_selector_container mat-icon {
+    height: 40px;
+    width: 40px;
+}
+
+.rules_container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}

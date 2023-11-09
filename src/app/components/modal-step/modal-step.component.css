@@ -1,0 +1,16 @@
+.error {
+  outline: 1px solid #ff5047;
+  animation-name: error;
+  animation-duration: 80ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes error {
+  from {
+    translate: 8px;
+  }
+  to {
+    translate: -8px;
+  }
+}
